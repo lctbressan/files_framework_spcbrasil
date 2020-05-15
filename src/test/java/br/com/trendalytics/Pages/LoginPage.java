@@ -36,6 +36,9 @@ public class LoginPage extends BaseTest{
             case "NotLogged":
                 msg = "Wrong Username/Email and password combination.";
                 break;
+            case "LEVKOFF at Multiple Retail Sites":
+                msg = "Assortment Comparison Report - #LEVKOFF at Multiple Retail Sites";
+                break;
             default:
                 throw new Exception("Invalid option");
         }

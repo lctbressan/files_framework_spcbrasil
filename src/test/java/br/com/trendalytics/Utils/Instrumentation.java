@@ -8,10 +8,13 @@ import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
 import static br.com.trendalytics.Utils.Constants.TIMEOUTAUTOMATION;
 import static junit.framework.TestCase.assertTrue;
@@ -71,6 +74,28 @@ public class Instrumentation {
         }
     }
 
+
+    public static void clickByfindElements (WebDriver driver, String prmCSS ,int index, String StepLog) throws IOException {
+        try {
+            Reporter.addStepLog(StepLog);
+            List<WebElement> rows = driver.findElements(By.className(prmCSS));
+            WebElement button = rows.get(index);
+            button.click();
+            DriverFactory.Evidencia(driver,"");
+        } catch (
+                NoSuchElementException exception) {
+            assertFalse("This will fail!", true);
+            System.out.println("FAILURE" + exception);
+        }
+    }
+
+
+    public static void verticesAreVisible(WebDriver driver, String xpath) {
+
+        List<WebElement> rows = driver.findElements(By.className("sidebar-navigation-menu-item"));
+        WebElement button = rows.get(1);
+        button.click();
+    }
 
     //--->
 

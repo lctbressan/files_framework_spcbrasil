@@ -51,7 +51,7 @@ public class DriverFactory extends BaseTest {
                         Webdriver = new ChromeDriver(options);
                         Webdriver.get(URLTESTING);
                         Webdriver.manage().window().maximize();
-                        Thread.sleep(3000);
+                        Thread.sleep(2000);
                         return Webdriver;
                     }
 
@@ -83,7 +83,7 @@ public class DriverFactory extends BaseTest {
         Webdriver = new ChromeDriver(options);
         Webdriver.get(p0);
         Webdriver.manage().window().maximize();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         return Webdriver;
     }
 

@@ -40,4 +40,9 @@ Constants cons = new Constants();
     public void clickToCreateAReport() throws IOException {
         ReportsPages.clickToCreateAReport();
     }
+
+    @And("^click on \"([^\"]*)\"$")
+    public void clickOn(String arg0) throws Exception {
+        ReportsPages.clickOn(arg0);
+    }
 }
