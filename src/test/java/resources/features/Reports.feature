@@ -15,4 +15,4 @@ Feature: Report
     Then I get the message "<Message>"
     Examples:
       | TS  | Scenario | Description                | module   |tag0          |tag1                     |Message                              |
-      | 001 |    0002  | Log in successfully        |reports   |My Comparison |Assort Comparition Report|LEVKOFF at Multiple Retail Sites     |
+      | 001 |    0002  | Log in successfully        |Report   |My Comparison |Assort Comparition Report|LEVKOFF at Multiple Retail Sites     |

@@ -9,10 +9,19 @@ import java.io.IOException;
 public class ReportsPages extends BaseTest {
 
 
-    public static void clickModule(String arg0) throws IOException, InterruptedException {
-        Instrumentation.clickByfindElements(Webdriver,"sidebar-navigation-menu-item",1,"Cick on Report");
-        Thread.sleep(3000);
-        Instrumentation.clickByfindElements(Webdriver,"sidebar-navigation-menu-item",1,"Cick on Report");
+    public static void clickModule(String arg0) throws Exception {
+        switch (arg0) {
+            case "Report":
+                Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Cick on Report");
+                Thread.sleep(3000);
+                Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Cick on Report");
+                break;
+            case "Dashboard":
+                Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Cick on Dashboard");
+                break;
+            default:
+                throw new Exception("Invalid option");
+        }
     }
 
     public static void clickToCreateAReport() throws IOException {
@@ -26,7 +35,13 @@ public class ReportsPages extends BaseTest {
             case "My Comparison":
                 msg = "menu-item-name";
                 break;
+            case "My dashboard":
+                msg = "menu-item-name";
+                break;
             case "Assort Comparition Report":
+                msg = "item-name";
+                break;
+            case "My DSB":
                 msg = "item-name";
                 break;
             case "LEVKOFF at Multiple Retail Sites":

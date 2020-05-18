@@ -36,23 +36,8 @@ public class DriverFactory extends BaseTest {
                 if (PLATFORMTYPE.toUpperCase().equals("WEB")) {
 
                     if (BROWSERTESTING.equals("CHROME")) {
-                        //OpenBrowserChrome(URLTESTING);
-                        System.setProperty("webdriver.chrome.driver", DRIVERPATH);
-                        ChromeOptions options = new ChromeOptions();
-                        options.addArguments("test-type");
-                        options.addArguments("start-maximized");
-                        options.addArguments("disable-infobars");
-                        options.addArguments("--disable-extensions");
-                        options.addArguments("enable-automation");
-                        options.addArguments("--no-sandbox");
-                        options.addArguments("--disable-dev-shm-usage");
-                        options.addArguments("--disable-browser-side-navigation");
-                        options.addArguments("--disable-gpu");
-                        Webdriver = new ChromeDriver(options);
-                        Webdriver.get(URLTESTING);
-                        Webdriver.manage().window().maximize();
-                        Thread.sleep(2000);
-                        return Webdriver;
+                        OpenBrowserChrome(URLTESTING);
+
                     }
 
                     if (BROWSERTESTING.equals("FIREFOX")) {
