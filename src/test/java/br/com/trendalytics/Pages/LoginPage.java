@@ -58,7 +58,9 @@ public class LoginPage extends BaseTest{
             case "2Modern":
                 msg="2Modern - SEO Opportunities For Accessories - Bag Charms & Straps - 05-19-20";
                 break;
-
+            case "SEO Opportunity Report":
+                msg="SEO Opportunity Report";
+                break;
 
             default:
                 throw new Exception("Invalid option");
@@ -72,6 +74,8 @@ public class LoginPage extends BaseTest{
     Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'"+ arg1 +"')]","");
 
 }
+
+
     public static void confirmAction() throws IOException {
         Instrumentation.clickByXpathWeb(Webdriver,"//input[@name='submit']","Confirm");
     }

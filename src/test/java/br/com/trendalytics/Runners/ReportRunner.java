@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         glue = {"br.com.trendalytics.Steps"},
         features = {"src/test/java/resources/features/Reports.feature"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:"},
-        tags={"@ReportDownloadPdf"},
+        tags={"@CheckEmailAlertPDF"},
         snippets = SnippetType.CAMELCASE)
 public abstract class ReportRunner extends BaseTest {
 }

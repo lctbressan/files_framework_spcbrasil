@@ -8,6 +8,7 @@ import br.com.trendalytics.Utils.Instrumentation;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.After;
 
@@ -48,7 +49,6 @@ Constants cons = new Constants();
 
         LoginPage.SearchByContaisText(arg1);
 
-
     }
 
 
@@ -57,8 +57,19 @@ Constants cons = new Constants();
         ReportsPages.downloadPdfReport();
     }
 
-    @And("Click confirm")
-    public void clickConfirm() throws IOException {
-        ReportsPages.clickConfirm();
+
+    @And("Click verify on subscription event")
+    public void clickVerifyOnSubscriptionEvent() throws Exception {
+        ReportsPages.clickVerifyOnSubscriptionEvent();
+    }
+
+    @And("^verify the email alert \"([^\"]*)\"$")
+    public void verifyTheEmailAlert(String arg0) throws IOException {
+        ReportsPages.verifyTheEmailAlert(arg0);
+    }
+
+    @Then("^I get the status \"([^\"]*)\"$")
+    public void IgettheStatus(String arg1) throws Throwable {
+        ReportsPages.GetStatus(arg1);
     }
 }

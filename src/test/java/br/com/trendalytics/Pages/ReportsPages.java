@@ -11,20 +11,27 @@ public class ReportsPages extends BaseTest {
 
 
     public static void clickModule(String arg0) throws Exception {
-        switch (arg0) {
-            case "Report":
-                Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Cick on Report");
-                Thread.sleep(2000);
-                Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Cick on Report");
-                break;
-            case "Dashboard":
-                Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Cick on Dashboard");
-                Thread.sleep(2000);
-                Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Cick on Dashboard");
-                break;
-            default:
-                throw new Exception("Invalid option");
-        }
+
+
+
+            switch (arg0) {
+                case "Report":
+                    Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
+                    Thread.sleep(1000);
+                    Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
+                    break;
+                case "Dashboard":
+                    Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Click on Dashboard");
+                    Thread.sleep(1000);
+                    Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Click on Dashboard");
+                    break;
+                    case "Admin":
+                    Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 6, "Click on Admin Management");
+                    Thread.sleep(1000);
+                    break;
+                default:
+                    throw new Exception("Invalid option");
+            }
     }
 
     public static void clickToCreateAReport() throws IOException {
@@ -67,9 +74,28 @@ public class ReportsPages extends BaseTest {
 
         Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'Export as PDF')]","Export PDF");
 
+        Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
+
     }
 
-    public static void clickConfirm() throws IOException {
-        Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
+
+    public static void clickVerifyOnSubscriptionEvent() throws IOException {
+
+        Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'Subscription Events')]","Export PDF");
+
+        Instrumentation.sendKeysByClassXpathWeb(Webdriver,"v-input v-input-default","Luis","Subscription");
+
+    }
+
+    public static void verifyTheEmailAlert (String arg0) throws IOException {
+
+        Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'Subscription Events')]","Export PDF");
+
+        Instrumentation.sendKeysByClassXpathWeb(Webdriver,"v-input v-input-default","Luis","Subscription");
+    }
+
+    public static void GetStatus(String arg1) throws Exception {
+        Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'"+ arg1 +"')]","");
+
     }
 }

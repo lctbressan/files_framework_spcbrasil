@@ -50,7 +50,7 @@ public class Instrumentation {
         try {
             Reporter.addStepLog(StepLog);
             WebDriverWait waitCad = new WebDriverWait(driver, TIMEOUTAUTOMATION);
-            waitCad.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prmXpath))).click();
+            waitCad.until(ExpectedConditions.elementToBeClickable(By.xpath(prmXpath))).click();
             DriverFactory.Evidencia(driver,"");
         } catch (
                 NoSuchElementException exception) {
@@ -72,6 +72,8 @@ public class Instrumentation {
             System.out.println("FAILURE" + exception);
         }
     }
+
+
 
 
     public static void clickByfindElements (WebDriver driver, String prmCSS ,int index, String StepLog) throws IOException {
@@ -123,6 +125,24 @@ public class Instrumentation {
         }
     }
 
+//method used for check index elements
+    public static void clickOnElementNotInteractWithContainsTextCheck (WebDriver driver, String prmText ,  String StepLog) throws IOException {
+        int prmIndex = 0;
+        try {
+            Reporter.addStepLog(StepLog);
+            List<WebElement> listElement = driver.findElements(By.cssSelector(prmText));
+            for(int i =0;i<listElement.size();i++) {
+                String elementText = listElement.get(i).getText();
+                System.out.println("Index (" + i + " ) - " + elementText);
+            }
+
+            DriverFactory.Evidencia(driver,"");
+        } catch (
+                NoSuchElementException exception) {
+            assertFalse("This will fail!", true);
+            System.out.println("FAILURE" + exception);
+        }
+    }
 
     public static void verticesAreVisible(WebDriver driver, String xpath) {
         List<WebElement> rows = driver.findElements(By.className("sidebar-navigation-menu-item"));
@@ -137,6 +157,21 @@ public class Instrumentation {
         actions.moveByOffset(500, 100).click().build().perform();
     }
 
+
+
+
+    public static void sendKeysByClassXpathWeb (WebDriver driver, String prmXpath,String prmText,String StepLog) throws IOException {
+        try {
+            Reporter.addStepLog(StepLog);
+            WebDriverWait waitCad = new WebDriverWait(driver, TIMEOUTAUTOMATION);
+            waitCad.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(prmXpath))).sendKeys(prmText);
+            DriverFactory.Evidencia(driver,"");
+        } catch (
+                NoSuchElementException exception) {
+            assertFalse("This will fail!", true);
+            System.out.println("FAILURE" + exception);
+        }
+    }
 
     //--->
 

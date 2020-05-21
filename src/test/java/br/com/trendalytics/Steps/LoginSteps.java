@@ -36,6 +36,7 @@ public class LoginSteps extends BaseTest {
     public void Igetthemessage(String arg1) throws Throwable {
         LoginPage.GetMessage(arg1);
     }
+
     @And("confirm action")
     public void confirmAction() throws IOException {
         LoginPage.confirmAction();
