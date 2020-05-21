@@ -34,7 +34,7 @@ public class LoginSteps extends BaseTest {
     }
     @Then("^I get the message \"([^\"]*)\"$")
     public void Igetthemessage(String arg1) throws Throwable {
-        LoginPage.Message(arg1);
+        LoginPage.GetMessage(arg1);
     }
     @And("confirm action")
     public void confirmAction() throws IOException {

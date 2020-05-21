@@ -23,7 +23,7 @@ Constants cons = new Constants();
     public void thatTheUserIsLogged() throws Throwable {
         Instrumentation.takeScreenshot(Webdriver,"Screen Home");
         LoginPage.sendCredencialsAnd( cons.email,cons.passw);
-        LoginPage.confirmAction();
+        //LoginPage.confirmAction();
     }
 
     @When("^click module \"([^\"]*)\"$")
@@ -41,8 +41,24 @@ Constants cons = new Constants();
         ReportsPages.clickToCreateAReport();
     }
 
-    @And("^click on \"([^\"]*)\"$")
-    public void clickOn(String arg0) throws Exception {
-        ReportsPages.clickOn(arg0);
+    @And("^click on the tab \"([^\"]*)\" and the tab \"([^\"]*)\"$")
+    public void clickOn(String arg0, String arg1) throws Exception {
+
+        LoginPage.SearchByContaisText(arg0);
+
+        LoginPage.SearchByContaisText(arg1);
+
+
+    }
+
+
+    @And("download a PDF Report")
+    public void downloadAPDFReport() throws IOException, InterruptedException {
+        ReportsPages.downloadPdfReport();
+    }
+
+    @And("Click confirm")
+    public void clickConfirm() throws IOException {
+        ReportsPages.clickConfirm();
     }
 }

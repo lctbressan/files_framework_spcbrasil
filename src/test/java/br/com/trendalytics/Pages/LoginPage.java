@@ -25,11 +25,18 @@ public class LoginPage extends BaseTest{
 
     }
 
-    public static void Message(String arg1) throws Exception {
+    public static void SearchByContaisText(String arg1) throws Exception {
         String msg ="";
         Constants plat = new Constants();
+        Thread.sleep(1500);
         switch (arg1)
         {
+            case "My Comparison":
+                msg = "My Comparison";
+                break;
+            case "Assortment Comparison":
+                msg = "Assortment Comparison Report";
+                break;
             case "Logged":
                 msg = "Trend Discovery";
                 break;
@@ -39,6 +46,20 @@ public class LoginPage extends BaseTest{
             case "LEVKOFF at Multiple Retail Sites":
                 msg = "Assortment Comparison Report - #LEVKOFF at Multiple Retail Sites";
                 break;
+            case "2019.02 FEBRUARY TOP WOMENS TRENDS":
+                msg = "2019.02 FEBRUARY TOP WOMENS TRENDS";
+                break;
+            case "Shared with me":
+                msg = "Shared with me";
+                break;
+            case "Q1 2019":
+                msg="Q1 2019: Ingredients Dashboard";
+                break;
+            case "2Modern":
+                msg="2Modern - SEO Opportunities For Accessories - Bag Charms & Straps - 05-19-20";
+                break;
+
+
             default:
                 throw new Exception("Invalid option");
         }
@@ -47,6 +68,10 @@ public class LoginPage extends BaseTest{
 
     }
 
+    public static void GetMessage(String arg1) throws Exception {
+    Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'"+ arg1 +"')]","");
+
+}
     public static void confirmAction() throws IOException {
         Instrumentation.clickByXpathWeb(Webdriver,"//input[@name='submit']","Confirm");
     }

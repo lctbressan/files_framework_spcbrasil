@@ -76,9 +76,9 @@ public class DriverFactory extends BaseTest {
     public static WebDriver OpenBrowserFirefox(String p0) throws InterruptedException {
        System.setProperty("webdriver.gecko.driver",DRIVERPATH);
         WebDriver driver = new FirefoxDriver();
-        Webdriver = driver;
         driver.navigate().to(p0);
-        Thread.sleep(5000);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        Webdriver = driver;
         return Webdriver;
     }
 
