@@ -22,7 +22,7 @@ public class Constants {
     //public static final String PATHEVIDENCE = "C:\\Evidencias\\Run_"+ getSaltStringCelular() + "\\";
 
 
-    public static final int TIMEOUTAUTOMATION = 30;
+    public static final int TIMEOUTAUTOMATION = 10;
 
     public static final String URLTESTING = "https://tp3app.trendalytics.co/signin";
 

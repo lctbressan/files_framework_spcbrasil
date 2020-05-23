@@ -46,4 +46,19 @@ Feature: Report
       | 001 |    0002  | Log in successfully        |Admin    |luis.bressan |Completed     |
 
 
-
+    @CreateNewReport
+    Scenario Outline: TS:["<TS>"] - [Create ASSORTMENT COMPARISION Report  ]  - "<Scenario>" - "<Description>"
+      Given that the user is logged
+      When click module "<module>"
+      And click Create a Report
+      And create a Report Type "<Report>"
+      And click Type "<Type>"
+      And click Brand "<Brand>"
+      And click Retail "<Retail>"
+    And click Category "<Category>"
+    Examples:
+        | TS  | Scenario | Description           | module    |Report                |Type      |Brand    |Retail       |Category|
+        | 001 |    0002  | Log in successfully   |Report     |ASSORTMENT COMPARISON |ONE BRAND |LEVKOFF  |Nordstron    |Women   |
+        #| 001 |    0002  | Log in successfully   |Report     |TREND COMPARISON      |ONE BRAND |LEVKOFF  |Nordstron    |Women   |
+        #| 001 |    0002  | Log in successfully   |Report     |SEO OPPORTUNITIES     |ONE BRAND |LEVKOFF  |Nordstron    |Women   |
+        #| 001 |    0002  | Log in successfully   |Report     |ATTRIBUTE COMPARISON  |ONE BRAND |LEVKOFF  |Nordstron    |Women   |

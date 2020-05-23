@@ -77,7 +77,7 @@ public class DriverFactory extends BaseTest {
        System.setProperty("webdriver.gecko.driver",DRIVERPATH);
         WebDriver driver = new FirefoxDriver();
         driver.navigate().to(p0);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(TIMEOUTAUTOMATION, TimeUnit.SECONDS);
         Webdriver = driver;
         return Webdriver;
     }

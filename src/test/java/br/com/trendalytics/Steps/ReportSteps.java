@@ -72,4 +72,32 @@ Constants cons = new Constants();
     public void IgettheStatus(String arg1) throws Throwable {
         ReportsPages.GetStatus(arg1);
     }
+
+    @And("click Create a Report")
+    public void clickCreateAReport() throws IOException {
+        ReportsPages.clickCreateAReport();
+    }
+
+
+    @And("^create a Report Type \"([^\"]*)\"$")
+    public void createAReporttype(String arg0) throws Exception {
+        ReportsPages.chooseAReport(arg0);
+     }
+
+    @And("^click Type \"([^\"]*)\"$")
+    public void clickType(String arg0) throws Exception {
+        ReportsPages.chooseTypeReport(arg0);
+    }
+
+    @And("^click Brand \"([^\"]*)\"$")
+    public void clickBrand(String arg0) {
+    }
+
+    @And("^click Retail \"([^\"]*)\"$")
+    public void clickRetail(String arg0) {
+    }
+
+    @And("^click Category \"([^\"]*)\"$")
+    public void clickCategory(String arg0) {
+    }
 }

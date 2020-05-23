@@ -4,6 +4,7 @@ import br.com.trendalytics.Runners.BaseTest;
 import br.com.trendalytics.Utils.Constants;
 import br.com.trendalytics.Utils.Instrumentation;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
 
@@ -11,10 +12,7 @@ public class ReportsPages extends BaseTest {
 
 
     public static void clickModule(String arg0) throws Exception {
-
-
-
-            switch (arg0) {
+          switch (arg0) {
                 case "Report":
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
                     Thread.sleep(1000);
@@ -97,5 +95,54 @@ public class ReportsPages extends BaseTest {
     public static void GetStatus(String arg1) throws Exception {
         Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'"+ arg1 +"')]","");
 
+    }
+
+    public static void clickCreateAReport() throws IOException {
+        Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'Create Report')]","");
+    }
+
+    public static void chooseAReport(String arg0) throws Exception {
+        Integer prmIndex=0;
+        switch (arg0)
+        {
+            case "ASSORTMENT COMPARISON":
+                prmIndex=0;
+                break;
+            case "TREND COMPARISON":
+                prmIndex=2;
+                break;
+            case "SEO OPPORTUNITIES":
+                prmIndex=3;
+                break;
+            case "ATTRIBUTE COMPARISON":
+                prmIndex=4;
+                break;
+
+            default:
+                throw new Exception("Invalid option");
+        }
+
+        Instrumentation.clickByClassNameIndex(Webdriver,"tl-card",prmIndex,"");
+        Thread.sleep(200);
+        Instrumentation.clickButtonByIndex(Webdriver,21);
+
+
+    }
+
+    public static void chooseTypeReport(String arg1) throws Exception {
+        Integer prmIndex=0;
+        switch (arg1)
+        {
+            case "ONE BRAND":
+                prmIndex=0;
+                break;
+            default:
+                throw new Exception("Invalid option");
+        }
+        Instrumentation.clickByClassNameIndex(Webdriver,"tl-card",prmIndex,"");
+        //Click Next
+        Thread.sleep(2000);
+        Instrumentation.clickButtonByIndex(Webdriver,21);
+        Instrumentation.listWebElement(Webdriver);
     }
 }

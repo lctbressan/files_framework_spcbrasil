@@ -125,17 +125,14 @@ public class Instrumentation {
         }
     }
 
-//method used for check index elements
-    public static void clickOnElementNotInteractWithContainsTextCheck (WebDriver driver, String prmText ,  String StepLog) throws IOException {
-        int prmIndex = 0;
+
+    public static void clickByClassNameIndex (WebDriver driver, String prmClassName,Integer prmIndex , String StepLog) throws IOException {
+
         try {
             Reporter.addStepLog(StepLog);
-            List<WebElement> listElement = driver.findElements(By.cssSelector(prmText));
-            for(int i =0;i<listElement.size();i++) {
-                String elementText = listElement.get(i).getText();
-                System.out.println("Index (" + i + " ) - " + elementText);
-            }
-
+            List<WebElement> listElement = driver.findElements(By.className(prmClassName));
+            WebElement element = listElement.get(prmIndex);
+           element.click();
             DriverFactory.Evidencia(driver,"");
         } catch (
                 NoSuchElementException exception) {
@@ -145,11 +142,40 @@ public class Instrumentation {
     }
 
     public static void verticesAreVisible(WebDriver driver, String xpath) {
-        List<WebElement> rows = driver.findElements(By.className("sidebar-navigation-menu-item"));
+        List<WebElement> rows = driver.findElements(By.className(".sidebar-navigation-menu-item"));
         WebElement button = rows.get(1);
         button.click();
     }
+    public static void clickButtonByIndex(WebDriver driver, Integer prmIndex){
+        try {
+            List<WebElement> listElement = driver.findElements(By.tagName("button"));
+            WebElement element = listElement.get(prmIndex);
+            element.click();
+            DriverFactory.Evidencia(driver,"");
+        } catch (
+                NoSuchElementException | IOException exception) {
+            assertFalse("This will fail!", true);
+            System.out.println("FAILURE" + exception);
+        }
+    }
 
+    public static void listWebElement (WebDriver driver) throws IOException {
+
+        try {
+            //List<WebElement> listElement = driver.findElements(By.xpath("//input[@class='tl-report-wizard-footer__btn']"));
+            //List<WebElement> listElement = driver.findElements(By.tagName("button"));
+            List<WebElement> listElement = driver.findElements(By.className("tl-card"));
+            for(int i =0;i<listElement.size();i++) {
+                String elementText = listElement.get(i).getText();
+                System.out.println("INDEX :" + i + " - " + elementText);
+            }
+            DriverFactory.Evidencia(driver,"");
+        } catch (
+                NoSuchElementException exception) {
+            assertFalse("This will fail!", true);
+            System.out.println("FAILURE" + exception);
+        }
+    }
 
     public static void ClickOut(WebDriver driver) {
         Actions actions = new Actions(driver);
