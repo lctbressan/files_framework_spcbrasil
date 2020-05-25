@@ -33,11 +33,20 @@ public class Instrumentation {
         }
     }
 
-    public static void sendKeysByXpathWeb (WebDriver driver, String prmXpath,  String arg0, String StepLog) throws IOException {
+    public static void sendKeysWeb (WebDriver driver, String prmType,String prmTag,  String arg0, String StepLog) throws IOException {
         try {
+
             Reporter.addStepLog(StepLog);
             WebDriverWait waitCad = new WebDriverWait(driver, TIMEOUTAUTOMATION);
-            waitCad.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prmXpath))).sendKeys(arg0);
+            if(prmType.equals("xpath")){
+            waitCad.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prmTag))).sendKeys(arg0);}
+
+            if(prmType.equals("className")){
+                waitCad.until(ExpectedConditions.presenceOfElementLocated(By.className(prmTag))).sendKeys(arg0);}
+
+            if(prmType.equals("cssSelector")){
+                waitCad.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(prmTag))).sendKeys(arg0);}
+
             DriverFactory.Evidencia(driver,"");
         } catch (
                 NoSuchElementException exception) {
@@ -46,25 +55,20 @@ public class Instrumentation {
         }
     }
 
-    public static void clickByXpathWeb (WebDriver driver, String prmXpath, String StepLog) throws IOException {
+
+    public static void clickWeb (WebDriver driver, String prmType, String prmTag,String StepLog) throws IOException {
         try {
             Reporter.addStepLog(StepLog);
             WebDriverWait waitCad = new WebDriverWait(driver, TIMEOUTAUTOMATION);
-            waitCad.until(ExpectedConditions.elementToBeClickable(By.xpath(prmXpath))).click();
-            DriverFactory.Evidencia(driver,"");
-        } catch (
-                NoSuchElementException exception) {
-            assertFalse("This will fail!", true);
-            System.out.println("FAILURE" + exception);
-        }
-    }
+            if(prmType.equals("xpath")){
+            waitCad.until(ExpectedConditions.elementToBeClickable(By.xpath(prmTag))).click();}
 
+            if(prmType.equals("className")){
+                waitCad.until(ExpectedConditions.elementToBeClickable(By.className(prmTag))).click();}
 
-    public static void clickBycssSelector (WebDriver driver, String prmXpath, String StepLog) throws IOException {
-        try {
-            Reporter.addStepLog(StepLog);
-            WebDriverWait waitCad = new WebDriverWait(driver, TIMEOUTAUTOMATION);
-            waitCad.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(prmXpath))).click();
+            if(prmType.equals("cssSelector")){
+                waitCad.until(ExpectedConditions.elementToBeClickable(By.cssSelector(prmTag))).click();}
+
             DriverFactory.Evidencia(driver,"");
         } catch (
                 NoSuchElementException exception) {
@@ -82,19 +86,6 @@ public class Instrumentation {
             List<WebElement> rows = driver.findElements(By.className(prmCSS));
             WebElement button = rows.get(index);
             button.click();
-            DriverFactory.Evidencia(driver,"");
-        } catch (
-                NoSuchElementException exception) {
-            assertFalse("This will fail!", true);
-            System.out.println("FAILURE" + exception);
-        }
-    }
-
-    public static void clickByfindElement (WebDriver driver, String prmCSS ,int index, String StepLog) throws IOException {
-        try {
-            Reporter.addStepLog(StepLog);
-            WebDriverWait waitCad = new WebDriverWait(driver, TIMEOUTAUTOMATION);
-            waitCad.until(ExpectedConditions.presenceOfElementLocated(By.className(prmCSS))).click();
             DriverFactory.Evidencia(driver,"");
         } catch (
                 NoSuchElementException exception) {
@@ -146,9 +137,16 @@ public class Instrumentation {
         WebElement button = rows.get(1);
         button.click();
     }
-    public static void clickButtonByIndex(WebDriver driver, Integer prmIndex){
+    public static void clickButtonByIndex(WebDriver driver, String prmString){
+       Integer prmIndex = 0;
         try {
             List<WebElement> listElement = driver.findElements(By.tagName("button"));
+            for(int i =0;i<listElement.size();i++) {
+                String elementText = listElement.get(i).getText();
+                if (elementText.trim().equals(prmString)) {
+                    prmIndex = i;
+                }
+            }
             WebElement element = listElement.get(prmIndex);
             element.click();
             DriverFactory.Evidencia(driver,"");
@@ -159,12 +157,26 @@ public class Instrumentation {
         }
     }
 
+
+    public static void cleanInputTextByClass (WebDriver driver, String prmCSS , String StepLog) throws IOException {
+        try {
+            Reporter.addStepLog(StepLog);
+            WebDriverWait waitCad = new WebDriverWait(driver, TIMEOUTAUTOMATION);
+            waitCad.until(ExpectedConditions.presenceOfElementLocated(By.className(prmCSS))).clear();
+            DriverFactory.Evidencia(driver,"");
+        } catch (
+                NoSuchElementException exception) {
+            assertFalse("This will fail!", true);
+            System.out.println("FAILURE" + exception);
+        }
+    }
+
     public static void listWebElement (WebDriver driver) throws IOException {
 
         try {
-            //List<WebElement> listElement = driver.findElements(By.xpath("//input[@class='tl-report-wizard-footer__btn']"));
-            //List<WebElement> listElement = driver.findElements(By.tagName("button"));
-            List<WebElement> listElement = driver.findElements(By.className("tl-card"));
+            List<WebElement> listElement = driver.findElements(By.xpath("//label[@for='mp__0__0']"));
+            //List<WebElement> listElement = driver.findElements(By.tagName("label"));
+            //List<WebElement> listElement = driver.findElements(By.className("tl-multi-panel-view__tl-virtual-list"));
             for(int i =0;i<listElement.size();i++) {
                 String elementText = listElement.get(i).getText();
                 System.out.println("INDEX :" + i + " - " + elementText);
@@ -186,18 +198,7 @@ public class Instrumentation {
 
 
 
-    public static void sendKeysByClassXpathWeb (WebDriver driver, String prmXpath,String prmText,String StepLog) throws IOException {
-        try {
-            Reporter.addStepLog(StepLog);
-            WebDriverWait waitCad = new WebDriverWait(driver, TIMEOUTAUTOMATION);
-            waitCad.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(prmXpath))).sendKeys(prmText);
-            DriverFactory.Evidencia(driver,"");
-        } catch (
-                NoSuchElementException exception) {
-            assertFalse("This will fail!", true);
-            System.out.println("FAILURE" + exception);
-        }
-    }
+
 
     //--->
 

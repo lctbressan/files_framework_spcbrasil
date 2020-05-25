@@ -45,9 +45,9 @@ Constants cons = new Constants();
     @And("^click on the tab \"([^\"]*)\" and the tab \"([^\"]*)\"$")
     public void clickOn(String arg0, String arg1) throws Exception {
 
-        LoginPage.SearchByContaisText(arg0);
+        LoginPage.GetMessage(arg0);
 
-        LoginPage.SearchByContaisText(arg1);
+        LoginPage.GetMessage(arg1);
 
     }
 
@@ -90,14 +90,43 @@ Constants cons = new Constants();
     }
 
     @And("^click Brand \"([^\"]*)\"$")
-    public void clickBrand(String arg0) {
+    public void clickBrand(String arg0) throws Exception {
+        ReportsPages.clickBrand(arg0);
     }
 
     @And("^click Retail \"([^\"]*)\"$")
-    public void clickRetail(String arg0) {
+    public void clickRetail(String arg0) throws Exception {
+        ReportsPages.clickRetail(arg0);
     }
 
     @And("^click Category \"([^\"]*)\"$")
-    public void clickCategory(String arg0) {
+    public void clickCategory(String arg0) throws IOException {
+        ReportsPages.clickCategory(arg0);
+    }
+
+    @Then("click submit")
+    public void clickSubmit() throws IOException {
+        ReportsPages.clickSubmit();
+    }
+
+    @When("^Create a new report \"([^\"]*)\" with Type \"([^\"]*)\" and Brand \"([^\"]*)\" and Retail \"([^\"]*)\" and Category \"([^\"]*)\" with Name \"([^\"]*)\"$")
+    public void createANewReportWithTypeAndBrandAndRetailAndCategoryWithName(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) throws Exception {
+
+        ReportsPages.clickModule("Report");
+
+        ReportsPages.clickCreateAReport();
+
+        ReportsPages.chooseAReport(arg0);
+
+        ReportsPages.chooseTypeReport(arg1);
+
+        ReportsPages.clickBrand(arg2);
+
+        ReportsPages.clickRetail(arg3);
+
+        ReportsPages.clickCategory(arg4);
+
+        ReportsPages.setReportName(arg5);
+
     }
 }

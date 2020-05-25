@@ -3,7 +3,9 @@ import br.com.trendalytics.Runners.BaseTest;
 import br.com.trendalytics.Utils.Instrumentation;
 import br.com.trendalytics.Utils.Constants;
 import br.com.trendalytics.interfaces.DriverFactory;
-
+import static br.com.trendalytics.Utils.Constants.xpath;
+import static br.com.trendalytics.Utils.Constants.className;
+import static br.com.trendalytics.Utils.Constants.cssSelector;
 import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
@@ -16,16 +18,12 @@ public class LoginPage extends BaseTest{
     }
 
     public static void sendCredencialsAnd(String arg0, String arg1) throws IOException, InterruptedException {
-
-        Instrumentation.sendKeysByXpathWeb(Webdriver,"//input[@name='user']",arg0,"Type User");
-
-        Instrumentation.sendKeysByXpathWeb(Webdriver,"//input[@name='pass']",arg1,"Type Pass");
-
-        Instrumentation.clickByXpathWeb(Webdriver,"//input[@name='commit']","Confirm");
-
+        Instrumentation.sendKeysWeb(Webdriver,xpath,"//input[@name='user']",arg0,"Type User");
+        Instrumentation.sendKeysWeb(Webdriver,xpath,"//input[@name='pass']",arg1,"Type Pass");
+        Instrumentation.clickWeb(Webdriver,xpath,"//input[@name='commit']","Confirm");
     }
 
-    public static void SearchByContaisText(String arg1) throws Exception {
+    public static void GetMessage(String arg1) throws Exception {
         String msg ="";
         Constants plat = new Constants();
         Thread.sleep(1500);
@@ -65,18 +63,11 @@ public class LoginPage extends BaseTest{
             default:
                 throw new Exception("Invalid option");
         }
-
-        Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'"+ msg +"')]","");
-
-    }
-
-    public static void GetMessage(String arg1) throws Exception {
-    Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'"+ arg1 +"')]","");
-
+        Instrumentation.clickWeb(Webdriver,xpath,"//*[contains(text(),'"+ msg +"')]","");
 }
 
 
     public static void confirmAction() throws IOException {
-        Instrumentation.clickByXpathWeb(Webdriver,"//input[@name='submit']","Confirm");
+        Instrumentation.clickWeb(Webdriver,xpath,"//input[@name='submit']","Confirm");
     }
 }

@@ -10,7 +10,7 @@ Feature: Login
   Scenario Outline: TS:["<TS>"] - [Log in successfully ]  - "<Scenario>" - "<Description>"
     Given that the user is on the home screen
     When send credencials
-    And confirm action
+    #And confirm action
     Then I get the message "<Message>"
     Examples:
       | TS  | Scenario | Description                         | Message       |

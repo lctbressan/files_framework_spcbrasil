@@ -49,16 +49,11 @@ Feature: Report
     @CreateNewReport
     Scenario Outline: TS:["<TS>"] - [Create ASSORTMENT COMPARISION Report  ]  - "<Scenario>" - "<Description>"
       Given that the user is logged
-      When click module "<module>"
-      And click Create a Report
-      And create a Report Type "<Report>"
-      And click Type "<Type>"
-      And click Brand "<Brand>"
-      And click Retail "<Retail>"
-    And click Category "<Category>"
+      When Create a new report "<Report>" with Type "<Type>" and Brand "<Brand>" and Retail "<Retail>" and Category "<Category>" with Name "<Name>"
+     Then click submit
+
     Examples:
-        | TS  | Scenario | Description           | module    |Report                |Type      |Brand    |Retail       |Category|
-        | 001 |    0002  | Log in successfully   |Report     |ASSORTMENT COMPARISON |ONE BRAND |LEVKOFF  |Nordstron    |Women   |
-        #| 001 |    0002  | Log in successfully   |Report     |TREND COMPARISON      |ONE BRAND |LEVKOFF  |Nordstron    |Women   |
-        #| 001 |    0002  | Log in successfully   |Report     |SEO OPPORTUNITIES     |ONE BRAND |LEVKOFF  |Nordstron    |Women   |
-        #| 001 |    0002  | Log in successfully   |Report     |ATTRIBUTE COMPARISON  |ONE BRAND |LEVKOFF  |Nordstron    |Women   |
+        | TS  | Scenario | Description                    | module    |Report                |Type                                     |Brand    |Retail       |Category|Name                         |
+        | 001 |    00012  | Create report successfully    |Report      |ASSORTMENT COMPARISON |ONE BRAND ACROSS MULTIPLE RETAIL SITES   |LEVKOFF  |Nordstrom    |Women   | Automation Assort Comparison|
+        #| 001 |    00012  | Create report successfully   |Report     |ASSORTMENT COMPARISON |MULTIPLE RETAIL SITES                     |LEVKOFF  |Nordstron    |Women   |
+        #| 001 |    00012  | Create report successfully   |Report     |ASSORTMENT COMPARISON |MULTIPLE BRANDS ACROSS ONE RETAIL SITE    |LEVKOFF  |Nordstron    |Women   |

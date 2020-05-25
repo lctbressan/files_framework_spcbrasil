@@ -1,7 +1,13 @@
 package br.com.trendalytics.Pages;
 
 import br.com.trendalytics.Runners.BaseTest;
-import br.com.trendalytics.Utils.Constants;
+import static br.com.trendalytics.Utils.Constants.TIMEOUTAUTOMATION;
+import static br.com.trendalytics.Utils.Constants.xpath;
+import static br.com.trendalytics.Utils.Constants.className;
+import static br.com.trendalytics.Utils.Constants.cssSelector;
+
+
+
 import br.com.trendalytics.Utils.Instrumentation;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -9,6 +15,7 @@ import org.openqa.selenium.WebElement;
 import java.io.IOException;
 
 public class ReportsPages extends BaseTest {
+
 
 
     public static void clickModule(String arg0) throws Exception {
@@ -33,72 +40,35 @@ public class ReportsPages extends BaseTest {
     }
 
     public static void clickToCreateAReport() throws IOException {
-        Instrumentation.clickBycssSelector(Webdriver,"input[type='button'][value='Create Report']","Click Create Report");
-    }
-
-    public static void clickOn(String arg0) throws Exception {
-        String msg ="";
-        int prmIndex =  0;
-        switch (arg0)
-        {
-
-
-            case "Shared with me":
-                msg = "menu-item menu-item--active";
-                prmIndex=0;
-                break;
-            case "Assort Comparition Report":
-                msg = "item-name";
-                break;
-            case "My DSB":
-                msg = "item-name";
-                break;
-            case "LEVKOFF at Multiple Retail Sites":
-                msg = "report-header__title-block";
-                break;
-            case "Q1 2019":
-                msg="Q1 2019: INGREDIENTS DASHBOARD";
-                break;
-            default:
-                throw new Exception("Invalid option");
-        }
-        Instrumentation.clickByfindElements(Webdriver,msg,prmIndex,""+ arg0 +"");
-
+        Instrumentation.clickWeb(Webdriver,cssSelector,"input[type='button'][value='Create Report']","Click Create Report");
     }
 
     public static void downloadPdfReport() throws IOException, InterruptedException {
-
-        Instrumentation.clickByfindElement(Webdriver, "el-dropdown", 0, "Export Pdf");
-
-        Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'Export as PDF')]","Export PDF");
-
+        Instrumentation.clickWeb(Webdriver,className, "el-dropdown",  "Export Pdf");
+        Instrumentation.clickWeb(Webdriver,xpath,"//*[contains(text(),'Export as PDF')]","Export PDF");
         Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
-
     }
 
 
     public static void clickVerifyOnSubscriptionEvent() throws IOException {
 
-        Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'Subscription Events')]","Export PDF");
+        Instrumentation.clickWeb(Webdriver,xpath,"//*[contains(text(),'Subscription Events')]","Export PDF");
 
-        Instrumentation.sendKeysByClassXpathWeb(Webdriver,"v-input v-input-default","Luis","Subscription");
+        Instrumentation.sendKeysWeb(Webdriver,xpath,"v-input v-input-default","Luis","Subscription");
 
     }
 
     public static void verifyTheEmailAlert (String arg0) throws IOException {
-
-        Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'Subscription Events')]","Export PDF");
-
-        Instrumentation.sendKeysByClassXpathWeb(Webdriver,"v-input v-input-default","Luis","Subscription");
+        Instrumentation.clickWeb(Webdriver,xpath,"//*[contains(text(),'Subscription Events')]","Export PDF");
+        Instrumentation.sendKeysWeb(Webdriver,xpath,"v-input v-input-default","Luis","Subscription");
     }
 
     public static void GetStatus(String arg1) throws Exception {
-        Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'"+ arg1 +"')]","");
-
+        Instrumentation.clickWeb(Webdriver,xpath,"//*[contains(text(),'"+ arg1 +"')]","");
     }
 
     public static void clickCreateAReport() throws IOException {
-        Instrumentation.clickByXpathWeb(Webdriver,"//*[contains(text(),'Create Report')]","");
+        Instrumentation.clickWeb(Webdriver,xpath,"//*[contains(text(),'Create Report')]","");
     }
 
     public static void chooseAReport(String arg0) throws Exception {
@@ -117,32 +87,86 @@ public class ReportsPages extends BaseTest {
             case "ATTRIBUTE COMPARISON":
                 prmIndex=4;
                 break;
-
             default:
                 throw new Exception("Invalid option");
         }
 
         Instrumentation.clickByClassNameIndex(Webdriver,"tl-card",prmIndex,"");
         Thread.sleep(200);
-        Instrumentation.clickButtonByIndex(Webdriver,21);
-
-
+        Instrumentation.clickButtonByIndex(Webdriver,"Next");
     }
 
     public static void chooseTypeReport(String arg1) throws Exception {
         Integer prmIndex=0;
         switch (arg1)
         {
-            case "ONE BRAND":
+            case "ONE BRAND ACROSS MULTIPLE RETAIL SITES":
                 prmIndex=0;
+                break;
+            case "MULTIPLE RETAIL SITES":
+                prmIndex=1;
+                break;
+            case "MULTIPLE BRANDS ACROSS ONE RETAIL SITE":
+                prmIndex=2;
                 break;
             default:
                 throw new Exception("Invalid option");
         }
         Instrumentation.clickByClassNameIndex(Webdriver,"tl-card",prmIndex,"");
-        //Click Next
-        Thread.sleep(2000);
-        Instrumentation.clickButtonByIndex(Webdriver,21);
-        Instrumentation.listWebElement(Webdriver);
+        Instrumentation.clickButtonByIndex(Webdriver,"Next");
     }
+
+    public static void clickBrand(String arg0) throws Exception {
+        String prmText;
+        switch (arg0)
+        {
+            case "LEVKOFF":
+                prmText = "mp__0__0";
+                break;
+            case "47 College":
+                prmText = "mp__0__1";
+                break;
+            case "47 Nba":
+                prmText = "mp__0__2";
+                break;
+            default:
+                throw new Exception("Invalid option");
+        }
+        Instrumentation.clickWeb(Webdriver,xpath,"//label[@for='"+prmText+"']","");
+        Instrumentation.clickButtonByIndex(Webdriver,"Next");
+    }
+
+    public static void clickRetail(String arg0) throws Exception {
+        String prmText;
+        switch (arg0)
+        {
+            case "Nordstrom":
+                prmText = "mp__1__0";
+                break;
+            case "Nordstrom Rack":
+                prmText = "mp__1__1";
+                break;
+            default:
+                throw new Exception("Invalid option");
+        }
+        Instrumentation.clickWeb(Webdriver,xpath,"//label[@for='"+prmText+"']","");
+        Instrumentation.clickButtonByIndex(Webdriver,"Next");
+    }
+
+    public static void clickCategory(String arg0) throws IOException {
+        Instrumentation.clickWeb(Webdriver,xpath,"//label[@id='lb__0__0']","");
+        Instrumentation.clickWeb(Webdriver,xpath,"//label[@for='all__1']","");
+        Instrumentation.clickButtonByIndex(Webdriver,"Next");
+    }
+
+
+    public static void setReportName(String arg5) throws IOException {
+        Instrumentation.cleanInputTextByClass(Webdriver,"tl-report-name__input","Clean Input Text");
+        Instrumentation.sendKeysWeb(Webdriver,className,"tl-report-name__input",arg5,"Input Report Name ");
+    }
+
+    public static void clickSubmit() throws IOException {
+        Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Submit",  "Confirm Button");
+    }
+
 }
