@@ -19,7 +19,7 @@ public abstract class BaseTest {
    @BeforeClass
     public static void inicializaAutomacao() throws Exception {
         System.out.println("#####################################################################################}");
-        System.out.println("                  {STARTING FRAMEWORK WAIT}");
+        System.out.println("                  {STARTING AUTOMATION WAIT PLS}");
         System.out.println("#####################################################################################}");
         ExtentProperties extentProperties = ExtentProperties.INSTANCE;
         extentProperties.setReportPath(PATHEVIDENCE+"/report.html");
@@ -36,7 +36,7 @@ public abstract class BaseTest {
 
             System.out.println("Finalizando Testes");
             System.out.println("#####################################################################################}");
-            System.out.println("                  {CLOSE FRAMEWORK ..}");
+            System.out.println("                  {CLOSING AUTOMATION ..}");
             System.out.println("#####################################################################################}");
             Webdriver.quit();
 

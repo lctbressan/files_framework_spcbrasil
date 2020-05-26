@@ -128,4 +128,23 @@ Constants cons = new Constants();
         ReportsPages.fillNameOfReport(arg0);
          LoginPage.GetMessage(arg0);
     }
+
+    @And("click on the tab \"([^\"]*)\" and the tab \"([^\"]*)\"$")
+    public void clickOnTheTabAndTheTab(String arg0, String arg1) throws Exception {
+
+        LoginPage.GetMessage(arg0);
+
+        LoginPage.GetMessage(arg1);
+    }
+
+    @And("Click on email alerts")
+    public void clickOnEmailAlerts() throws IOException {
+        ReportsPages.clickOnEmailAlerts();
+    }
+
+    @And("^search for user email \"([^\"]*)\"$")
+    public void searchForUserEmail(String arg0) throws IOException, InterruptedException {
+        ReportsPages.searchForUserEmail(arg0);
+        Thread.sleep(2000);
+    }
 }

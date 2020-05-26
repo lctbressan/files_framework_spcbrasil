@@ -23,7 +23,7 @@ public class ReportsPages extends BaseTest {
                 case "Report":
                     Thread.sleep(1000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
-                    Thread.sleep(1000);
+                    Thread.sleep(1500);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
                     break;
                 case "Dashboard":
@@ -67,7 +67,19 @@ public class ReportsPages extends BaseTest {
     }
 
     public static void GetStatus(String arg1) throws Exception {
-        Instrumentation.clickWeb(Webdriver,xpath,"//*[contains(text(),'"+ arg1 +"')]","");
+        String prmString;
+        switch (arg1)
+        {
+            case "Completed":
+                prmString = "el-icon-success";
+                break;
+            default:
+                throw new Exception("Invalid option");
+        }
+
+        Instrumentation.clickByClassNameIndex(Webdriver,prmString,0,"");
+        Thread.sleep(200);
+
     }
 
     public static void clickCreateAReport() throws IOException {
@@ -196,4 +208,13 @@ public class ReportsPages extends BaseTest {
 
 
     }
+
+    public static void clickOnEmailAlerts() throws IOException {
+        Instrumentation.clickWeb(Webdriver,xpath,"//*[contains(text(),'Email Alerts')]","Export PDF");
+    }
+
+    public static void searchForUserEmail(String arg0) throws IOException {
+        Instrumentation.sendKeysWeb(Webdriver,xpath,"//input[@placeholder='Search for user Email']",arg0,"");
+    }
+
 }

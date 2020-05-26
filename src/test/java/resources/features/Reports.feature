@@ -6,37 +6,6 @@
 Feature: Report
 
 
-
-
-
-
-
-  @CreateRequestEmailAlertSucessPDF
-  Scenario Outline: TS:["<TS>"] - [Create request for download pdf successfully ]  - "<Scenario>" - "<Description>"
-    Given that the user is logged
-    When click module Report
-    And click on the tab "<tag0>" and the tab "<tag1>"
-    And Click out
-    And download a PDF Report
-    And Click out
-    Then I get the message "<Message>"
-    Examples:
-      | TS  | Scenario | Description                   |tag0          |tag1      |Message                    |
-      | 001 |    0002  | Create Requester PDF          |My Comparison |2Modern   |SEO Opportunity Report     |
-
-
-  @CheckSubscription
-  Scenario Outline: TS:["<TS>"] - [Check email alert status  ]  - "<Scenario>" - "<Description>"
-    Given that the user is logged
-    When click module Admin
-    And Click verify on subscription event
-    And verify the email alert "<requester>"
-    Then I get the status "<Status>"
-    Examples:
-      | TS  | Scenario | Description                | requester    |Status        |
-      | 001 |    0002  | Log in successfully        |luis.bressan |Completed     |
-
-
     @CreateNewReportOneBrand
     Scenario Outline: TS:["<TS>"] - [Create Assortment Comparison Report  ]  - "<Scenario>" - "<Description>"
       Given that the user is logged
@@ -116,3 +85,45 @@ Feature: Report
       | 001 |    0003  | Multiple Retail Report     |My Comparison  |Multiple Brand Report Automation     |Assortment Comparison Report - Multiple Brands at Carbon38     |
       | 001 |    0004  | Multiple Retail Report     |My Comparison  |Trend Report Side By Side Automation |Trend Comparison Report - Side by Side Trend Comparison        |
 
+
+  @CreateEmailAlertPDF
+  Scenario Outline: TS:["<TS>"] - [Create request for download pdf successfully ]  - "<Scenario>" - "<Description>"
+    Given that the user is logged
+    When click module Report
+    And click on the tab "<tab0>"
+    And Fill name of report "<Name>"
+    And Click out
+    And download a PDF Report
+    And Click out
+    Then I get the message "<Message>"
+    Examples:
+      | TS  | Scenario | Description                |tab0          |Name                                  |Message                              |
+      | 001 |    0001  | Create Requester PDF       |My Comparison |Assort Comparison Automation          |LEVKOFF at Multiple Retail Sites     |
+      | 001 |    0002  | Multiple Retail Report     |My Comparison  |Multiple Retail Report Automation    |Assortment Comparison Report - Multiple Retail Sites           |
+      | 001 |    0003  | Multiple Retail Report     |My Comparison  |Multiple Brand Report Automation     |Assortment Comparison Report - Multiple Brands at Carbon38     |
+      | 001 |    0004  | Multiple Retail Report     |My Comparison  |Trend Report Side By Side Automation |Trend Comparison Report - Side by Side Trend Comparison        |
+
+
+
+  @CheckEmailAlert
+  Scenario Outline: TS:["<TS>"] - [Check Email Alert satus  ]  - "<Scenario>" - "<Description>"
+    Given that the user is logged
+    When click module Admin
+    And Click on email alerts
+    And search for user email "<email>"
+    Then I get the status "<Status>"
+    Examples:
+      | TS  | Scenario | Description                  |email        |Status        |
+      | 001 |    0001  | Email Alert completed        |luis.bressan |Completed     |
+
+
+  @CheckSubscription
+  Scenario Outline: TS:["<TS>"] - [Check Subscription status  ]  - "<Scenario>" - "<Description>"
+    Given that the user is logged
+    When click module Admin
+    And Click verify on subscription event
+    And verify the email alert "<requester>"
+    Then I get the status "<Status>"
+    Examples:
+      | TS  | Scenario | Description                | requester    |Status        |
+      | 001 |    0002  | Log in successfully        |luis.bressan |Completed     |
