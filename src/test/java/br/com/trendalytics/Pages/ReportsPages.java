@@ -21,16 +21,19 @@ public class ReportsPages extends BaseTest {
     public static void clickModule(String arg0) throws Exception {
           switch (arg0) {
                 case "Report":
+                    Thread.sleep(1000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
                     Thread.sleep(1000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
                     break;
                 case "Dashboard":
+                    Thread.sleep(1000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Click on Dashboard");
                     Thread.sleep(1000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Click on Dashboard");
                     break;
                     case "Admin":
+                        Thread.sleep(1000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 6, "Click on Admin Management");
                     Thread.sleep(1000);
                     break;
@@ -97,6 +100,8 @@ public class ReportsPages extends BaseTest {
     }
 
     public static void chooseTypeReport(String arg1) throws Exception {
+        Instrumentation.listWebElement(Webdriver);
+
         Integer prmIndex=0;
         switch (arg1)
         {
@@ -108,6 +113,12 @@ public class ReportsPages extends BaseTest {
                 break;
             case "MULTIPLE BRANDS ACROSS ONE RETAIL SITE":
                 prmIndex=2;
+                break;
+            case "SIDE BY SIDE TREND COMPARISON":
+                prmIndex=0;
+                break;
+            case "MULTIPLE TREND COMPARISON":
+                prmIndex=1;
                 break;
             default:
                 throw new Exception("Invalid option");
@@ -123,11 +134,11 @@ public class ReportsPages extends BaseTest {
             case "LEVKOFF":
                 prmText = "mp__0__0";
                 break;
-            case "47 College":
-                prmText = "mp__0__1";
-                break;
             case "47 Nba":
                 prmText = "mp__0__2";
+                break;
+            case "CARBON38":
+                prmText = "mp__0__0";
                 break;
             default:
                 throw new Exception("Invalid option");
@@ -145,6 +156,9 @@ public class ReportsPages extends BaseTest {
                 break;
             case "Nordstrom Rack":
                 prmText = "mp__1__1";
+                break;
+            case "CARBON38":
+                prmText = "mp__1__0";
                 break;
             default:
                 throw new Exception("Invalid option");
@@ -169,4 +183,17 @@ public class ReportsPages extends BaseTest {
         Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Submit",  "Confirm Button");
     }
 
+    public static void selectTrends() throws IOException {
+        Instrumentation.clickWeb(Webdriver,xpath,"//*[contains(text(),'1 light flush mount')]","Selecionou - 1 light flush mount");
+        Instrumentation.clickWeb(Webdriver,xpath,"//*[contains(text(),'12 piece comforter set')]","Selecionou - 12 piece comforter set");
+        Instrumentation.clickButtonByIndex(Webdriver,"Next");
+
+    }
+
+    public static void fillNameOfReport(String arg0) throws IOException {
+        //Instrumentation.clickWeb(Webdriver,xpath,"//input[@placeholder='Search']","Clean Input Text");
+        Instrumentation.sendKeysWeb(Webdriver,xpath,"//input[@placeholder='Search']",arg0,"");
+
+
+    }
 }

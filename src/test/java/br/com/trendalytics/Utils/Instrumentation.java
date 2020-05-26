@@ -78,12 +78,12 @@ public class Instrumentation {
     }
 
 
-
-
     public static void clickByfindElements (WebDriver driver, String prmCSS ,int index, String StepLog) throws IOException {
         try {
             Reporter.addStepLog(StepLog);
             List<WebElement> rows = driver.findElements(By.className(prmCSS));
+            WebDriverWait listWait = new WebDriverWait(driver,TIMEOUTAUTOMATION);
+            listWait.until(ExpectedConditions.visibilityOfAllElements(rows));
             WebElement button = rows.get(index);
             button.click();
             DriverFactory.Evidencia(driver,"");
@@ -174,9 +174,9 @@ public class Instrumentation {
     public static void listWebElement (WebDriver driver) throws IOException {
 
         try {
-            List<WebElement> listElement = driver.findElements(By.xpath("//label[@for='mp__0__0']"));
+            //List<WebElement> listElement = driver.findElements(By.xpath("//label[@for='mp__0__0']"));
             //List<WebElement> listElement = driver.findElements(By.tagName("label"));
-            //List<WebElement> listElement = driver.findElements(By.className("tl-multi-panel-view__tl-virtual-list"));
+            List<WebElement> listElement = driver.findElements(By.className("tl-card"));
             for(int i =0;i<listElement.size();i++) {
                 String elementText = listElement.get(i).getText();
                 System.out.println("INDEX :" + i + " - " + elementText);

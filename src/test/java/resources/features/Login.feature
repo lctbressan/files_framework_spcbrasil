@@ -13,8 +13,8 @@ Feature: Login
     #And confirm action
     Then I get the message "<Message>"
     Examples:
-      | TS  | Scenario | Description                         | Message       |
-      | 001 |    0001  | Log in successfully                 | Logged        |
+      | TS  | Scenario | Description                         | Message                |
+      | 001 |    0001  | Log in successfully                 | Trend Discovery        |
 
 
 
@@ -24,7 +24,7 @@ Feature: Login
     When send wrong credencials
     Then I get the message "<Message>"
     Examples:
-      | TS  | Scenario | Description                         |  Message        |
-      | 001 |    0002  | Log in Unsuccessfully               |  NotLogged      |
+      | TS  | Scenario | Description                         |  Message                                             |
+      | 001 |    0002  | Log in Unsuccessfully               |  Wrong Username/Email and password combination.      |
 
 

@@ -6,16 +6,7 @@
 Feature: Report
 
 
-  @ReportBasic
-  Scenario Outline: TS:["<TS>"] - [Report successfully ]  - "<Scenario>" - "<Description>"
-    Given that the user is logged
-    When click module "<module>"
-    And click on the tab "<tag0>" and the tab "<tag1>"
-    And Click out
-    Then I get the message "<Message>"
-    Examples:
-      | TS  | Scenario | Description                | module   |tag0          |tag1      |Message                    |
-      | 001 |    0002  | Log in successfully        |Report    |My Comparison |2Modern   |SEO Opportunity Report     |
+
 
 
 
@@ -23,37 +14,105 @@ Feature: Report
   @CreateRequestEmailAlertSucessPDF
   Scenario Outline: TS:["<TS>"] - [Create request for download pdf successfully ]  - "<Scenario>" - "<Description>"
     Given that the user is logged
-    When click module "<module>"
+    When click module Report
     And click on the tab "<tag0>" and the tab "<tag1>"
     And Click out
     And download a PDF Report
     And Click out
     Then I get the message "<Message>"
     Examples:
-      | TS  | Scenario | Description                | module   |tag0          |tag1      |Message                    |
-      | 001 |    0002  | Create Requester PDF       |Report    |My Comparison |2Modern   |SEO Opportunity Report     |
+      | TS  | Scenario | Description                   |tag0          |tag1      |Message                    |
+      | 001 |    0002  | Create Requester PDF          |My Comparison |2Modern   |SEO Opportunity Report     |
 
 
-  @CheckEmailAlertPDF
+  @CheckSubscription
   Scenario Outline: TS:["<TS>"] - [Check email alert status  ]  - "<Scenario>" - "<Description>"
     Given that the user is logged
-    When click module "<module>"
+    When click module Admin
     And Click verify on subscription event
     And verify the email alert "<requester>"
     Then I get the status "<Status>"
     Examples:
-      | TS  | Scenario | Description                | module  |requester    |Status        |
-      | 001 |    0002  | Log in successfully        |Admin    |luis.bressan |Completed     |
+      | TS  | Scenario | Description                | requester    |Status        |
+      | 001 |    0002  | Log in successfully        |luis.bressan |Completed     |
 
 
-    @CreateNewReport
-    Scenario Outline: TS:["<TS>"] - [Create ASSORTMENT COMPARISION Report  ]  - "<Scenario>" - "<Description>"
+    @CreateNewReportOneBrand
+    Scenario Outline: TS:["<TS>"] - [Create Assortment Comparison Report  ]  - "<Scenario>" - "<Description>"
       Given that the user is logged
-      When Create a new report "<Report>" with Type "<Type>" and Brand "<Brand>" and Retail "<Retail>" and Category "<Category>" with Name "<Name>"
-     Then click submit
-
+      When click module Report
+      And click Create a Report
+      And create a Report Type "<Report>"
+      And click Type "<Type>"
+      And click Brand "<Brand>"
+      And click Retail "<Retail>"
+      And click Category "<Category>"
+      And type Name "<Name>"
+      Then click submit
     Examples:
-        | TS  | Scenario | Description                    | module    |Report                |Type                                     |Brand    |Retail       |Category|Name                         |
-        | 001 |    00012  | Create report successfully    |Report      |ASSORTMENT COMPARISON |ONE BRAND ACROSS MULTIPLE RETAIL SITES   |LEVKOFF  |Nordstrom    |Women   | Automation Assort Comparison|
-        #| 001 |    00012  | Create report successfully   |Report     |ASSORTMENT COMPARISON |MULTIPLE RETAIL SITES                     |LEVKOFF  |Nordstron    |Women   |
-        #| 001 |    00012  | Create report successfully   |Report     |ASSORTMENT COMPARISON |MULTIPLE BRANDS ACROSS ONE RETAIL SITE    |LEVKOFF  |Nordstron    |Women   |
+        | TS  | Scenario | Description                   |Report                |Type                                     |Brand    |Retail       |Category|Name                           |
+        | 001 |    0001  | Create report successfully    |ASSORTMENT COMPARISON |ONE BRAND ACROSS MULTIPLE RETAIL SITES   |LEVKOFF  |Nordstrom    |Women   | Assort Comparison Automation  |
+
+
+  @CreateNewReportMultipoleRetail
+  Scenario Outline: TS:["<TS>"] - [Create Multiple Retail Report  ]  - "<Scenario>" - "<Description>"
+    Given that the user is logged
+    When click module Report
+    And click Create a Report
+    And create a Report Type "<Report>"
+    And click Type "<Type>"
+    And click Retail "<Retail>"
+    And click Category "<Category>"
+    And type Name "<Name>"
+    Then click submit
+    Examples:
+      | TS  | Scenario | Description                    |Report                |Type                                     |Retail       |Category|Name                               |
+      | 001 |    00012  | Create report successfully    |ASSORTMENT COMPARISON |MULTIPLE RETAIL SITES                    |CARBON38     |Women   |Multiple Retail Report Automation  |
+
+
+  @CreateNewReportMultipleBrands
+  Scenario Outline: TS:["<TS>"] - [Create Multiple Brands Report  ]  - "<Scenario>" - "<Description>"
+    Given that the user is logged
+    When click module Report
+    And click Create a Report
+    And create a Report Type "<Report>"
+    And click Type "<Type>"
+    And click Retail "<Retail>"
+    And click Brand "<Brand>"
+    And click Category "<Category>"
+    And type Name "<Name>"
+    Then click submit
+    Examples:
+      | TS  | Scenario | Description                    |Report                |Type                                     |Retail       |Brand           |Category  |Name                               |
+      | 001 |    00012  | Create report successfully    |ASSORTMENT COMPARISON |MULTIPLE BRANDS ACROSS ONE RETAIL SITE   |CARBON38     |CARBON38        |Women      |Multiple Brand Report Automation  |
+
+  @CreateNewReportTrendSide
+  Scenario Outline: TS:["<TS>"] - [Create Trend Report Side By Side  ]  - "<Scenario>" - "<Description>"
+    Given that the user is logged
+    When click module Report
+    And click Create a Report
+    And create a Report Type "<Report>"
+    And click Type "<Type>"
+    And Select Trends
+    And type Name "<Name>"
+    Then click submit
+    Examples:
+      | TS  | Scenario | Description                    |Report           |Type                            |Name                                  |
+      | 001 |    00012  | Create report successfully    |TREND COMPARISON |SIDE BY SIDE TREND COMPARISON   |Trend Report Side By Side Automation  |
+
+
+  @CheckReportCreation
+  Scenario Outline: TS:["<TS>"] - [Checj Report created successfully ]  - "<Scenario>" - "<Description>"
+    Given that the user is logged
+    When click module Report
+    And click on the tab "<tab0>"
+    And Fill name of report "<Name>"
+    And Click out
+    Then I get the message "<Message>"
+    Examples:
+      | TS  | Scenario | Description                | tab0          |Name                                 |Message                                                        |
+      | 001 |    0001 | Check One Brand Report      |My Comparison  |Assort Comparison Automation         |LEVKOFF at Multiple Retail Sites                               |
+      | 001 |    0002  | Multiple Retail Report     |My Comparison  |Multiple Retail Report Automation    |Assortment Comparison Report - Multiple Retail Sites           |
+      | 001 |    0003  | Multiple Retail Report     |My Comparison  |Multiple Brand Report Automation     |Assortment Comparison Report - Multiple Brands at Carbon38     |
+      | 001 |    0004  | Multiple Retail Report     |My Comparison  |Trend Report Side By Side Automation |Trend Comparison Report - Side by Side Trend Comparison        |
+

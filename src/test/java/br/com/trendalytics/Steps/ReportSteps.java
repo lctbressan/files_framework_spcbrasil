@@ -27,38 +27,29 @@ Constants cons = new Constants();
         //LoginPage.confirmAction();
     }
 
-    @When("^click module \"([^\"]*)\"$")
-    public void clickModule(String arg1) throws Throwable {
-        ReportsPages.clickModule(arg1);
-    }
+
 
     @After
     public void tearDownSteps(){
         Webdriver.close();
     }
 
-    @And("click to create a report")
+    @And("^click to create a report")
     public void clickToCreateAReport() throws IOException {
         ReportsPages.clickToCreateAReport();
     }
 
-    @And("^click on the tab \"([^\"]*)\" and the tab \"([^\"]*)\"$")
-    public void clickOn(String arg0, String arg1) throws Exception {
-
+    @And("^click on the tab \"([^\"]*)\"$")
+    public void clickOn(String arg0) throws Exception {
         LoginPage.GetMessage(arg0);
-
-        LoginPage.GetMessage(arg1);
-
     }
 
-
-    @And("download a PDF Report")
+    @And("^download a PDF Report")
     public void downloadAPDFReport() throws IOException, InterruptedException {
         ReportsPages.downloadPdfReport();
     }
 
-
-    @And("Click verify on subscription event")
+    @And("^Click verify on subscription event")
     public void clickVerifyOnSubscriptionEvent() throws Exception {
         ReportsPages.clickVerifyOnSubscriptionEvent();
     }
@@ -104,29 +95,37 @@ Constants cons = new Constants();
         ReportsPages.clickCategory(arg0);
     }
 
-    @Then("click submit")
-    public void clickSubmit() throws IOException {
+    @Then("^click submit")
+    public void clickSubmit() throws IOException, InterruptedException {
+        Thread.sleep(3000);
         ReportsPages.clickSubmit();
+        Thread.sleep(3000);
     }
 
-    @When("^Create a new report \"([^\"]*)\" with Type \"([^\"]*)\" and Brand \"([^\"]*)\" and Retail \"([^\"]*)\" and Category \"([^\"]*)\" with Name \"([^\"]*)\"$")
-    public void createANewReportWithTypeAndBrandAndRetailAndCategoryWithName(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5) throws Exception {
 
+    @When("click module Admin")
+    public void clickModuleAdmin() throws Exception {
+        ReportsPages.clickModule("Admin");
+    }
+
+    @When("^click module Report")
+    public void clickModuleReport() throws Exception {
         ReportsPages.clickModule("Report");
+    }
 
-        ReportsPages.clickCreateAReport();
+    @And("^type Name \"([^\"]*)\"$")
+    public void typeName(String arg0) throws IOException {
+        ReportsPages.setReportName(arg0);
+    }
 
-        ReportsPages.chooseAReport(arg0);
+    @And("^Select Trends")
+    public void selectTrends() throws IOException {
+        ReportsPages.selectTrends();
+    }
 
-        ReportsPages.chooseTypeReport(arg1);
-
-        ReportsPages.clickBrand(arg2);
-
-        ReportsPages.clickRetail(arg3);
-
-        ReportsPages.clickCategory(arg4);
-
-        ReportsPages.setReportName(arg5);
-
+    @And("^Fill name of report \"([^\"]*)\"$")
+    public void fillNameOfReport(String arg0) throws Exception {
+        ReportsPages.fillNameOfReport(arg0);
+         LoginPage.GetMessage(arg0);
     }
 }
