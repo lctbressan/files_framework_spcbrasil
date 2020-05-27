@@ -7,6 +7,8 @@
 	<artifactId>Joyjet.framework</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<build>
+
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -62,6 +64,7 @@
 			<version>${cumcumber.extentreports.version}</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
@@ -165,12 +168,8 @@
 			<version>3.3.0</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.vimalselvam</groupId>
-			<artifactId>cucumber-extentsreport</artifactId>
-			<version>3.1.1</version>
-			<scope>compile</scope>
-		</dependency>
+
+
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>

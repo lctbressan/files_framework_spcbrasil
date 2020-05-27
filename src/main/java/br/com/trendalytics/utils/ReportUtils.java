@@ -1,9 +1,10 @@
 package br.com.trendalytics.utils;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 
-	/**
+/**
 	 * Classe utilit�ria para formata��o de textos exibidos no relat�rio dos testes.
 	 */
 
@@ -49,10 +50,13 @@ import java.util.List;
 			final StringBuilder builder = formatStepName(step);
 			
 			//JacksonJsonHelper jsonHelper = new JacksonJsonHelper();
-			list.forEach(l -> {
-				builder.append("<b> " + list.get(0).getClass().getSimpleName() + ": </b>");
-				//builder.append(jsonHelper.writeWithDefaultDateFormatIgnoringNullFields(l));
-				builder.append("<br><br>");
+			list.forEach(new Consumer<T>() {
+				@Override
+				public void accept(T l) {
+					builder.append("<b> " + list.get(0).getClass().getSimpleName() + ": </b>");
+					//builder.append(jsonHelper.writeWithDefaultDateFormatIgnoringNullFields(l));
+					builder.append("<br><br>");
+				}
 			});
 			//ExtentCucumberFormatter.setStepDetailsMessage(builder.toString());
 		}
