@@ -1,5 +1,10 @@
 package br.com.trendalytics.utils;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
@@ -8,14 +13,8 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.*;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 public class ManipularJson {
+
 	public static Boolean resetKey = true;
 
 	private static Integer keyIndex = 0;
@@ -35,6 +34,7 @@ public class ManipularJson {
 	public static String jsonKey = "";
 
 	public static String jsonValue = "";
+
 
 	public static String lerJson(String path) {
 
@@ -319,7 +319,13 @@ public class ManipularJson {
 	}
 
 
-public static int diaDaSemana(int date) throws ParseException {
+	public static String dataAtual() {
+		Calendar c = Calendar.getInstance();
+		 return   (c.get(Calendar.YEAR) +"-"+ c.get(Calendar.MONTH)+"-"+c.get(Calendar.DAY_OF_MONTH));
+		 	}
+
+
+	public static int diaDaSemana(int date) throws ParseException {
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	Date ontem = sdf.parse(String.valueOf(date));

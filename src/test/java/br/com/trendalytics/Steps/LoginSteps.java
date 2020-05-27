@@ -2,6 +2,7 @@ package br.com.trendalytics.Steps;
 
 import br.com.trendalytics.Pages.LoginPage;
 import br.com.trendalytics.Runners.BaseTest;
+import br.com.trendalytics.Utils.Constants;
 import br.com.trendalytics.Utils.Instrumentation;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -9,7 +10,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import br.com.trendalytics.Utils.Constants;
+
 import java.io.IOException;
 
 

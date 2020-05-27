@@ -1,18 +1,11 @@
 package br.com.trendalytics.Pages;
 
 import br.com.trendalytics.Runners.BaseTest;
-import static br.com.trendalytics.Utils.Constants.TIMEOUTAUTOMATION;
-import static br.com.trendalytics.Utils.Constants.xpath;
-import static br.com.trendalytics.Utils.Constants.className;
-import static br.com.trendalytics.Utils.Constants.cssSelector;
-
-
-
 import br.com.trendalytics.Utils.Instrumentation;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
+
+import static br.com.trendalytics.Utils.Constants.*;
 
 public class ReportsPages extends BaseTest {
 

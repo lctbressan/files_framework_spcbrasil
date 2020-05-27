@@ -16,6 +16,7 @@ import java.io.IOException;
 
 public class ReportSteps extends BaseTest {
 Constants cons = new Constants();
+
     @Before
     public void setup() throws Exception {
 
@@ -39,7 +40,7 @@ Constants cons = new Constants();
         ReportsPages.clickToCreateAReport();
     }
 
-    @And("^click on the tab \"([^\"]*)\"$")
+    @And("^click on the option \"([^\"]*)\"$")
     public void clickOn(String arg0) throws Exception {
         LoginPage.GetMessage(arg0);
     }
@@ -115,7 +116,8 @@ Constants cons = new Constants();
 
     @And("^type Name \"([^\"]*)\"$")
     public void typeName(String arg0) throws IOException {
-        ReportsPages.setReportName(arg0);
+        String ReportName = arg0 +"-"+ cons.dataAtual;
+        ReportsPages.setReportName(ReportName);
     }
 
     @And("^Select Trends")
@@ -125,7 +127,8 @@ Constants cons = new Constants();
 
     @And("^Fill name of report \"([^\"]*)\"$")
     public void fillNameOfReport(String arg0) throws Exception {
-        ReportsPages.fillNameOfReport(arg0);
+        String ReportName = arg0 +"-"+ cons.dataAtual;
+        ReportsPages.fillNameOfReport(ReportName);
          LoginPage.GetMessage(arg0);
     }
 
@@ -144,7 +147,8 @@ Constants cons = new Constants();
 
     @And("^search for user email \"([^\"]*)\"$")
     public void searchForUserEmail(String arg0) throws IOException, InterruptedException {
-        ReportsPages.searchForUserEmail(arg0);
+        String ReportName = arg0 +"-"+ cons.dataAtual;
+        ReportsPages.searchForUserEmail(ReportName);
         Thread.sleep(2000);
     }
 }

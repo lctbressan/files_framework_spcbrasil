@@ -1,7 +1,8 @@
 package br.com.trendalytics.Utils;
 
-import static br.com.trendalytics.utils.ManipularJson.getSaltStringCelular;
+import br.com.trendalytics.utils.ManipularJson;
 
+import static br.com.trendalytics.utils.ManipularJson.getSaltStringCelular;
 
 public class Constants {
 
@@ -34,4 +35,8 @@ public class Constants {
     public static final String xpath = "xpath";
     public static final String cssSelector = "cssSelector";
     public static final String className = "className";
+
+    public static final String dataAtual = ManipularJson.dataAtual();
+
+
 }

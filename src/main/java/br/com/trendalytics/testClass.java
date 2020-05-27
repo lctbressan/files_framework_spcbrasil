@@ -1,5 +1,7 @@
 package br.com.trendalytics;
 
+import br.com.trendalytics.utils.ManipularJson;
+
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -9,7 +11,10 @@ import java.util.Date;
 public class testClass {
 
     public static void main(String[] args) throws Exception {
-        System.out.println( obterDataSemana("TER"));
+        //System.out.println( obterDataSemana("TER"));
+        ManipularJson mj = new ManipularJson();
+        System.out.println(mj.dataAtual());
+
     }
 
 

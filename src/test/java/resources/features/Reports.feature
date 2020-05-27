@@ -1,7 +1,7 @@
 #Language : En
 #encoding: utf-8
 
-@IntegrationTest
+@RegressionTest
 @ReportTest
 Feature: Report
 
@@ -74,12 +74,12 @@ Feature: Report
   Scenario Outline: TS:["<TS>"] - [Checj Report created successfully ]  - "<Scenario>" - "<Description>"
     Given that the user is logged
     When click module Report
-    And click on the tab "<tab0>"
+    And click on the option "<option>"
     And Fill name of report "<Name>"
     And Click out
     Then I get the message "<Message>"
     Examples:
-      | TS  | Scenario | Description                | tab0          |Name                                 |Message                                                        |
+      | TS  | Scenario | Description                | option          |Name                                 |Message                                                        |
       | 001 |    0001 | Check One Brand Report      |My Comparison  |Assort Comparison Automation         |LEVKOFF at Multiple Retail Sites                               |
       | 001 |    0002  | Multiple Retail Report     |My Comparison  |Multiple Retail Report Automation    |Assortment Comparison Report - Multiple Retail Sites           |
       | 001 |    0003  | Multiple Retail Report     |My Comparison  |Multiple Brand Report Automation     |Assortment Comparison Report - Multiple Brands at Carbon38     |
