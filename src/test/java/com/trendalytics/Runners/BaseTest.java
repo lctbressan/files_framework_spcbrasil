@@ -1,6 +1,6 @@
-package br.com.trendalytics.Runners;
+package com.trendalytics.Runners;
 
-import static br.com.trendalytics.Utils.Constants.PATHEVIDENCE;
+import static com.trendalytics.Utils.Constants.PATHEVIDENCE;
 import com.vimalselvam.cucumber.listener.ExtentProperties;
 import com.vimalselvam.cucumber.listener.Reporter;
 import org.junit.AfterClass;

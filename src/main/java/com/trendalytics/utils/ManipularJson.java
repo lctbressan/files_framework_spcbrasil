@@ -1,4 +1,4 @@
-package br.com.trendalytics.utils;
+package com.trendalytics.utils;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

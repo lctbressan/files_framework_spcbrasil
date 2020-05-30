@@ -1,19 +1,18 @@
-package br.com.trendalytics.interfaces;
+package com.trendalytics.interfaces;
 
-import br.com.trendalytics.Runners.BaseTest;
+import com.trendalytics.Runners.BaseTest;
 import com.vimalselvam.cucumber.listener.Reporter;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
-import static br.com.trendalytics.Utils.Constants.*;
+import static com.trendalytics.Utils.Constants.*;
 
 @SuppressWarnings("unchecked")
 public class DriverFactory extends BaseTest {

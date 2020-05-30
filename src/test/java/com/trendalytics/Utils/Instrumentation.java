@@ -1,21 +1,16 @@
-package br.com.trendalytics.Utils;
+package com.trendalytics.Utils;
 
-import br.com.trendalytics.interfaces.DriverFactory;
+import com.trendalytics.interfaces.DriverFactory;
 import com.vimalselvam.cucumber.listener.Reporter;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
-import static br.com.trendalytics.Utils.Constants.TIMEOUTAUTOMATION;
+import static com.trendalytics.Utils.Constants.TIMEOUTAUTOMATION;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 

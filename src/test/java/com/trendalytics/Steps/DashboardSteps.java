@@ -1,6 +1,6 @@
-package br.com.trendalytics.Steps;
+package com.trendalytics.Steps;
 
-import br.com.trendalytics.Pages.DashboardPages;
+import com.trendalytics.Pages.DashboardPages;
 import cucumber.api.java.en.And;
 
 public class DashboardSteps {

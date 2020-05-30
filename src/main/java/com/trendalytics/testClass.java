@@ -1,6 +1,6 @@
-package br.com.trendalytics;
+package com.trendalytics;
 
-import br.com.trendalytics.utils.ManipularJson;
+import com.trendalytics.utils.ManipularJson;
 
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;

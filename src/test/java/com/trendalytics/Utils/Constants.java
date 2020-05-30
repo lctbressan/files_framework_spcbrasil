@@ -1,8 +1,6 @@
-package br.com.trendalytics.Utils;
+package com.trendalytics.Utils;
 
-import br.com.trendalytics.utils.ManipularJson;
-
-import static br.com.trendalytics.utils.ManipularJson.getSaltStringCelular;
+import com.trendalytics.utils.ManipularJson;
 
 public class Constants {
 
@@ -20,7 +18,7 @@ public class Constants {
     //public static final String PATHEVIDENCE = "/Users/braziltest/evidencias/Run_"+ getSaltStringCelular() + "/";
 
     //For Windows Users
-    public static final String PATHEVIDENCE = "C:\\Evidencias\\Run_"+ getSaltStringCelular() + "\\";
+    public static final String PATHEVIDENCE = "C:\\Evidencias\\Run_"+ ManipularJson.getSaltStringCelular() + "\\";
 
 
     public static final int TIMEOUTAUTOMATION = 25;

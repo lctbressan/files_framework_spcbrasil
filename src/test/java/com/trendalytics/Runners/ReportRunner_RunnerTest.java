@@ -1,5 +1,4 @@
-package br.com.trendalytics.Runners;
-
+package com.trendalytics.Runners;
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
@@ -9,10 +8,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(format = { "pretty", "html:target/cucumber", "json:target/cucumber.json" },
         monochrome = true,
         dryRun = false,
-        glue = {"br.com.trendalytics.Steps"},
-        features = {"src/test/java/resources/features/Dashboard.feature"},
+        glue = {"com.trendalytics.Steps"},
+        features = {"src/test/resources/features/Reports.feature"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:"},
+        tags={"@RegressionTest"},
         snippets = SnippetType.CAMELCASE)
-public abstract class Dashboard extends BaseTest {
-
+public  class ReportRunner_RunnerTest extends BaseTest {
 }

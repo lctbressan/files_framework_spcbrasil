@@ -1,4 +1,5 @@
-package br.com.trendalytics.Runners;
+package com.trendalytics.Runners;
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
@@ -8,10 +9,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(format = { "pretty", "html:target/cucumber", "json:target/cucumber.json" },
         monochrome = true,
         dryRun = false,
-        glue = {"br.com.trendalytics.Steps"},
-        features = {"src/test/java/resources/features/Login.feature"},
-        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:"},tags={"@login,@loginFail"},
+        glue = {"com.trendalytics.Steps"},
+        features = {"src/test/resources/features/Dashboard.feature"},
+        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:"},
         snippets = SnippetType.CAMELCASE)
-public abstract class LoginRunner extends BaseTest {
+public  class Dashboard_RunnerTest extends BaseTest {
 
 }

@@ -1,4 +1,4 @@
-package br.com.trendalytics.utils;
+package com.trendalytics.utils;
 
 import java.util.List;
 import java.util.function.Consumer;

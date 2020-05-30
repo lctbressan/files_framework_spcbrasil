@@ -1,4 +1,4 @@
-package br.com.trendalytics.Pages;
+package com.trendalytics.Pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;

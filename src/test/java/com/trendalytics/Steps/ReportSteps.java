@@ -1,10 +1,10 @@
-package br.com.trendalytics.Steps;
+package com.trendalytics.Steps;
 
-import br.com.trendalytics.Pages.LoginPage;
-import br.com.trendalytics.Pages.ReportsPages;
-import br.com.trendalytics.Runners.BaseTest;
-import br.com.trendalytics.Utils.Constants;
-import br.com.trendalytics.Utils.Instrumentation;
+import com.trendalytics.Pages.LoginPage;
+import com.trendalytics.Pages.ReportsPages;
+import com.trendalytics.Runners.BaseTest;
+import com.trendalytics.Utils.Constants;
+import com.trendalytics.Utils.Instrumentation;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;

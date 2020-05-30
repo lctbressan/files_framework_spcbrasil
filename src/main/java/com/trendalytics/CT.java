@@ -1,4 +1,4 @@
-package br.com.trendalytics;
+package com.trendalytics;
 
 
 
