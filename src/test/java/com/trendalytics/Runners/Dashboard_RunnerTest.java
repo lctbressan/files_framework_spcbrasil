@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         dryRun = false,
         glue = {"com.trendalytics.Steps"},
         features = {"src/test/resources/features/Dashboard.feature"},
-        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:"},
+        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:", "json:target/cucumber.json"},
         snippets = SnippetType.CAMELCASE)
 public  class Dashboard_RunnerTest extends BaseTest {
 

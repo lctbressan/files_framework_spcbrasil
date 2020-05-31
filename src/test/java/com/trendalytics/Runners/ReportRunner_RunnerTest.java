@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
         dryRun = false,
         glue = {"com.trendalytics.Steps"},
         features = {"src/test/resources/features/Reports.feature"},
-        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:"},
-        tags={"@RegressionTest"},
+        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:","json:target/cucumber.json"},
+        tags={"@CheckSubscription"},
         snippets = SnippetType.CAMELCASE)
 public  class ReportRunner_RunnerTest extends BaseTest {
 }

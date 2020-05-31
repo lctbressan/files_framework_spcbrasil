@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         dryRun = false,
         glue = {"com.trendalytics.Steps"},
         features = {"src/test/resources/features/Login.feature"},
-        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:"},tags={"@login,@loginFail"},
+        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:", "json:target/cucumber.json"},tags={"@login,@loginFail"},
         snippets = SnippetType.CAMELCASE)
 public  class LoginRunner_RunnerTest extends BaseTest {
 
