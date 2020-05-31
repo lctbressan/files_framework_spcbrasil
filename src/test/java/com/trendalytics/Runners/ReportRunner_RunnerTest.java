@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         glue = {"com.trendalytics.Steps"},
         features = {"src/test/resources/features/Reports.feature"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:","json:target/cucumber.json"},
-        tags={"@CheckSubscription"},
+        tags={"@RegressionTest"},
         snippets = SnippetType.CAMELCASE)
 public  class ReportRunner_RunnerTest extends BaseTest {
 }
