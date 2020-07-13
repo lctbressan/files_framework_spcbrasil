@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
-import static com.trendalytics.Utils.Constants.*;
+import static com.trendalytics.Utils.Config.*;
 
 @SuppressWarnings("unchecked")
 public class DriverFactory extends BaseTest {

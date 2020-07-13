@@ -5,6 +5,9 @@
 @ReportTest
 Feature: Report
 
+  #=====================================================================================================================
+  #CREATE NEW REPORT
+  #=====================================================================================================================
 
     @CreateNewReportOneBrand
     Scenario Outline: TS:["<TS>"] - [Create Assortment Comparison Report  ]  - "<Scenario>" - "<Description>"
@@ -20,7 +23,7 @@ Feature: Report
       Then click submit
     Examples:
         | TS  | Scenario | Description                   |Report                |Type                                     |Brand    |Retail       |Category|Name                           |
-        | 001 |    0001  | Create report successfully    |ASSORTMENT COMPARISON |ONE BRAND ACROSS MULTIPLE RETAIL SITES   |LEVKOFF  |Nordstrom    |Women   | Assort Comparison Automation  |
+        | 001 |    0001  | Create report successfully    |ASSORTMENT COMPARISON |ONE BRAND ACROSS MULTIPLE RETAIL SITES   |Brand    |Retails      |Women   | Assort Comparison Automation  |
 
 
   @CreateNewReportMultipoleRetail
@@ -70,6 +73,11 @@ Feature: Report
       | 001 |    00012  | Create report successfully    |TREND COMPARISON |SIDE BY SIDE TREND COMPARISON   |Trend Report Side By Side Automation  |
 
 
+
+  #=====================================================================================================================
+  #CREATE EMAIL ALERT
+  #=====================================================================================================================
+
   @CheckReportCreation
   Scenario Outline: TS:["<TS>"] - [Checj Report created successfully ]  - "<Scenario>" - "<Description>"
     Given that the user is logged
@@ -79,15 +87,15 @@ Feature: Report
     And Click out
     Then I get the message "<Message>"
     Examples:
-      | TS  | Scenario | Description                | option          |Name                                 |Message                                                        |
+      | TS  | Scenario | Description                | option          |Name                               |Message                                                        |
       | 001 |    0001 | Check One Brand Report      |My Comparison  |Assort Comparison Automation         |LEVKOFF at Multiple Retail Sites                               |
       | 001 |    0002  | Multiple Retail Report     |My Comparison  |Multiple Retail Report Automation    |Assortment Comparison Report - Multiple Retail Sites           |
       | 001 |    0003  | Multiple Retail Report     |My Comparison  |Multiple Brand Report Automation     |Assortment Comparison Report - Multiple Brands at Carbon38     |
       | 001 |    0004  | Multiple Retail Report     |My Comparison  |Trend Report Side By Side Automation |Trend Comparison Report - Side by Side Trend Comparison        |
 
 
-  @CreateEmailAlertPDF
-  Scenario Outline: TS:["<TS>"] - [Create request for download pdf successfully ]  - "<Scenario>" - "<Description>"
+  @CreateEmailAlert
+  Scenario Outline: TS:["<TS>"] - [Create email alert successfully ]  - "<Scenario>" - "<Description>"
     Given that the user is logged
     When click module Report
     And click on the tab "<tab0>"
@@ -97,8 +105,8 @@ Feature: Report
     And Click out
     Then I get the message "<Message>"
     Examples:
-      | TS  | Scenario | Description                |tab0          |Name                                  |Message                              |
-      | 001 |    0001  | Create Requester PDF       |My Comparison |Assort Comparison Automation          |LEVKOFF at Multiple Retail Sites     |
+      | TS  | Scenario | Description                |tab0          |Name                                  |Message                                                        |
+      | 001 |    0001  | Create Requester PDF       |My Comparison |Assort Comparison Automation          |LEVKOFF at Multiple Retail Sites                               |
       | 001 |    0002  | Multiple Retail Report     |My Comparison  |Multiple Retail Report Automation    |Assortment Comparison Report - Multiple Retail Sites           |
       | 001 |    0003  | Multiple Retail Report     |My Comparison  |Multiple Brand Report Automation     |Assortment Comparison Report - Multiple Brands at Carbon38     |
       | 001 |    0004  | Multiple Retail Report     |My Comparison  |Trend Report Side By Side Automation |Trend Comparison Report - Side by Side Trend Comparison        |

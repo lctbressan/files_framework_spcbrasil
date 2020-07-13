@@ -12,6 +12,6 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features/Login.feature"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:", "json:target/cucumber.json"},tags={"@login,@loginFail"},
         snippets = SnippetType.CAMELCASE)
-public  class LoginRunner_RunnerTest extends BaseTest {
+public  class Login_RunnerTest extends BaseTest {
 
 }

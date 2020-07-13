@@ -1,5 +1,6 @@
 package com.trendalytics.Utils;
 
+import com.trendalytics.Pages.MarketPulsePages;
 import com.trendalytics.interfaces.DriverFactory;
 import com.vimalselvam.cucumber.listener.Reporter;
 import org.openqa.selenium.*;
@@ -10,8 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.IOException;
 import java.util.List;
 
-import static com.trendalytics.Utils.Constants.TIMEOUTAUTOMATION;
+import static com.trendalytics.Utils.Config.TIMEOUTAUTOMATION;
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 public class Instrumentation {
@@ -127,6 +129,29 @@ public class Instrumentation {
         }
     }
 
+    public static void collectByClassNameIndex (WebDriver driver, String prmClassName,String prmText, String StepLog) throws IOException {
+        Integer prmIndex = 0;
+        try {
+            Reporter.addStepLog(StepLog);
+            List<WebElement> listElement = driver.findElements(By.className(prmClassName));
+            for(int i =0;i<listElement.size();i++) {
+                String elementText = listElement.get(i).getText();
+                if(elementText.contains(prmText)) {
+                    prmIndex = i;
+                }
+                System.out.println(elementText);
+            }
+
+            WebElement element = listElement.get(prmIndex);
+            element.click();
+            DriverFactory.Evidencia(driver,"");
+
+        } catch (
+                NoSuchElementException exception) {
+            assertFalse("This will fail!", true);
+            System.out.println("FAILURE" + exception);
+        }
+    }
     public static void verticesAreVisible(WebDriver driver, String xpath) {
         List<WebElement> rows = driver.findElements(By.className(".sidebar-navigation-menu-item"));
         WebElement button = rows.get(1);

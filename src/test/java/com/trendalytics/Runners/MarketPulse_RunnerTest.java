@@ -1,4 +1,6 @@
 package com.trendalytics.Runners;
+
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
@@ -9,9 +11,11 @@ import org.junit.runner.RunWith;
         monochrome = true,
         dryRun = false,
         glue = {"com.trendalytics.Steps"},
-        features = {"src/test/resources/features/Reports.feature"},
+        features = {"src/test/resources/features/MarketPulse.feature"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:","json:target/cucumber.json"},
-        tags={"@RegressionTest"},
+        tags={"@CheckRetail"},
         snippets = SnippetType.CAMELCASE)
-public  class ReportRunner_RunnerTest extends BaseTest {
+
+
+public class MarketPulse_RunnerTest extends BaseTest {
 }

@@ -3,7 +3,7 @@ package com.trendalytics.Steps;
 import com.trendalytics.Pages.LoginPage;
 import com.trendalytics.Pages.ReportsPages;
 import com.trendalytics.Runners.BaseTest;
-import com.trendalytics.Utils.Constants;
+import com.trendalytics.Utils.Config;
 import com.trendalytics.Utils.Instrumentation;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -15,17 +15,15 @@ import org.junit.After;
 import java.io.IOException;
 
 public class ReportSteps extends BaseTest {
-Constants cons = new Constants();
+Config cons = new Config();
 
-    @Before
-    public void setup() throws Exception {
 
-    }
     @Given("^that the user is logged$")
     public void thatTheUserIsLogged() throws Throwable {
+        //LoginPage.thatTheUserIsOnTheHomeScreen();
         Instrumentation.takeScreenshot(Webdriver,"Screen Home");
         LoginPage.sendCredencialsAnd( cons.email,cons.passw);
-        //LoginPage.confirmAction();
+        LoginPage.confirmAction();
     }
 
 
@@ -140,6 +138,13 @@ Constants cons = new Constants();
         LoginPage.GetMessage(arg1);
     }
 
+    @And("click on the tab \"([^\"]*)\"$")
+    public void clickOnTheTab(String arg0) throws Exception {
+
+        LoginPage.GetMessage(arg0);
+
+
+    }
     @And("Click on email alerts")
     public void clickOnEmailAlerts() throws IOException {
         ReportsPages.clickOnEmailAlerts();

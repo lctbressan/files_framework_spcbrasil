@@ -2,7 +2,7 @@ package com.trendalytics.Pages;
 
 import com.trendalytics.Runners.BaseTest;
 import com.trendalytics.Utils.Instrumentation;
-import com.trendalytics.Utils.Constants;
+import com.trendalytics.Utils.Config;
 
 import java.io.IOException;
 
@@ -12,50 +12,61 @@ public class ReportsPages extends BaseTest {
 
     public static void clickModule(String arg0) throws Exception {
           switch (arg0) {
-                case "Report":
+            case "Report":
                     Thread.sleep(1000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
                     Thread.sleep(1500);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
                     break;
-                case "Dashboard":
+            case "Dashboard":
                     Thread.sleep(1000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Click on Dashboard");
                     Thread.sleep(1000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Click on Dashboard");
                     break;
-                    case "Admin":
+             case "Admin":
                         Thread.sleep(1000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 6, "Click on Admin Management");
                     Thread.sleep(1000);
                     break;
-                default:
+              case "TrendPulse":
+                  Thread.sleep(1000);
+                  Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 3, "Click on TrendPulse");
+                  Thread.sleep(1000);
+                  break;
+              case "MarketPulse":
+                  Thread.sleep(1000);
+                  Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 4, "Click on Market Pulse");
+                  Thread.sleep(1000);
+                  break;
+
+              default:
                     throw new Exception("Invalid option");
             }
     }
 
     public static void clickToCreateAReport() throws IOException {
-        Instrumentation.clickWeb(Webdriver, Constants.cssSelector,"input[type='button'][value='Create Report']","Click Create Report");
+        Instrumentation.clickWeb(Webdriver, Config.cssSelector,"input[type='button'][value='Create Report']","Click Create Report");
     }
 
     public static void downloadPdfReport() throws IOException, InterruptedException {
-        Instrumentation.clickWeb(Webdriver, Constants.className, "el-dropdown",  "Export Pdf");
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//*[contains(text(),'Export as PDF')]","Export PDF");
+        Instrumentation.clickWeb(Webdriver, Config.className, "el-dropdown",  "Export Pdf");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Export as PDF')]","Export PDF");
         Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
     }
 
 
     public static void clickVerifyOnSubscriptionEvent() throws IOException {
 
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//*[contains(text(),'Subscription Events')]","Export PDF");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Subscription Events')]","Export PDF");
 
-        Instrumentation.sendKeysWeb(Webdriver, Constants.xpath,"v-input v-input-default","Luis","Subscription");
+        Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"v-input v-input-default","Luis","Subscription");
 
     }
 
     public static void verifyTheEmailAlert (String arg0) throws IOException {
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//*[contains(text(),'Subscription Events')]","Export PDF");
-        Instrumentation.sendKeysWeb(Webdriver, Constants.xpath,"v-input v-input-default","Luis","Subscription");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Subscription Events')]","Export PDF");
+        Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"v-input v-input-default","Luis","Subscription");
     }
 
     public static void GetStatus(String arg1) throws Exception {
@@ -75,7 +86,7 @@ public class ReportsPages extends BaseTest {
     }
 
     public static void clickCreateAReport() throws IOException {
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//*[contains(text(),'Create Report')]","");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Create Report')]","");
     }
 
     public static void chooseAReport(String arg0) throws Exception {
@@ -133,7 +144,7 @@ public class ReportsPages extends BaseTest {
 
     public static void clickBrand(String arg0) throws Exception {
         String prmText;
-        switch (arg0)
+       /* switch (arg0)
         {
             case "LEVKOFF":
                 prmText = "mp__0__0";
@@ -146,14 +157,15 @@ public class ReportsPages extends BaseTest {
                 break;
             default:
                 throw new Exception("Invalid option");
-        }
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//label[@for='"+prmText+"']","");
+        }*/
+        prmText = "mp__0__0";
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//label[@for='"+prmText+"']","");
         Instrumentation.clickButtonByIndex(Webdriver,"Next");
     }
 
     public static void clickRetail(String arg0) throws Exception {
         String prmText;
-        switch (arg0)
+       /* switch (arg0)
         {
             case "Nordstrom":
                 prmText = "mp__1__0";
@@ -166,21 +178,22 @@ public class ReportsPages extends BaseTest {
                 break;
             default:
                 throw new Exception("Invalid option");
-        }
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//label[@for='"+prmText+"']","");
+        }*/
+        prmText = "mp__1__0";
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//label[@for='"+prmText+"']","");
         Instrumentation.clickButtonByIndex(Webdriver,"Next");
     }
 
     public static void clickCategory(String arg0) throws IOException {
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//label[@id='lb__0__0']","");
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//label[@for='all__1']","");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//label[@id='lb__0__0']","");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//label[@for='all__1']","");
         Instrumentation.clickButtonByIndex(Webdriver,"Next");
     }
 
 
     public static void setReportName(String arg5) throws IOException {
         Instrumentation.cleanInputTextByClass(Webdriver,"tl-report-name__input","Clean Input Text");
-        Instrumentation.sendKeysWeb(Webdriver, Constants.className,"tl-report-name__input",arg5,"Input Report Name ");
+        Instrumentation.sendKeysWeb(Webdriver, Config.className,"tl-report-name__input",arg5,"Input Report Name ");
     }
 
     public static void clickSubmit() throws IOException {
@@ -188,25 +201,25 @@ public class ReportsPages extends BaseTest {
     }
 
     public static void selectTrends() throws IOException {
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//*[contains(text(),'1 light flush mount')]","Selecionou - 1 light flush mount");
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//*[contains(text(),'12 piece comforter set')]","Selecionou - 12 piece comforter set");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'1 light flush mount')]","Selecionou - 1 light flush mount");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'12 piece comforter set')]","Selecionou - 12 piece comforter set");
         Instrumentation.clickButtonByIndex(Webdriver,"Next");
 
     }
 
     public static void fillNameOfReport(String arg0) throws IOException {
         //Instrumentation.clickWeb(Webdriver,xpath,"//input[@placeholder='Search']","Clean Input Text");
-        Instrumentation.sendKeysWeb(Webdriver, Constants.xpath,"//input[@placeholder='Search']",arg0,"");
+        Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@placeholder='Search']",arg0,"");
 
 
     }
 
     public static void clickOnEmailAlerts() throws IOException {
-        Instrumentation.clickWeb(Webdriver, Constants.xpath,"//*[contains(text(),'Email Alerts')]","Export PDF");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Email Alerts')]","Export PDF");
     }
 
     public static void searchForUserEmail(String arg0) throws IOException {
-        Instrumentation.sendKeysWeb(Webdriver, Constants.xpath,"//input[@placeholder='Search for user Email']",arg0,"");
+        Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@placeholder='Search for user Email']",arg0,"");
     }
 
 }

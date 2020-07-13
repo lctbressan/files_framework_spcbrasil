@@ -1,6 +1,6 @@
 package com.trendalytics.Runners;
 
-import static com.trendalytics.Utils.Constants.PATHEVIDENCE;
+import static com.trendalytics.Utils.Config.PATHEVIDENCE;
 import com.vimalselvam.cucumber.listener.ExtentProperties;
 import com.vimalselvam.cucumber.listener.Reporter;
 import org.junit.AfterClass;
@@ -28,7 +28,7 @@ public abstract class BaseTest {
     @AfterClass
     public static void finalizaAutomacao() {
         try {
-            Reporter.loadXMLConfig(new File("src/test/java/resources/extent-config.xml"));
+            Reporter.loadXMLConfig(new File("src/test/resources/extent-config.xml"));
             Reporter.setSystemInfo("user", System.getProperty("user.name"));
             Reporter.setSystemInfo("os", "Win/Mac OSX");
             Reporter.setTestRunnerOutput("Sample test runner output message");

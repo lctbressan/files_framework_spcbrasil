@@ -2,7 +2,7 @@ package com.trendalytics.Steps;
 
 import com.trendalytics.Pages.LoginPage;
 import com.trendalytics.Runners.BaseTest;
-import com.trendalytics.Utils.Constants;
+import com.trendalytics.Utils.Config;
 import com.trendalytics.Utils.Instrumentation;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -15,10 +15,10 @@ import java.io.IOException;
 
 
 public class LoginSteps extends BaseTest {
-    Constants cons = new Constants();
+    Config cons = new Config();
     @Before
     public void setup() throws Exception {
-       LoginPage.thatTheUserIsOnTheHomeScreen();
+      LoginPage.thatTheUserIsOnTheHomeScreen();
     }
     @Given("that the user is on the home screen")
     public void thatTheUserIsOnTheHomeScreen() throws Exception {
@@ -28,6 +28,7 @@ public class LoginSteps extends BaseTest {
     @When("^send credencials")
     public void sendCredencialsAnd() throws IOException, InterruptedException {
     LoginPage.sendCredencialsAnd( cons.email,cons.passw);
+
     }
     @When("^send wrong credencials")
     public void sendWrongCredencialsAnd() throws IOException, InterruptedException {
