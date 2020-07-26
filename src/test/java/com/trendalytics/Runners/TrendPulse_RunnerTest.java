@@ -13,9 +13,10 @@ import org.junit.runner.RunWith;
         monochrome = true,
         dryRun = false,
         glue = {"com.trendalytics.Steps"},
-        features = {"src/test/resources/features/TrendPulse.feature"},
+        features = {"src/test/resources/features/Trendalitycs/TrendPulse.feature"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:","json:target/cucumber.json"},
-        tags={"@AverageTyLy"},
+        tags={"@AverageTyLyAPP"},
+        //tags={"@AverageTyLyATP3"},
         snippets = SnippetType.CAMELCASE)
 
 public class TrendPulse_RunnerTest extends BaseTest {

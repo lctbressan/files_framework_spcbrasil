@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
         monochrome = true,
         dryRun = false,
         glue = {"com.trendalytics.Steps"},
-        features = {"src/test/resources/features/Reports.feature"},
+        features = {"src/test/resources/features/Trendalitycs/Reports.feature"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:","json:target/cucumber.json"},
-       // tags={"@CreateNewReportOneBrand"},
+        tags={"@DownloadExcelCurrent"},
         snippets = SnippetType.CAMELCASE)
 public  class Report_RunnerTest extends BaseTest {
 }

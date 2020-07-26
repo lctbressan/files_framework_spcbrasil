@@ -18,11 +18,11 @@ public class LoginSteps extends BaseTest {
     Config cons = new Config();
     @Before
     public void setup() throws Exception {
-      LoginPage.thatTheUserIsOnTheHomeScreen();
+//      LoginPage.thatTheUserIsOnTheHomeScreen();
     }
-    @Given("that the user is on the home screen")
-    public void thatTheUserIsOnTheHomeScreen() throws Exception {
-
+    @Given("^that the user is on the home screen \"([^\"]*)\"$")
+    public void thatTheUserIsOnTheHomeScreen(String arg0) throws Exception {
+        LoginPage.thatTheUserIsOnTheHomeScreen(arg0);
         Instrumentation.takeScreenshot(Webdriver,"Screen Home");
     }
     @When("^send credencials")
@@ -39,9 +39,11 @@ public class LoginSteps extends BaseTest {
         LoginPage.GetMessage(arg1);
     }
 
-    @And("confirm action")
-    public void confirmAction() throws IOException {
-        LoginPage.confirmAction();
+    @And("confirm action \"([^\"]*)\"$")
+    public void confirmAction(String arg0) throws IOException {
+        if(arg0.equals("yes")) {
+            LoginPage.confirmAction();
+        }
     }
     @After
     public void tearDownSteps(){

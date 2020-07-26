@@ -21,9 +21,12 @@ public class Config {
     public static final String PATHEVIDENCE = "C:\\Evidencias\\Run_"+ ManipularJson.getSaltStringCelular() + "\\";
 
 
-    public static final int TIMEOUTAUTOMATION = 15;
+    public static final int TIMEOUTAUTOMATION = 25;
 
-    public static final String URLTESTING = "https://app.trendalytics.co/signin";
+    public static final String URLTESTING = "https://trendalytics.co/";
+
+    //public static final String URLTESTING = "https://app.trendalytics.co/signin";
+
     //public static final String URLTESTING = "https://tp3app.trendalytics.co/signin";
 
     public static final String PLATFORMTYPE = PLATFORMNAME;

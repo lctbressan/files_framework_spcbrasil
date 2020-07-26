@@ -11,8 +11,8 @@ import static org.junit.Assert.assertTrue;
 public class LoginPage extends BaseTest {
 
 
-    public static void thatTheUserIsOnTheHomeScreen() throws Exception {
-        DriverFactory.getDriver();
+    public static void thatTheUserIsOnTheHomeScreen(String arg0) throws Exception {
+        DriverFactory.getDriver(arg0);
     }
 
     public static void sendCredencialsAnd(String arg0, String arg1) throws IOException, InterruptedException {
@@ -22,7 +22,10 @@ public class LoginPage extends BaseTest {
     }
 
     public static void GetMessage(String arg1) throws Exception {
+        Thread.sleep(2000);
         Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'"+ arg1 +"')]","");
+
+
 }
 
 

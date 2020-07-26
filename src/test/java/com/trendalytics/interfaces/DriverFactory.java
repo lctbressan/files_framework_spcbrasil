@@ -30,17 +30,18 @@ public class DriverFactory extends BaseTest {
     private String ExecutionFolder = LocalDateTime.now().toString().replaceAll(":", "").replace("-", "").replace(".",
             "");
 
-        public static WebDriver getDriver() throws Exception {
+        public static WebDriver getDriver(String arg0) throws Exception {
 
                 if (PLATFORMTYPE.toUpperCase().equals("WEB")) {
 
                     if (BROWSERTESTING.equals("CHROME")) {
-                        OpenBrowserChrome(URLTESTING);
+                        //OpenBrowserChrome(URLTESTING);
+                        OpenBrowserChrome(arg0);
 
                     }
 
                     if (BROWSERTESTING.equals("FIREFOX")) {
-                        OpenBrowserFirefox(URLTESTING);
+                        OpenBrowserFirefox(arg0);
                     }
                 }
 

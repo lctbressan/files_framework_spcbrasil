@@ -11,7 +11,9 @@ Feature: Market Pulse
 
   @CheckRetail
   Scenario Outline: TS:["<TS>"] - [Check Retails  ]  - "<Scenario>" - "<Description>"
-    Given that the user is logged
+    Given that the user is on the home screen "<HomePage>"
+    And send credencials
+    And confirm action
     When click module MarketPulse
     And select filter Category "<Category>" and IndexColumnItem "<LastItemIndex>"
     And click in Set filter
@@ -26,8 +28,9 @@ Feature: Market Pulse
     #And type Name "<Name>"
     #Then click submit
     Examples:
-      | TS  | Scenario | Description                            |Report                | Category                         |LastItemIndex|
-     # | 001 |    0001  | TREN-1084Create report successfully    |ASSORTMENT COMPARISON |Women;Clothing;Intimates;Pajamas  |4            |
-      | 001 |    0001  | TREN-1084Create report successfully    |ASSORTMENT COMPARISON |Women;Clothing;Intimates;Socks    |3            |
+      | TS  | Scenario | Description                            |Report                | Category                         |LastItemIndex|HomePage|
+     # | 001 |    0001  | TREN-1084Create report successfully    |ASSORTMENT COMPARISON |Women;Clothing;Intimates;Pajamas  |4            ||
+      | 001 |    0001  | TREN-1084Create report successfully    |ASSORTMENT COMPARISON |Women;Clothing;Intimates;Socks    |3            |https://app.trendalytics.co/signin        |
+      | 001 |    0001  | TREN-1084Create report successfully    |ASSORTMENT COMPARISON |Women;Clothing;Intimates;Socks    |3            |https://tp3app.trendalytics.co/signin        |
 
 

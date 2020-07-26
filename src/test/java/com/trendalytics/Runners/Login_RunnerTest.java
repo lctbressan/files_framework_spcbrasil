@@ -9,9 +9,10 @@ import org.junit.runner.RunWith;
         monochrome = true,
         dryRun = false,
         glue = {"com.trendalytics.Steps"},
-        features = {"src/test/resources/features/Login.feature"},
-        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:", "json:target/cucumber.json"},tags={"@login,@loginFail"},
-        snippets = SnippetType.CAMELCASE)
+        features = {"src/test/resources/features/Trendalitycs/Login.feature"},
+        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:", "json:target/cucumber.json"}
+        //,tags={"@login,@loginFail"},
+        ,snippets = SnippetType.CAMELCASE)
 public  class Login_RunnerTest extends BaseTest {
 
 }

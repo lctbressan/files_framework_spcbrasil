@@ -12,15 +12,16 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.After;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class ReportSteps extends BaseTest {
 Config cons = new Config();
 
 
-    @Given("^that the user is logged$")
-    public void thatTheUserIsLogged() throws Throwable {
-        //LoginPage.thatTheUserIsOnTheHomeScreen();
+    @Given("^that the user is logged \"([^\"]*)\"$")
+    public void thatTheUserIsLogged(String arg0) throws Throwable {
+        LoginPage.thatTheUserIsOnTheHomeScreen(arg0);
         Instrumentation.takeScreenshot(Webdriver,"Screen Home");
         LoginPage.sendCredencialsAnd( cons.email,cons.passw);
         LoginPage.confirmAction();
@@ -79,19 +80,19 @@ Config cons = new Config();
         ReportsPages.chooseTypeReport(arg0);
     }
 
-    @And("^click Brand \"([^\"]*)\"$")
-    public void clickBrand(String arg0) throws Exception {
-        ReportsPages.clickBrand(arg0);
+    @And("click Brand")
+    public void clickBrand() throws Exception {
+        ReportsPages.clickBrand();
     }
 
-    @And("^click Retail \"([^\"]*)\"$")
-    public void clickRetail(String arg0) throws Exception {
-        ReportsPages.clickRetail(arg0);
+    @And("click Retail")
+    public void clickRetail() throws Exception {
+        ReportsPages.clickRetail();
     }
 
-    @And("^click Category \"([^\"]*)\"$")
-    public void clickCategory(String arg0) throws IOException {
-        ReportsPages.clickCategory(arg0);
+    @And("click Category")
+    public void clickCategory() throws IOException {
+        ReportsPages.clickCategory();
     }
 
     @Then("^click submit")
@@ -155,5 +156,33 @@ Config cons = new Config();
         String ReportName = arg0 +"-"+ cons.dataAtual;
         ReportsPages.searchForUserEmail(ReportName);
         Thread.sleep(2000);
+    }
+
+    @When("click module \"([^\"]*)\"$")
+    public void clickModule(String arg0) throws Exception {
+        ReportsPages.clickModule(arg0);
+    }
+
+    @And("Download Excel Current \"([^\"]*)\"$")
+    public void downloadExcelCurrent(String arg0) throws IOException, InterruptedException {
+        String ReportName = arg0 +"-"+ cons.dataAtual;
+        ReportsPages.downloadExcelCurrent(ReportName);
+
+    }
+
+    @And("^Download Excel History \"([^\"]*)\"$")
+    public void downloadExcelHistory(String arg0) throws IOException, InterruptedException {
+        String ReportName = arg0 +"-"+ cons.dataAtual;
+        ReportsPages.downloadExcelHistory(ReportName);
+    }
+
+    @Then("Check created Report")
+    public void checkCreatedReport() throws IOException {
+        ReportsPages.checkCreatedReport();
+    }
+
+    @And("click Save")
+    public void clickSave() throws AWTException, IOException {
+        ReportsPages.clickSave();
     }
 }

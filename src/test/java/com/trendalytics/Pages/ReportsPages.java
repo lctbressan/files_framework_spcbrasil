@@ -4,6 +4,9 @@ import com.trendalytics.Runners.BaseTest;
 import com.trendalytics.Utils.Instrumentation;
 import com.trendalytics.Utils.Config;
 
+import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class ReportsPages extends BaseTest {
@@ -13,21 +16,21 @@ public class ReportsPages extends BaseTest {
     public static void clickModule(String arg0) throws Exception {
           switch (arg0) {
             case "Report":
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
-                    Thread.sleep(1500);
+                    Thread.sleep(2500);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 1, "Click on Report");
                     break;
             case "Dashboard":
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Click on Dashboard");
-                    Thread.sleep(1000);
+                    Thread.sleep(2500);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 0, "Click on Dashboard");
                     break;
              case "Admin":
-                        Thread.sleep(1000);
+                        Thread.sleep(2000);
                     Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 6, "Click on Admin Management");
-                    Thread.sleep(1000);
+                    Thread.sleep(2500);
                     break;
               case "TrendPulse":
                   Thread.sleep(1000);
@@ -35,9 +38,9 @@ public class ReportsPages extends BaseTest {
                   Thread.sleep(1000);
                   break;
               case "MarketPulse":
-                  Thread.sleep(1000);
+                  Thread.sleep(2000);
                   Instrumentation.clickByfindElements(Webdriver, "sidebar-navigation-menu-item", 4, "Click on Market Pulse");
-                  Thread.sleep(1000);
+                  Thread.sleep(2500);
                   break;
 
               default:
@@ -142,49 +145,21 @@ public class ReportsPages extends BaseTest {
         Instrumentation.clickButtonByIndex(Webdriver,"Next");
     }
 
-    public static void clickBrand(String arg0) throws Exception {
+    public static void clickBrand() throws Exception {
         String prmText;
-       /* switch (arg0)
-        {
-            case "LEVKOFF":
-                prmText = "mp__0__0";
-                break;
-            case "47 Nba":
-                prmText = "mp__0__2";
-                break;
-            case "CARBON38":
-                prmText = "mp__0__0";
-                break;
-            default:
-                throw new Exception("Invalid option");
-        }*/
         prmText = "mp__0__0";
         Instrumentation.clickWeb(Webdriver, Config.xpath,"//label[@for='"+prmText+"']","");
         Instrumentation.clickButtonByIndex(Webdriver,"Next");
     }
 
-    public static void clickRetail(String arg0) throws Exception {
+    public static void clickRetail() throws Exception {
         String prmText;
-       /* switch (arg0)
-        {
-            case "Nordstrom":
-                prmText = "mp__1__0";
-                break;
-            case "Nordstrom Rack":
-                prmText = "mp__1__1";
-                break;
-            case "CARBON38":
-                prmText = "mp__1__0";
-                break;
-            default:
-                throw new Exception("Invalid option");
-        }*/
         prmText = "mp__1__0";
         Instrumentation.clickWeb(Webdriver, Config.xpath,"//label[@for='"+prmText+"']","");
         Instrumentation.clickButtonByIndex(Webdriver,"Next");
     }
 
-    public static void clickCategory(String arg0) throws IOException {
+    public static void clickCategory() throws IOException {
         Instrumentation.clickWeb(Webdriver, Config.xpath,"//label[@id='lb__0__0']","");
         Instrumentation.clickWeb(Webdriver, Config.xpath,"//label[@for='all__1']","");
         Instrumentation.clickButtonByIndex(Webdriver,"Next");
@@ -222,4 +197,52 @@ public class ReportsPages extends BaseTest {
         Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@placeholder='Search for user Email']",arg0,"");
     }
 
+    public static void downloadExcelCurrent(String arg0) throws IOException, InterruptedException  {
+        Thread.sleep(3000);
+        Instrumentation.clickWeb(Webdriver, Config.className, "el-dropdown",  "Export Pdf");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Download to Excel (Current)')]","Download to Excel (Current)");
+        Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@placeholder='File Name (optional)']",arg0,"");
+        //Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
+
+
+    }
+
+    public static void downloadExcelHistory(String arg0) throws IOException, InterruptedException  {
+        Thread.sleep(3000);
+        Instrumentation.clickWeb(Webdriver, Config.className, "el-dropdown",  "Export Pdf");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Download to Excel (History)')]","Download to Excel (History)");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"/html/body/div[8]/div/div[3]/div/button/span[1]","Download ");
+        Thread.sleep(2000);
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"/html/body/div[8]/div/div[1]/button","Download Download complete");
+
+        //Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@placeholder='File Name (optional)']",arg0,"");
+        //Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
+
+
+    }
+
+    public static void checkCreatedReport() throws IOException {
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[@id='page-trend']/ng-include[1]/div/div[1]/div[1]/div[2]/p","Check Report Create Sucessfully");
+    }
+
+
+
+    public static void clickSave() throws AWTException, IOException {
+        Robot robot = new Robot();
+//Doing a mouse over for the X and Y coordinates of button/link which opens modal window
+        robot.mouseMove(210,350);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        robot.delay(100);
+/*//Clicking tab til the cursor is on specific position (textbox/button)
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.delay(100);
+//Doing a mouse over for the X and Y coordinates of button/link
+        robot.mouseMove(300,150);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        //robot.delay(100);*/
+
+Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
+    }
 }
