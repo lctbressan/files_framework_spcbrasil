@@ -82,9 +82,9 @@ public class ReportsPages extends BaseTest {
             default:
                 throw new Exception("Invalid option");
         }
-
+        Thread.sleep(3000);
         Instrumentation.clickByClassNameIndex(Webdriver,prmString,0,"");
-        Thread.sleep(200);
+
 
     }
 
@@ -182,9 +182,9 @@ public class ReportsPages extends BaseTest {
 
     }
 
-    public static void fillNameOfReport(String arg0) throws IOException {
+    public static void fillNameOfReport(String arg0,String placeholder) throws IOException {
         //Instrumentation.clickWeb(Webdriver,xpath,"//input[@placeholder='Search']","Clean Input Text");
-        Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@placeholder='Search']",arg0,"");
+        Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@placeholder='"+placeholder+"']",arg0,"");
 
 
     }
@@ -193,8 +193,9 @@ public class ReportsPages extends BaseTest {
         Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Email Alerts')]","Export PDF");
     }
 
-    public static void searchForUserEmail(String arg0) throws IOException {
+    public static void searchForUserEmail(String arg0) throws IOException, InterruptedException {
         Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@placeholder='Search for user Email']",arg0,"");
+        Thread.sleep(3000);
     }
 
     public static void downloadExcelCurrent(String arg0) throws IOException, InterruptedException  {
@@ -202,38 +203,41 @@ public class ReportsPages extends BaseTest {
         Instrumentation.clickWeb(Webdriver, Config.className, "el-dropdown",  "Export Pdf");
         Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Download to Excel (Current)')]","Download to Excel (Current)");
         Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@placeholder='File Name (optional)']",arg0,"");
-        //Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
+
 
 
     }
 
-    public static void downloadExcelHistory(String arg0) throws IOException, InterruptedException  {
+    public static void downloadExcelHistory() throws IOException, InterruptedException  {
         Thread.sleep(3000);
         Instrumentation.clickWeb(Webdriver, Config.className, "el-dropdown",  "Export Pdf");
         Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Download to Excel (History)')]","Download to Excel (History)");
-        Instrumentation.clickWeb(Webdriver, Config.xpath,"/html/body/div[8]/div/div[3]/div/button/span[1]","Download ");
         Thread.sleep(2000);
-        Instrumentation.clickWeb(Webdriver, Config.xpath,"/html/body/div[8]/div/div[1]/button","Download Download complete");
-
-        //Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@placeholder='File Name (optional)']",arg0,"");
-        //Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
-
+    }
+    public static void downloadToExcel() throws IOException, InterruptedException  {
+        Thread.sleep(3000);
+        Instrumentation.clickWeb(Webdriver, Config.className, "el-dropdown-selfdefine",  "Export Pdf");
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Download to Excel')]","Download to Excel (History)");
+        Thread.sleep(2000);
 
     }
 
-    public static void checkCreatedReport() throws IOException {
-        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[@id='page-trend']/ng-include[1]/div/div[1]/div[1]/div[2]/p","Check Report Create Sucessfully");
+
+    public static void checkCreatedReport(String arg0) throws IOException {
+        Instrumentation.collectByClassNameIndex(Webdriver,"title-row",arg0,"");
     }
 
 
 
     public static void clickSave() throws AWTException, IOException {
-        Robot robot = new Robot();
+        Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver,"Download Complete","");
+
+        //Robot robot = new Robot();
 //Doing a mouse over for the X and Y coordinates of button/link which opens modal window
-        robot.mouseMove(210,350);
-        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        robot.delay(100);
+        //robot.mouseMove(210,350);
+        //robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        //robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        //robot.delay(100);
 /*//Clicking tab til the cursor is on specific position (textbox/button)
         robot.keyPress(KeyEvent.VK_TAB);
         robot.delay(100);
@@ -243,6 +247,26 @@ public class ReportsPages extends BaseTest {
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         //robot.delay(100);*/
 
-Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
+//Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
+    }
+
+    public static void SearchForReport(String arg0) throws IOException, InterruptedException {
+            //Instrumentation.clickWeb(Webdriver,Config.xpath, "//*[contains(text(),'"+arg0+"","Search for excel");
+        Thread.sleep(3000);
+        Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, arg0,  "Search For Created Report");
+    }
+
+
+
+    public static void searchForType(String arg0) throws IOException {
+        Instrumentation.clickWeb(Webdriver, Config.className,arg0,"Search for type");
+
+    }
+    public static void checkCreationDate(String arg0) throws IOException {
+        Instrumentation.collectByClassNameIndex(Webdriver,"title-row",arg0,"");
+    }
+
+    public static void clickonconfirm() throws IOException {
+        Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver, "Confirm",  "Confirm Button");
     }
 }

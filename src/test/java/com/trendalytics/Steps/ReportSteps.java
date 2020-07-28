@@ -14,6 +14,9 @@ import org.junit.After;
 
 import java.awt.*;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ReportSteps extends BaseTest {
 Config cons = new Config();
@@ -39,9 +42,9 @@ Config cons = new Config();
         ReportsPages.clickToCreateAReport();
     }
 
-    @And("^click on the option \"([^\"]*)\"$")
-    public void clickOn(String arg0) throws Exception {
-        LoginPage.GetMessage(arg0);
+    @And("^click My Comparison")
+    public void clickMyComparison() throws Exception {
+        LoginPage.ClickMyComparision();
     }
 
     @And("^download a PDF Report")
@@ -124,11 +127,13 @@ Config cons = new Config();
         ReportsPages.selectTrends();
     }
 
-    @And("^Fill name of report \"([^\"]*)\"$")
-    public void fillNameOfReport(String arg0) throws Exception {
-        String ReportName = arg0 +"-"+ cons.dataAtual;
-        ReportsPages.fillNameOfReport(ReportName);
-         LoginPage.GetMessage(arg0);
+    @And("^Fill name of report \"([^\"]*)\" \"([^\"]*)\"$")
+    public void fillNameOfReport(String arg0,String placeholder) throws Exception {
+        String ReportName = arg0 + "-" + cons.dataAtual;
+        ReportsPages.fillNameOfReport(ReportName, placeholder);
+        if (!arg0.substring(0, 5).equals("Trend")){
+            LoginPage.GetMessage(arg0);
+            }
     }
 
     @And("click on the tab \"([^\"]*)\" and the tab \"([^\"]*)\"$")
@@ -153,9 +158,9 @@ Config cons = new Config();
 
     @And("^search for user email \"([^\"]*)\"$")
     public void searchForUserEmail(String arg0) throws IOException, InterruptedException {
-        String ReportName = arg0 +"-"+ cons.dataAtual;
-        ReportsPages.searchForUserEmail(ReportName);
-        Thread.sleep(2000);
+
+        ReportsPages.searchForUserEmail(arg0);
+
     }
 
     @When("click module \"([^\"]*)\"$")
@@ -170,19 +175,49 @@ Config cons = new Config();
 
     }
 
-    @And("^Download Excel History \"([^\"]*)\"$")
-    public void downloadExcelHistory(String arg0) throws IOException, InterruptedException {
-        String ReportName = arg0 +"-"+ cons.dataAtual;
-        ReportsPages.downloadExcelHistory(ReportName);
+    @And("^Download Excel History")
+    public void downloadExcelHistory() throws IOException, InterruptedException {
+
+        ReportsPages.downloadExcelHistory();
     }
 
-    @Then("Check created Report")
-    public void checkCreatedReport() throws IOException {
-        ReportsPages.checkCreatedReport();
+    @Then("Check created Report \"([^\"]*)\"$")
+    public void checkCreatedReport(String arg0) throws IOException {
+        ReportsPages.checkCreatedReport(arg0);
     }
 
     @And("click Save")
     public void clickSave() throws AWTException, IOException {
         ReportsPages.clickSave();
+    }
+
+    @And("search for Report \"([^\"]*)\"$")
+    public void searchForReport(String arg0) throws IOException, InterruptedException {
+        ReportsPages.SearchForReport(arg0);
+    }
+
+    @And("check creation date")
+    public void checkCreationDate() throws IOException {
+
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+
+
+
+        ReportsPages.checkCreationDate(timeStamp);
+    }
+
+    @And("search for Type \"([^\"]*)\"$")
+    public void searchForType(String arg0) throws IOException {
+        ReportsPages.searchForType(arg0);
+    }
+
+    @And("Download to Excel")
+    public void downloadToExcel() throws IOException, InterruptedException {
+        ReportsPages.downloadToExcel();
+    }
+
+    @And("click on confirm")
+    public void clickOnconfirm() throws IOException {
+        ReportsPages.clickonconfirm();
     }
 }

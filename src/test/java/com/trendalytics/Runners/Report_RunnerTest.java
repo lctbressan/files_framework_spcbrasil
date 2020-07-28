@@ -11,7 +11,16 @@ import org.junit.runner.RunWith;
         glue = {"com.trendalytics.Steps"},
         features = {"src/test/resources/features/Trendalitycs/Reports.feature"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:","json:target/cucumber.json"},
-        tags={"@DownloadExcelCurrent"},
+
+        //tags={"@DownloadExcelHistory"},
+        tags={"@DownloadExcelHistory2"},
+         //tags={"@DownloadPDF"},
+        //tags={"@TrendPulseExcelDownload"}, ==OK PROD
+        //tags={"@DownloadExcelHistory,@DownloadExcelHistory2,@DownloadPDF,@TrendPulseExcelDownload"},
+        //tags={"@CreateNewReportMultipleBrands"},
+        //tags={"@CreateNewReportMultipoleRetail"},
+        //tags={"@CreateNewReportOneBrand"},
+        //tags={"@DownloadPDF"},==OK PROD
         snippets = SnippetType.CAMELCASE)
 public  class Report_RunnerTest extends BaseTest {
 }

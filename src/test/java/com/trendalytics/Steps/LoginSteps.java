@@ -22,6 +22,9 @@ public class LoginSteps extends BaseTest {
     }
     @Given("^that the user is on the home screen \"([^\"]*)\"$")
     public void thatTheUserIsOnTheHomeScreen(String arg0) throws Exception {
+        if(arg0.equals("tp3")){arg0="https://tp3app.trendalytics.co/signin";}
+        if(arg0.equals("app")){arg0="https://app.trendalytics.co/signin";}
+
         LoginPage.thatTheUserIsOnTheHomeScreen(arg0);
         Instrumentation.takeScreenshot(Webdriver,"Screen Home");
     }
@@ -39,7 +42,7 @@ public class LoginSteps extends BaseTest {
         LoginPage.GetMessage(arg1);
     }
 
-    @And("confirm action \"([^\"]*)\"$")
+    @And("^confirm action \"([^\"]*)\"$")
     public void confirmAction(String arg0) throws IOException {
         if(arg0.equals("yes")) {
             LoginPage.confirmAction();

@@ -31,5 +31,10 @@ public class LoginPage extends BaseTest {
 
     public static void confirmAction() throws IOException {
         Instrumentation.clickWeb(Webdriver, Config.xpath,"//input[@name='submit']","Confirm");
+
+    }
+
+    public static void ClickMyComparision() throws IOException {
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"/html/body/aside/div[1]/div[1]/div[1]/div[1]/div/div[1]/div/div/div/div","");
     }
 }
