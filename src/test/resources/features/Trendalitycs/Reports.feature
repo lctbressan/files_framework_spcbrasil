@@ -1,7 +1,7 @@
 #Language : En
 #encoding: utf-8
 
-@RegressionTest
+@RegressionReportTest
 @ReportTest
 Feature: Report
 
