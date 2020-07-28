@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:","json:target/cucumber.json"},
 
         //tags={"@DownloadExcelHistory"},
-        tags={"@DownloadExcelHistory2"},
+        //tags={"@DownloadExcelHistory2"},
          //tags={"@DownloadPDF"},
         //tags={"@TrendPulseExcelDownload"}, ==OK PROD
         //tags={"@DownloadExcelHistory,@DownloadExcelHistory2,@DownloadPDF,@TrendPulseExcelDownload"},
