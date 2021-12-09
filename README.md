@@ -1,4 +1,4 @@
-# JoyJet - Web Framwework for testing automation
+# Braziltest - Web Framwework for testing automation
 # V 1.0.0
 
 #Packages Installs
@@ -18,7 +18,7 @@
  #Important do know
  At sctructure of project you will locate a file (Constants) under:
  
- src/test/java/br.com.trendalytics/Utils
+ src/test/java/br.com.braziltest/Utils
  
  This file Constains all definitions paths for your local machine
  
