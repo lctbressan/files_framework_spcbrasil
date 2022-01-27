@@ -4,15 +4,30 @@ import com.braziltest.Pages.HomePage;
 import com.braziltest.Steps.Hook.BaseStep;
 import com.braziltest.Steps.Hook.Hook;
 import com.braziltest.Utils.Config;
+import com.braziltest.dao.evidenceDao;
+import com.braziltest.dto.evidence;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.apache.commons.io.FileUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 
 public class HomeSteps extends BaseStep {
+
+
     Config cons = new Config();
 
 
@@ -77,7 +92,127 @@ public class HomeSteps extends BaseStep {
     }
 
     @And("Reinicia o roteador")
-    public void reiniciaORoteador() throws IOException, InterruptedException {
+    public void reiniciaORoteador() throws Exception {
         HomePage.reiniciaoteador();
+    }
+
+    @Given("that i copy all files from path \"([^\"]*)\"$")
+    public void thatICheckPathsRespond(String path) throws Exception {
+        //Lista o diretorio
+        File folder = new File(path);
+        listFDirectoriesStream(path.toString());
+        /*for(String item : arq.split(";")){
+            findAllFilesInFolder(new File(path + item));
+        }*/
+    }
+
+
+
+
+
+
+
+    public static void listFDirectoriesStream(String dir) throws Exception {
+        String Dirs =  "";
+        String prmRunner = "";
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
+            for (Path path : stream) {
+                if (Files.isDirectory(path)) {
+                    //fileList.add(path.getFileName().toString());
+                    System.out.println(path.getFileName().toString());
+                    Dirs = path.getFileName().toString() +";"+ Dirs;
+                    prmRunner =path.getFileName().toString();
+                    findAllFilesInFolder(new File(path.toString()),prmRunner);
+                }
+            }
+        }
+        //return Dirs;
+    }
+
+    public static String findAllFilesInFolder(File folder,String Runner) throws Exception {
+
+        //Lista os arquivos do diretório
+
+    String path = folder.toString();
+        String fileName ="";
+        for(File file : Objects.requireNonNull(folder.listFiles())){
+            if(!file.isDirectory()){
+                fileName = file.getName() ;
+                if(fileName.contains("html")){
+                    System.out.println(file.getName());
+                    //CHAMA A ROTINA DE TRATAMENTO DO ARQUIVO
+                        //saveEvidence(path+"\\",file.getName(),Runner);
+
+
+                    File sourceFile = new File (folder+"\\"+file.getName());
+                    File destinationFile = new File(Config.PathEvidenceCentral +"\\"+ Runner+".html");
+
+
+                    FileUtils.copyFile(sourceFile,destinationFile);
+                   // FileUtils.deleteDirectory(new File(path));
+                }
+            }/*else{
+                findAllFilesInFolder(file);
+            }*/
+        }
+        return fileName;
+    }
+
+
+
+    public static void saveEvidence(String path,String filename,String Runner) throws Exception {
+        String evidencia = "";
+        String data ="";
+        String data1 ="";
+        String line;
+        File file = new File(path+filename);
+        BufferedReader br  = new BufferedReader(new FileReader(file));
+        while ((line = br.readLine()) != null) {
+            //System.out.println(st);
+            data = data + line;
+           // System.out.println(data1);
+        }
+        br.close();
+
+        System.out.println(Runner);
+        //ApplicationContext ac = new ClassPathXmlApplicationContext("spring.xml");
+        //evidenceDao testdao = (evidenceDao) ac.getBean("evidenceDao");
+        //Collection<evidence> testCT = testdao.evidenceGet(Runner);
+        //if (testCT.isEmpty()) {
+            //testdao.evidenceSave(Runner,data,10);
+        WriteToFile(Config.PathEvidenceCentral,Runner,data);
+
+        FileUtils.deleteDirectory(new File(path));
+
+        //}
+    }
+
+
+    private static String readFromInputStream(InputStream inputstream) throws IOException {
+        StringBuilder resultStringBuilder = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputstream))) {
+            String line;
+            while ((line = br.readLine()) != "") {
+                resultStringBuilder.append(line).append("\n");
+            }
+            return resultStringBuilder.toString();
+
+        }
+    }
+
+
+    private static void WriteToFile(String Path, String Runner,String Data) throws IOException {
+        try {
+        FileWriter myWriter = new FileWriter(Path+"\\"+Runner+".html");
+            System.out.println("Gravando....");
+            System.out.println(Path+"\\"+Runner+".html");
+            System.out.println(Data);
+        myWriter.write(Data);
+        myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
     }
 }

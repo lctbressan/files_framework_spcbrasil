@@ -5,15 +5,19 @@ import com.braziltest.Utils.Instrumentation;
 import com.braziltest.Utils.Config;
 import com.braziltest.interfaces.DriverFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
+import java.awt.*;
+import java.awt.event.InputEvent;
 import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 
 public class HomePage extends BaseStep {
 
-
+   public static int x = 0;
     public static void thatTheUserIsOnTheHomeScreen(String arg0) throws Exception {
         DriverFactory.getDriver(arg0);
     }
@@ -116,28 +120,100 @@ public class HomePage extends BaseStep {
 
     public static void sendLoginandPass(String arg0, String arg1) throws IOException, InterruptedException {
         Thread.sleep(1000);
+
+
+        Webdriver.switchTo().parentFrame();
+
         Webdriver.switchTo().frame("basefrm");
+
+
+        //Webdriver.switchTo().frame("passWarning");
         //Webdriver.switchTo().frame(0);
         //Webdriver.switchTo().frame(Webdriver.findElement(By.id("basefrm")));
 
+
+        WebElement el = Webdriver.findElement(By.id("Loginuser"));
+        el.click();
         Webdriver.findElement(By.id("Loginuser")).sendKeys(arg0);
 
-       Instrumentation.sendKeysWeb(Webdriver,Config.xpath,"/html/body/div/div/div[1]/form/div/table/tbody/tr[2]/td[2]/input",arg0,"");
+        Thread.sleep(2000);
+        WebElement el1 = Webdriver.findElement(By.id("LoginPassword"));
+        el1.click();
+        Webdriver.findElement(By.id("LoginPassword")).sendKeys(arg1);
+
+
+        Instrumentation.clickWeb(Webdriver,Config.xpath,"/html/body/div/div/div[1]/form/div/table/tbody/tr[6]/td/input[2]","");
+
+       //Instrumentation.sendKeysWeb(Webdriver,Config.xpath,"/html/body/div/div/div[1]/form/div/table/tbody/tr[2]/td[2]/input",arg0,"");
         //Instrumentation.sendKeysWeb(Webdriver,Config.id,"Loginuser",arg0,"");
         //Instrumentation.sendKeysWeb(Webdriver,Config.id,"LoginPassword",arg1,"");
         //Instrumentation.clickWeb(Webdriver,Config.xpath,"//*[contains(text(),'LOGIN')]","");
-        Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver,Config.className,"","setupWifiTable","");
+        //Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver,Config.className,"","setupWifiTable","");
 
     }
 
-    public static void reiniciaoteador() throws IOException, InterruptedException {
-        Thread.sleep(5000);
-        Instrumentation.clickWeb(Webdriver,Config.id,"btn-clicktocall","");
-        Thread.sleep(5000);
+    public static void reiniciaoteador() throws Exception {
+        Thread.sleep(2000);
+        Webdriver.switchTo().parentFrame();
+
+        Webdriver.switchTo().frame("basefrm");
+
+
+        //Instrumentation.clickWeb(Webdriver,Config.id,"btn-clicktocall","");
+        //click reboot
+        Instrumentation.clickWeb(Webdriver,Config.xpath,"/html/body/form/div/div/div[1]/table/tbody/tr[1]/td[1]/a","");
+
+
+
+        // click n0 cancel
+        //Webdriver.navigate().to("http://192.168.15.1/cgi-bin/popup-reboot.cgi#");
+
+
+        Webdriver.switchTo().defaultContent();
+        //Webdriver.switchTo().frame("basefrm");
+       // Webdriver.switchTo().frame(Webdriver.findElement(By.className("fancybox-iframe")));
+
+
+
+
+        //Webdriver.switchTo().frame(1);
+        Thread.sleep(2000);
+        //Instrumentation.clickWeb(Webdriver,Config.xpath,"/html/body/div/table/tbody/tr[4]/td/a[2]/span","");*/
+        /*String xpath = "/html/body/div/table/tbody/tr[4]/td/a[2]/span";
+        Robot robot = new Robot();
+        //Pass in the X and Y Coordinates of the Element (Integer)
+        robot.mouseMove(Webdriver.findElement(By.xpath(xpath)).getLocation().getX(),Webdriver.findElement(By.xpath(xpath)).getLocation().getY());
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+        Thread.sleep(50);
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);*/
+        //Actions actions = new Actions(Webdriver);
+        //actions.moveToElement(Webdriver.findElement(By.tagName("body")), 500, 500);
+        //actions.moveByOffset(30, 80).click().build().perform();
+        //Instrumentation.clickWeb(Webdriver,Config.xpath,"/html/body/div/table/tbody/tr[4]/td/a[2]","");
+       // Instrumentation.clickOnElementNotInteractWithContainsText(Webdriver,  Config.xpath, "Yes, Reboot", "No, Cancel  ");
+
         //Instrumentation.clickWeb(Webdriver,Config.id,"btnReset","");
-        Webdriver.switchTo().frame(0);
-        Instrumentation.clickWeb(Webdriver,Config.id,"btnCancel","");
-
+       /* Webdriver.switchTo().frame(0);
+        Instrumentation.clickWeb(Webdriver,Config.id,"btnCancel","");*/
+        runnerIframe(Webdriver);
 
     }
+    public static void runnerIframe(WebDriver driver) {
+
+        for (int i = 0; i < 6; i++) {
+            try {
+                driver.switchTo().frame(x);
+                driver.findElement(By.xpath("/html/body/div/table/tbody/tr[4]/td/a[2]")).click();
+            } catch (Exception ex) {
+                System.out.println("Not an iframe");
+                x = x+1;
+                runnerIframe(Webdriver);
+
+            }
+
+
+
+        }
+    }
+
 }

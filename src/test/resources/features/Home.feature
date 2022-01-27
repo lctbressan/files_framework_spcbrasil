@@ -1,9 +1,9 @@
 #Language : En
 #encoding: utf-8
 
-@IntegrationTest
-@LoginTest
-Feature: Home
+  @IntegrationTest
+  @LoginTest
+  Feature: Home
 
 
   @Links
@@ -13,7 +13,7 @@ Feature: Home
     And Enter "<Email>" and "<Password>"
     And Select Project Trendalitycs
     And Click StopStart
-  Examples:
+    Examples:
       | TS  | Scenario | Description                   |Email                     | Password         |HomePage|
       | 001 |    0001  |Test Link Product              |luis.bressan@joyjet.com   | brt125243        |https://clockify.me/|
 

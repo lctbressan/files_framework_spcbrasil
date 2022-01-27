@@ -45,7 +45,7 @@ public class Instrumentation {
                 waitCad.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(prmTag))).sendKeys(arg0);}
 
             if(prmType.equals("id")){
-                waitCad.until(ExpectedConditions.presenceOfElementLocated(By.id(prmTag))).sendKeys(arg0);}
+                waitCad.until(ExpectedConditions.presenceOfElementLocated(new By.ByName(prmTag))).sendKeys(arg0);}
 
             DriverFactory.Evidencia(driver,"");
         } catch (
@@ -105,8 +105,36 @@ public class Instrumentation {
         }
     }
 
+    public static void clickOnElementNotInteractWithContainsText (WebDriver driver, String prmText , String StepLog) throws Exception {
+        Thread.sleep(TIMEOUTAUTOMATION);
+        int prmIndex = 0;
+        try {
+            Reporter.addStepLog(StepLog);
+            List<WebElement> listElement = null;
 
-    public static void clickOnElementNotInteractWithContainsText (WebDriver driver, String Type,String prmText ,String prmClassName,  String StepLog) throws IOException {
+                listElement = driver.findElements(By.xpath("//*[contains(text(),'" + prmText + "')]"));
+
+
+
+            for(int i =0;i<listElement.size();i++) {
+                String elementText = listElement.get(i).getText();
+                if (elementText.toUpperCase().trim().equals(prmText.toUpperCase())) {
+                    prmIndex = i;
+                }
+            }
+
+            WebElement element = listElement.get(prmIndex);
+            element.click();
+            //Thread.sleep(TIMEOUTAUTOMATION);
+
+        } catch (
+                NoSuchElementException  exception) {
+
+
+
+        }
+    }
+    public static void clickOnElementNotInteractWithContainsText (WebDriver driver, String Type,String prmText  ,  String StepLog) throws IOException {
         int prmIndex = 0;
         try {
             Reporter.addStepLog(StepLog);
@@ -115,9 +143,7 @@ public class Instrumentation {
             if(Type.equals("xpath")) {
                 listElement = driver.findElements(By.xpath("//*[contains(text(),'" + prmText + "')]"));
             }
-            if(Type.equals("className")) {
-                listElement = driver.findElements(By.className(prmClassName));
-            }
+
             for(int i =0;i<listElement.size();i++) {
                 String elementText = listElement.get(i).getText();
                      if (elementText.trim().equals(prmText)) {

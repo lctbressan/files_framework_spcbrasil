@@ -6,10 +6,10 @@ public class Config {
 
     public static final String PLATFORMNAME = "WEB";
 
-    public static final String BROWSERTESTING = "FIREFOX"; // FIREFOX / CHROME //GRID
+    public static final String BROWSERTESTING = "CHROME"; // FIREFOX / CHROME //GRID
 
     //FIREFOX
-    public static final String DRIVERPATHFOX = "/Users/braziltest/sources/repos/Drivers/geckodriver";
+    public static final String DRIVERPATHFOX = "C:\\Drivers\\browsers\\firefox\\geckodriver-v0.26.0-win64\\geckodriver.exe";
 
     //CHROME
     public static final String DRIVERPATH = "C:\\Drivers\\browsers\\chrome\\95.0.4638.54\\chromedriver.exe";
@@ -39,4 +39,6 @@ public class Config {
     public static final String className = "className";
     public static final String id = "id";
     public static final String tagname = "tagname";
+
+    public static final String PathEvidenceCentral = "\\\\10.10.0.10\\evidenciasServidorF\\CentralEnvidence";
 }
