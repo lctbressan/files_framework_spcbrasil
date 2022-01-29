@@ -2,28 +2,21 @@ package com.braziltest.Steps;
 
 import com.braziltest.Pages.HomePage;
 import com.braziltest.Steps.Hook.BaseStep;
-import com.braziltest.Steps.Hook.Hook;
 import com.braziltest.Utils.Config;
-import com.braziltest.dao.evidenceDao;
-import com.braziltest.dto.evidence;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.io.FileUtils;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.*;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
+import static com.braziltest.Utils.Config.PathOrigin;
 
 public class HomeSteps extends BaseStep {
 
@@ -100,6 +93,7 @@ public class HomeSteps extends BaseStep {
     public void thatICheckPathsRespond(String path) throws Exception {
         //Lista o diretorio
         File folder = new File(path);
+
         listFDirectoriesStream(path.toString());
         /*for(String item : arq.split(";")){
             findAllFilesInFolder(new File(path + item));
@@ -113,6 +107,7 @@ public class HomeSteps extends BaseStep {
 
 
     public static void listFDirectoriesStream(String dir) throws Exception {
+        PathOrigin =dir.toString();
         String Dirs =  "";
         String prmRunner = "";
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
@@ -129,33 +124,41 @@ public class HomeSteps extends BaseStep {
         //return Dirs;
     }
 
-    public static String findAllFilesInFolder(File folder,String Runner) throws Exception {
-
-        //Lista os arquivos do diretório
-
-    String path = folder.toString();
-        String fileName ="";
+    public static void findAllFilesInFolder(File folder,String Runner) throws Exception {
+        try{
+            String path = folder.toString();
+            String fileName ="";
         for(File file : Objects.requireNonNull(folder.listFiles())){
             if(!file.isDirectory()){
                 fileName = file.getName() ;
-                if(fileName.contains("html")){
-                    System.out.println(file.getName());
+                if(fileName.contains("html")||fileName.contains("avi")) {
+                    //System.out.println(file.getName());
                     //CHAMA A ROTINA DE TRATAMENTO DO ARQUIVO
-                        //saveEvidence(path+"\\",file.getName(),Runner);
+                    //saveEvidence(path+"\\",file.getName(),Runner);
+                    File destinationFile = null;
 
+                    File sourceFile = new File(folder + "\\" + file.getName());
+                    if (fileName.contains("avi")){
+                        destinationFile = new File(Config.PathEvidenceCentral + "\\" + Runner + ".avi");
+                    }
+                    if(fileName.contains("html")) {
+                        destinationFile = new File(Config.PathEvidenceCentral + "\\" + Runner + ".html");
+                    }
 
-                    File sourceFile = new File (folder+"\\"+file.getName());
-                    File destinationFile = new File(Config.PathEvidenceCentral +"\\"+ Runner+".html");
-
-
-                    FileUtils.copyFile(sourceFile,destinationFile);
-                   // FileUtils.deleteDirectory(new File(path));
+                    System.out.println("EXISTS >>> " + destinationFile);
+                    if(!destinationFile.exists()) {
+                        System.out.println("NOT EXISTS >>> " + destinationFile);
+                        FileUtils.copyFile(sourceFile, destinationFile);
+                    }else {
+                     // FileUtils.deleteDirectory(new File(path));
+                    }
                 }
-            }/*else{
-                findAllFilesInFolder(file);
-            }*/
+            }
         }
-        return fileName;
+
+        } catch (Exception e) {
+            listFDirectoriesStream(PathOrigin);
+        }
     }
 
 

@@ -12,7 +12,8 @@ import org.junit.runner.RunWith;
         glue = {"com.braziltest.Steps"},
         features = {"src/test/resources/features/"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:", "json:target/cucumber.json", "html:target/cucumber-report", "junit:target/junit.xml"},
-        tags={"@GetEvidences"},
+        //tags={"@GetEvidencesDellBlue"},
+        tags={"@GetEvidencesDellGray"},
         //tags={"@Roteador"},
         strict = true,
         snippets = SnippetType.CAMELCASE)
