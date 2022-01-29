@@ -26,7 +26,7 @@ Feature: Evidences
     Given that i copy all files from path "<path>"
     Examples:
       | TS  | Scenario | Description                      |origim|path                                                                          |
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\10.10.0.3\evidenciass\MWPOS                                               |
+      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\\\10.10.0.3\\evidenciass                                                  |
 
   @GetEvidencesOthers
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
