@@ -42,4 +42,5 @@ public class Config {
 
     public static final String PathEvidenceCentral = "\\\\10.10.0.10\\evidenciasServidorF\\CentralEnvidence";
     public static String PathOrigin = "";
+    public static String pSit = "";
 }

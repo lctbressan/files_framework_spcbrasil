@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.util.Objects;
 
 import static com.braziltest.Utils.Config.PathOrigin;
+import static com.braziltest.Utils.Config.pSit;
 
 public class HomeSteps extends BaseStep {
 
@@ -89,12 +90,12 @@ public class HomeSteps extends BaseStep {
         HomePage.reiniciaoteador();
     }
 
-    @Given("that i copy all files from path \"([^\"]*)\"$")
-    public void thatICheckPathsRespond(String path) throws Exception {
+    @Given("that i copy all files from path \"([^\"]*)\" \"([^\"]*)\"$")
+    public void thatICheckPathsRespond(String path,String Sit) throws Exception {
         //Lista o diretorio
         File folder = new File(path);
 
-        listFDirectoriesStream(path.toString());
+        listFDirectoriesStream(path.toString(),Sit);
         /*for(String item : arq.split(";")){
             findAllFilesInFolder(new File(path + item));
         }*/
@@ -106,8 +107,9 @@ public class HomeSteps extends BaseStep {
 
 
 
-    public static void listFDirectoriesStream(String dir) throws Exception {
+    public static void listFDirectoriesStream(String dir,String Sit) throws Exception {
         PathOrigin =dir.toString();
+        pSit = Sit;
         String Dirs =  "";
         String prmRunner = "";
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
@@ -117,47 +119,53 @@ public class HomeSteps extends BaseStep {
                     System.out.println(path.getFileName().toString());
                     Dirs = path.getFileName().toString() +";"+ Dirs;
                     prmRunner =path.getFileName().toString();
-                    findAllFilesInFolder(new File(path.toString()),prmRunner);
+                    findAllFilesInFolder(new File(path.toString()),prmRunner,Sit);
                 }
             }
         }
         //return Dirs;
     }
 
-    public static void findAllFilesInFolder(File folder,String Runner) throws Exception {
+    public static void findAllFilesInFolder(File folder,String Runner,String Sit) throws Exception {
         try{
             String path = folder.toString();
             String fileName ="";
-        for(File file : Objects.requireNonNull(folder.listFiles())){
-            if(!file.isDirectory()){
-                fileName = file.getName() ;
-                if(fileName.contains("html")||fileName.contains("avi")) {
-                    //System.out.println(file.getName());
-                    //CHAMA A ROTINA DE TRATAMENTO DO ARQUIVO
-                    //saveEvidence(path+"\\",file.getName(),Runner);
-                    File destinationFile = null;
+            if (Sit.equals("Copy")) {
+                for (File file : Objects.requireNonNull(folder.listFiles())) {
+                    if (!file.isDirectory()) {
+                        fileName = file.getName();
+                        if (fileName.contains("html") || fileName.contains("avi")) {
+                            //System.out.println(file.getName());
+                            //CHAMA A ROTINA DE TRATAMENTO DO ARQUIVO
+                            //saveEvidence(path+"\\",file.getName(),Runner);
+                            File destinationFile = null;
 
-                    File sourceFile = new File(folder + "\\" + file.getName());
-                    if (fileName.contains("avi")){
-                        destinationFile = new File(Config.PathEvidenceCentral + "\\" + Runner + ".avi");
-                    }
-                    if(fileName.contains("html")) {
-                        destinationFile = new File(Config.PathEvidenceCentral + "\\" + Runner + ".html");
-                    }
+                            File sourceFile = new File(folder + "\\" + file.getName());
 
-                    System.out.println("EXISTS >>> " + destinationFile);
-                    if(!destinationFile.exists()) {
-                        System.out.println("NOT EXISTS >>> " + destinationFile);
-                        FileUtils.copyFile(sourceFile, destinationFile);
-                    }else {
-                     // FileUtils.deleteDirectory(new File(path));
+
+                            if (fileName.contains("avi")) {
+                                destinationFile = new File(Config.PathEvidenceCentral + "\\" + Runner + ".avi");
+                            }
+                            if (fileName.contains("html")) {
+                                destinationFile = new File(Config.PathEvidenceCentral + "\\" + Runner + ".html");
+                            }
+
+                            System.out.println("EXISTS >>> " + destinationFile);
+                            if (!destinationFile.exists()) {
+                                System.out.println("NOT EXISTS >>> " + destinationFile);
+                                FileUtils.copyFile(sourceFile, destinationFile);
+                            }
+                        }
                     }
                 }
             }
-        }
+                if(Sit.equals("Del")) {
+                    FileUtils.deleteDirectory(new File(path));
+                }
+
 
         } catch (Exception e) {
-            listFDirectoriesStream(PathOrigin);
+            listFDirectoriesStream(PathOrigin,pSit);
         }
     }
 
