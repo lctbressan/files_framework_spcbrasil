@@ -139,10 +139,7 @@ public class HomeSteps extends BaseStep {
                             //CHAMA A ROTINA DE TRATAMENTO DO ARQUIVO
                             //saveEvidence(path+"\\",file.getName(),Runner);
                             File destinationFile = null;
-
                             File sourceFile = new File(folder + "\\" + file.getName());
-
-
                             if (fileName.contains("avi")) {
                                 destinationFile = new File(Config.PathEvidenceCentral + "\\" + Runner + ".avi");
                             }

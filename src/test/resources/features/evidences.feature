@@ -15,7 +15,7 @@ Feature: Evidences
       | 001 |    0001  |Get evidence from MW DELLBLUE     |DELLBLUE|\\\\10.10.0.27\\server2\\evidencias\\MWPOS\\Pipeline\\Automation            |Del |
 
 
-  @GetEvidencesDellGray
+  #@GetEvidencesDellGray
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
     Given that i copy all files from path "<path>" "<Sit>"
     Examples:
@@ -27,9 +27,9 @@ Feature: Evidences
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
     Given that i copy all files from path "<path>" "<Sit>"
     Examples:
-      | TS  | Scenario | Description                      |origim|path                                                                          |Sit|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\\\10.10.0.3\\evidenciass\\MWPOS\\Pipeline\\Automation                     |Copy|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\\\10.10.0.3\\evidenciass\\MWPOS\\Pipeline\\Automation                     |Del |
+      | TS  | Scenario | Description                    |origim|path                                                                          |Sit|
+      | 001 |    0001  |Get evidence from TL lenovo     |BRT-NTB |\\\\10.10.0.8\\evidenciass\\MWPOS\\Pipeline\\Automation                     |Copy|
+      | 001 |    0001  |Get evidence from TL lenovo     |BRT-NTB |\\\\10.10.0.8\\evidenciass\\MWPOS\\Pipeline\\Automation                     |Del |
 
   @GetEvidencesOthers
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
