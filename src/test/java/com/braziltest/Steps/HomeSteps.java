@@ -147,11 +147,14 @@ public class HomeSteps extends BaseStep {
                                 destinationFile = new File(Config.PathEvidenceCentral + "\\" + Runner + ".html");
                             }
 
-                            System.out.println("EXISTS >>> " + destinationFile);
+
                             if (!destinationFile.exists()) {
-                                System.out.println("NOT EXISTS >>> " + destinationFile);
+                                System.out.println("COPY  >>> " + destinationFile);
                                 FileUtils.copyFile(sourceFile, destinationFile);
-                            }
+                            }/*else{
+                                System.out.println("EXISTS >>> " + destinationFile);
+                                //FileUtils.deleteDirectory(new File(path));
+                            }*/
                         }
                     }
                 }
