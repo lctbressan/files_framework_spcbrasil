@@ -15,7 +15,7 @@ Feature: Evidences
       | 001 |    0001  |Get evidence from MW DELLBLUE     |DELLBLUE|\\\\10.10.0.27\\server2\\evidencias\\MWPOS\\Pipeline\\Automation            |Del |
 
 
-  #@GetEvidencesDellGray
+  @GetEvidencesDellGray
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
     Given that i copy all files from path "<path>" "<Sit>"
     Examples:
