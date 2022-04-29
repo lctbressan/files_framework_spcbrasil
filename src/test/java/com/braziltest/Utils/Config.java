@@ -40,7 +40,7 @@ public class Config {
     public static final String id = "id";
     public static final String tagname = "tagname";
 
-    public static final String PathEvidenceCentral = "\\\\10.10.0.10\\evidenciasServidorF\\CentralEnvidence";
+    public static final String PathEvidenceCentral = "\\\\10.10.0.10\\f\\evidencias\\CentralEnvidence";
     public static String PathOrigin = "";
     public static String pSit = "";
 }
