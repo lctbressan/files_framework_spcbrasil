@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features/"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:", "json:target/cucumber.json", "html:target/cucumber-report", "junit:target/junit.xml"},
 
-                tags={"@GetEvidencesOthers"},
+                tags={"@GetEvidencesLenovo"},
         //tags={"@GetEvidencesDellBlue"},
         //tags={"@GetEvidencesLenovo"},
         //tags={"@Roteador"},

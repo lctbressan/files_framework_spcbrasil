@@ -21,15 +21,15 @@ Feature: Evidences
     Examples:
       | TS  | Scenario | Description                      |origim|path                                                                          |Sit|
       | 001 |    0001  |Get evidence from MW DELLGRAY     |DELLGRAY|\\\\10.10.0.25\\ServerRoot\bressan\\evidencias\\MWPOS\\Pipeline\\Automation |Copy|
-      | 001 |    0001  |Get evidence from MW DELLGRAY     |DELLGRAY|\\\\10.10.0.25\\ServerRoot\bressan\\evidencias\\MWPOS\\Pipeline\\Automation |Del|
+      #| 001 |    0001  |Get evidence from MW DELLGRAY     |DELLGRAY|\\\\10.10.0.25\\ServerRoot\bressan\\evidencias\\MWPOS\\Pipeline\\Automation |Del|
 
   @GetEvidencesLenovo
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
     Given that i copy all files from path "<path>" "<Sit>"
     Examples:
       | TS  | Scenario | Description                    |origim|path                                                                          |Sit|
-      | 001 |    0001  |Get evidence from TL lenovo     |BRT-NTB |\\\\10.10.0.8\\evidenciass\\MWPOS\\Pipeline\\Automation                     |Copy|
-      | 001 |    0001  |Get evidence from TL lenovo     |BRT-NTB |\\\\10.10.0.8\\evidenciass\\MWPOS\\Pipeline\\Automation                     |Del |
+      | 001 |    0001  |Get evidence from TL lenovo     |BRT-NTB |\\\\10.10.0.8\evidenciass\MWPOS\\Pipeline\Automation                     |Copy|
+      #| 001 |    0001  |Get evidence from TL lenovo     |BRT-NTB |\\\\10.10.0.8\evidenciass\MWPOS\Pipeline\Automation                     |Del |
 
   @GetEvidencesOthers
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
