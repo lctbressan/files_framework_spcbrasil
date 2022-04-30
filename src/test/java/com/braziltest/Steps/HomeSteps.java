@@ -116,7 +116,7 @@ public class HomeSteps extends BaseStep {
             for (Path path : stream) {
                 if (Files.isDirectory(path)) {
                     //fileList.add(path.getFileName().toString());
-                    System.out.println(path.getFileName().toString());
+                    //System.out.println("LENDO DIR " + path.getFileName().toString());
                     Dirs = path.getFileName().toString() +";"+ Dirs;
                     prmRunner =path.getFileName().toString();
                     findAllFilesInFolder(new File(path.toString()),prmRunner,Sit);
