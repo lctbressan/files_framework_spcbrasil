@@ -36,19 +36,19 @@ Feature: Evidences
     Given that i copy all files from path "<path>" "<Sit>"
     Examples:
       | TS  | Scenario | Description                      |origim|path                                                                          |Sit|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\10.10.0.3\evidenciass\MWPOS                                               |Copy|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\\\10.10.0.5\\evidencias\TRENDALYTICS                                      |Copy|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB|\\\\10.10.0.5\\evidencias\\MWPOS\\Pipeline\\Automation                       |Copy|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\evidenciasServidorC\\MWPOS\\Pipeline\\Automation             |Copy|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\evidenciasServidorC\\TRENDALYTICS                            |Copy|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\server01\\evidencias                                         |Copy|
+      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\\\10.10.0.50\evidencias\MWPOS\Pipeline\Automation                                                   |Copy|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\\\10.10.0.5\\evidencias\TRENDALYTICS                                      |Copy|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB|\\\\10.10.0.5\\evidencias\\MWPOS\\Pipeline\\Automation                       |Copy|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\evidenciasServidorC\\MWPOS\\Pipeline\\Automation             |Copy|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\evidenciasServidorC\\TRENDALYTICS                            |Copy|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\server01\\evidencias                                         |Copy|
 
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\10.10.0.3\evidenciass\MWPOS                                               |Del|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\\\10.10.0.5\\evidencias\TRENDALYTICS                                      |Del|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB|\\\\10.10.0.5\\evidencias\\MWPOS\\Pipeline\\Automation                       |Del|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\evidenciasServidorC\\MWPOS\\Pipeline\\Automation             |Del|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\evidenciasServidorC\\TRENDALYTICS                            |Del|
-      | 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\server01\\evidencias                                         |Del|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\10.10.0.3\evidenciass\MWPOS                                               |Del|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB |\\\\10.10.0.5\\evidencias\TRENDALYTICS                                      |Del|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |BRT-NTB|\\\\10.10.0.5\\evidencias\\MWPOS\\Pipeline\\Automation                       |Del|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\evidenciasServidorC\\MWPOS\\Pipeline\\Automation             |Del|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\evidenciasServidorC\\TRENDALYTICS                            |Del|
+      #| 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\server01\\evidencias                                         |Del|
 
 
 
