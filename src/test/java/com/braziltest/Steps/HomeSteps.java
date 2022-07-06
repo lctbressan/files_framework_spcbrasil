@@ -166,6 +166,13 @@ public class HomeSteps extends BaseStep {
     }
 
 
+    @Given("that i remove all folders from path \"([^\"]*)\"$")
+    public void thatIremovePathsRespond(String path) throws Exception {
+        File folder = new File(path);
+        //removeDirectoriesStream(path.toString());
+        deleteDirectoryRecursionJava6(new File(path.toString()));
+    }
+
     @Given("that i convert all files from path \"([^\"]*)\"$")
     public void thatIConvertPathsRespond(String path) throws Exception {
         //Lista o diretorio
@@ -177,6 +184,41 @@ public class HomeSteps extends BaseStep {
         }*/
     }
 
+
+    public static void removeDirectoriesStream(String dir) throws Exception {
+        PathOrigin =dir.toString();
+
+        String Dirs =  "";
+        String prmRunner = "";
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
+            for (Path path : stream) {
+                if (Files.isDirectory(path)) {
+                    //fileList.add(path.getFileName().toString());
+                    //System.out.println("LENDO DIR " + path.getFileName().toString());
+                    Dirs = path.getFileName().toString() +";"+ Dirs;
+                    prmRunner =path.getFileName().toString();
+
+
+                    //FileUtils.deleteDirectory(new File(path.toString()));
+                    deleteDirectoryRecursionJava6(new File(path.toString()));
+                }
+            }
+        }
+        //return Dirs;
+    }
+    public static void deleteDirectoryRecursionJava6(File file) throws IOException {
+        if (file.isDirectory()) {
+            File[] entries = file.listFiles();
+            if (entries != null) {
+                for (File entry : entries) {
+                    deleteDirectoryRecursionJava6(entry);
+                }
+            }
+        }
+        if (!file.delete()) {
+            throw new IOException("Failed to delete " + file);
+        }
+    }
     public static void listCDirectoriesStream(String dir) throws Exception {
         PathOrigin =dir.toString();
 

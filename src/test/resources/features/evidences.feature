@@ -12,7 +12,7 @@ Feature: Evidences
     Examples:
       | TS  | Scenario | Description                      |origim|path                                                                          |Sit|
       | 001 |    0001  |Get evidence from MW DELLBLUE     |DELLBLUE|\\\\10.10.0.27\\server2\\evidencias\\MWPOS\\Pipeline\\Automation            |Copy|
-      | 001 |    0001  |Get evidence from MW DELLBLUE     |DELLBLUE|\\\\10.10.0.27\\server2\\evidencias\\MWPOS\\Pipeline\\Automation            |Del |
+      #| 001 |    0001  |Get evidence from MW DELLBLUE     |DELLBLUE|\\\\10.10.0.27\\server2\\evidencias\\MWPOS\\Pipeline\\Automation            |Del |
 
 
   @GetEvidencesDellGray @GetEvidences
@@ -63,3 +63,31 @@ Feature: Evidences
 
 
 
+
+  @DeleteAllFolders50
+  Scenario Outline: TS:["<TS>"] - [Convert files generator]  - "<Scenario>" - "<Description>"
+    Given that i remove all folders from path "<path>"
+    Examples:
+      | TS  | Scenario | Description                      |origim|  path                                |
+      | 001 |    0001  |Get evidence from MW DELLBLUE     |BRT-NTB |\\\\10.10.0.50\evidencias\MWPOS\Pipeline\Automation              |
+
+  @DeleteAllFolders3
+  Scenario Outline: TS:["<TS>"] - [Convert files generator]  - "<Scenario>" - "<Description>"
+    Given that i remove all folders from path "<path>"
+    Examples:
+      | TS  | Scenario | Description                      |origim|  path                                |
+      | 001 |    0001  |Get evidence from TL lenovo     |BRT-NTB |\\\\10.10.0.3\evidenciass\MWPOS\\Pipeline\Automation                     |
+
+  @DeleteAllFolders27
+  Scenario Outline: TS:["<TS>"] - [Convert files generator]  - "<Scenario>" - "<Description>"
+    Given that i remove all folders from path "<path>"
+    Examples:
+      | TS  | Scenario | Description                      |origim|  path                                |
+      | 001 |    0001  |Get evidence from MW DELLBLUE     |DELLBLUE|\\\\10.10.0.27\\server2\\evidencias\\MWPOS\\Pipeline\\Automation            |
+
+  @DeleteAllFolders25
+  Scenario Outline: TS:["<TS>"] - [Convert files generator]  - "<Scenario>" - "<Description>"
+    Given that i remove all folders from path "<path>"
+    Examples:
+      | TS  | Scenario | Description                      |origim|  path                                |
+      | 001 |    0001  |Get evidence from MW DELLGRAY     |DELLGRAY|\\\\10.10.0.25\\ServerRoot\bressan\\evidencias\\MWPOS\\Pipeline\\Automation |
