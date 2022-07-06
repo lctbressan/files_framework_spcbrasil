@@ -6,7 +6,7 @@
 Feature: Evidences
 
 
-  @GetEvidencesDellBlue
+  @GetEvidencesDellBlue @GetEvidences
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
     Given that i copy all files from path "<path>" "<Sit>"
     Examples:
@@ -15,7 +15,7 @@ Feature: Evidences
       | 001 |    0001  |Get evidence from MW DELLBLUE     |DELLBLUE|\\\\10.10.0.27\\server2\\evidencias\\MWPOS\\Pipeline\\Automation            |Del |
 
 
-  @GetEvidencesDellGray
+  @GetEvidencesDellGray @GetEvidences
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
     Given that i copy all files from path "<path>" "<Sit>"
     Examples:
@@ -23,15 +23,15 @@ Feature: Evidences
       | 001 |    0001  |Get evidence from MW DELLGRAY     |DELLGRAY|\\\\10.10.0.25\\ServerRoot\bressan\\evidencias\\MWPOS\\Pipeline\\Automation |Copy|
       #| 001 |    0001  |Get evidence from MW DELLGRAY     |DELLGRAY|\\\\10.10.0.25\\ServerRoot\bressan\\evidencias\\MWPOS\\Pipeline\\Automation |Del|
 
-  @GetEvidencesLenovo
+  @GetEvidencesLenovo @GetEvidences
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
     Given that i copy all files from path "<path>" "<Sit>"
     Examples:
       | TS  | Scenario | Description                    |origim|path                                                                          |Sit|
-      | 001 |    0001  |Get evidence from TL lenovo     |BRT-NTB |\\\\10.10.0.8\evidenciass\MWPOS\\Pipeline\Automation                     |Copy|
+      | 001 |    0001  |Get evidence from TL lenovo     |BRT-NTB |\\\\10.10.0.3\evidenciass\MWPOS\\Pipeline\Automation                     |Copy|
       #| 001 |    0001  |Get evidence from TL lenovo     |BRT-NTB |\\\\10.10.0.8\evidenciass\MWPOS\Pipeline\Automation                     |Del |
 
-  @GetEvidencesOthers
+  @GetEvidencesOthers @GetEvidences
   Scenario Outline: TS:["<TS>"] - [Evidence generator]  - "<Scenario>" - "<Description>"
     Given that i copy all files from path "<path>" "<Sit>"
     Examples:
@@ -49,6 +49,17 @@ Feature: Evidences
       #| 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\evidenciasServidorC\\MWPOS\\Pipeline\\Automation             |Del|
       #| 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\evidenciasServidorC\\TRENDALYTICS                            |Del|
       #| 001 |    0001  |Get evidence from TL DELLGRAY     |SRV    |\\\\10.10.0.10\\server01\\evidencias                                         |Del|
+
+
+
+
+
+  @ConvertAllfiles
+  Scenario Outline: TS:["<TS>"] - [Convert files generator]  - "<Scenario>" - "<Description>"
+    Given that i convert all files from path "<path>"
+    Examples:
+      | TS  | Scenario | Description                      |origim|path                                |
+      | 001 |    0001  |Get evidence from MW DELLBLUE     |DELLBLUE|\\\\10.10.0.10\\f\\evidencias              |
 
 
 

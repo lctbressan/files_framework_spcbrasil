@@ -18,6 +18,7 @@ import java.util.Objects;
 
 import static com.braziltest.Utils.Config.PathOrigin;
 import static com.braziltest.Utils.Config.pSit;
+import static com.braziltest.utils.ProcessBuilderRun.processCommand;
 
 public class HomeSteps extends BaseStep {
 
@@ -103,10 +104,6 @@ public class HomeSteps extends BaseStep {
 
 
 
-
-
-
-
     public static void listFDirectoriesStream(String dir,String Sit) throws Exception {
         PathOrigin =dir.toString();
         pSit = Sit;
@@ -125,7 +122,6 @@ public class HomeSteps extends BaseStep {
         }
         //return Dirs;
     }
-
     public static void findAllFilesInFolder(File folder,String Runner,String Sit) throws Exception {
         try{
             String path = folder.toString();
@@ -149,7 +145,7 @@ public class HomeSteps extends BaseStep {
 
 
                             if (!destinationFile.exists()) {
-                                System.out.println("COPY  >>> " + destinationFile);
+                                System.out.println("COPY FROM  " + path +"  TO : "+ destinationFile);
                                 FileUtils.copyFile(sourceFile, destinationFile);
                             }/*else{
                                 System.out.println("EXISTS >>> " + destinationFile);
@@ -170,6 +166,72 @@ public class HomeSteps extends BaseStep {
     }
 
 
+    @Given("that i convert all files from path \"([^\"]*)\"$")
+    public void thatIConvertPathsRespond(String path) throws Exception {
+        //Lista o diretorio
+        File folder = new File(path);
+
+        listCDirectoriesStream(path.toString());
+        /*for(String item : arq.split(";")){
+            findAllFilesInFolder(new File(path + item));
+        }*/
+    }
+
+    public static void listCDirectoriesStream(String dir) throws Exception {
+        PathOrigin =dir.toString();
+
+        String Dirs =  "";
+        String prmRunner = "";
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
+            for (Path path : stream) {
+                if (Files.isDirectory(path)) {
+                    //fileList.add(path.getFileName().toString());
+                    //System.out.println("LENDO DIR " + path.getFileName().toString());
+                    Dirs = path.getFileName().toString() +";"+ Dirs;
+                    prmRunner =path.getFileName().toString();
+                    findAllCFilesInFolder(new File(path.toString()),prmRunner);
+                }
+            }
+        }
+        //return Dirs;
+    }
+    public static void findAllCFilesInFolder(File folder,String Runner) throws Exception {
+        try{
+            String path = folder.toString();
+            String fileName ="";
+
+                for (File file : Objects.requireNonNull(folder.listFiles())) {
+                    if (!file.isDirectory()) {
+                        fileName = file.getName();
+                        if (fileName.contains("avi")) {
+                            System.out.println(file.getName());
+                            //CHAMA A ROTINA DE TRATAMENTO DO ARQUIVO
+                            //saveEvidence(path+"\\",file.getName(),Runner);
+
+
+                            File destinationFile = null;
+                            File sourceFile = new File(folder + "\\" + file.getName());
+
+                            if (fileName.contains("avi")) {
+                                destinationFile = new File(Config.PathEvidenceCentral + "\\" + Runner + ".webm");
+                            }
+
+
+                            if (!destinationFile.exists()) {
+                                System.out.println("CONVERT  FROM  " + path +"  TO : "+ destinationFile);
+                                //processCommand("ffmpeg.exe -i "+ folder + "\\" + file.getName() +" -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus " + folder + "\\" + file.getName().replace("avi","webm"));
+                                processCommand(file.getName());
+                            }
+                        }
+                    }
+                }
+
+
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
 
     public static void saveEvidence(String path,String filename,String Runner) throws Exception {
         String evidencia = "";
