@@ -212,6 +212,7 @@ public class HomeSteps extends BaseStep {
             if (entries != null) {
                 for (File entry : entries) {
                     deleteDirectoryRecursionJava6(entry);
+                    System.out.println("REMOVING :" + entry);
                 }
             }
         }
