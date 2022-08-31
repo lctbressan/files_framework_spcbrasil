@@ -37,33 +37,31 @@ public class DriverFactory extends Hook {
 
         public static WebDriver getDriver(String arg0) throws Exception {
 
-                if (PLATFORMTYPE.toUpperCase().equals("WEB")) {
-
-                    if (BROWSERTESTING.equals("CHROME")) {
-                        //OpenBrowserChrome(URLTESTING);
-                        OpenBrowserChrome(arg0);
-
+            if (PLATFORMTYPE.toUpperCase().equals("WEB")) {
+                if (BROWSERTESTING.equals("CHROME")) {
+                    if (System.getProperty("os.name").contains("Windows")) {
+                        System.out.println(System.getProperty("os.name"));
+                        OpenBrowserChrome(arg0, DRIVERPATHCHROMEWIN);
+                        //openGridServerChrome(arg0, DRIVERPATHCHROMEWIN);
                     }
 
-                    if (BROWSERTESTING.equals("FIREFOX")) {
-                        OpenBrowserFirefox(arg0);
-                    }
+                    if (System.getProperty("os.name").contains("Linux")) {
+                        System.out.println(System.getProperty("os.name"));
+                        // openGridServerFFox(arg0, DRIVERPATHCHROMELIN);
+                        OpenBrowserChrome(arg0, DRIVERPATHCHROMELIN);
 
-                    if (BROWSERTESTING.equals("GRID")) {
-                        OpenBrowserChromeSG(arg0);
                     }
                 }
-
-                //System.out.println("INSTANCIA DO DIVER >>" + Webdriver);
-                return Webdriver;
             }
+            return Webdriver;
+        }
 
 
     /*************************************************************
      * INSTANTIATE A NEW DRIVER WEB
      ****************************************************************/
-    public static WebDriver OpenBrowserChrome(String p0) throws Exception {
-        System.setProperty("webdriver.chrome.driver", DRIVERPATH);
+    public static WebDriver OpenBrowserChrome(String p0,String Path) throws Exception {
+        System.setProperty("webdriver.chrome.driver", Path);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("test-type");
         options.addArguments("start-maximized");
@@ -74,16 +72,16 @@ public class DriverFactory extends Hook {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-browser-side-navigation");
         options.addArguments("--disable-gpu");
+
         Webdriver = new ChromeDriver(options);
         Webdriver.get(p0);
         Webdriver.manage().window().maximize();
-        Thread.sleep(2000);
-      return Webdriver;
+        return Webdriver;
     }
 
 
     public static WebDriver OpenBrowserFirefox(String p0) throws InterruptedException {
-       System.setProperty("webdriver.gecko.driver",DRIVERPATHFOX);
+       System.setProperty("webdriver.gecko.driver",DRIVERPATHFFOX);
         WebDriver driver = new FirefoxDriver();
         driver.navigate().to(p0);
         driver.manage().timeouts().implicitlyWait(TIMEOUTAUTOMATION, TimeUnit.SECONDS);
