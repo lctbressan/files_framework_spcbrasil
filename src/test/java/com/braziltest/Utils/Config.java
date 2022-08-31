@@ -12,7 +12,7 @@ public class Config {
     public static final String DRIVERPATHFOX = "C:\\Drivers\\browsers\\firefox\\geckodriver-v0.26.0-win64\\geckodriver.exe";
 
     //CHROME
-    public static final String DRIVERPATH =  "C:\\Drivers\\browsers\\chrome\\101.0.4951.41\\chromedriver_win32\\chromedriver.exe";
+    public static final String DRIVERPATH = "C:\\Drivers\\browsers\\chrome\\103.0.5060.66\\chromedriver_win32\\chromedriver.exe";
 
     //For Mac Users
     //public static final String PATHEVIDENCE = "/Users/braziltest/evidencias/Run_"+ getSaltStringCelular() + "/";

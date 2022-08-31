@@ -5,7 +5,8 @@ public class ProcessBuilderRun {
 
     public static void processCommand(String Runner) throws IOException {
         try {
-            String[] command = {"cmd.exe", "/c", "start", "cmd.exe", "/k", " dir && ffmpeg.exe -i F:\\evidencias\\CentralEnvidence\\"+ Runner +" -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus F:\\evidencias\\CentralEnvidence\\"+ Runner.replace(".avi",".webm")};
+            Runner ="Run_863912611.avi";
+            String[] command = {"cmd.exe", "/c", "start", "cmd.exe", "/k", " dir && ffmpeg.exe -i F:\\evidencias\\CentralEnvidence\\"+ Runner +" -y -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus F:\\evidencias\\CentralEnvidence\\"+ Runner.replace(".avi",".webm")};
             ProcessBuilder probuilder = new ProcessBuilder(command);
             probuilder.directory(new File("c:\\ffmpeg\\bin"));
             Process process = probuilder.start();

@@ -195,7 +195,7 @@ public class HomePage extends BaseStep {
         //Instrumentation.clickWeb(Webdriver,Config.id,"btnReset","");
        /* Webdriver.switchTo().frame(0);
         Instrumentation.clickWeb(Webdriver,Config.id,"btnCancel","");*/
-        runnerIframe(Webdriver);
+        //runnerIframe(Webdriver);
 
     }
     public static void runnerIframe(WebDriver driver) {

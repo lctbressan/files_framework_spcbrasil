@@ -58,8 +58,8 @@ Feature: Evidences
   Scenario Outline: TS:["<TS>"] - [Convert files generator]  - "<Scenario>" - "<Description>"
     Given that i convert all files from path "<path>"
     Examples:
-      | TS  | Scenario | Description                      |origim|path                                |
-      | 001 |    0001  |Get evidence from MW DELLBLUE     |DELLBLUE|\\\\10.10.0.10\\f\\evidencias              |
+      | TS  | Scenario | Description |path                                                   |
+      | 001 |    0001  |Convert Video|\\\\10.10.0.10\\f\\evidencias\\      |
 
 
 

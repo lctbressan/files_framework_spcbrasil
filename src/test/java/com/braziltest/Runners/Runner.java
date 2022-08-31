@@ -14,13 +14,13 @@ import org.junit.runner.RunWith;
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:", "json:target/cucumber.json", "html:target/cucumber-report", "junit:target/junit.xml"},
 
         //tags={"@GetEvidences"},
-        //tags={"@GetEvidencesDellBlue"},
+        //tags={"@GetEvidencesDellGray"},
         //tags={"@GetEvidencesLenovo"},
         //tags={"@GetEvidencesOthers"},
 
-        //tags={"@Roteador"},
+        tags={"@Roteador"},
 
-                tags={"@DeleteAllFolders"},
+        //        tags={"@ConvertAllfiles"},
 
         strict = true,
         snippets = SnippetType.CAMELCASE)

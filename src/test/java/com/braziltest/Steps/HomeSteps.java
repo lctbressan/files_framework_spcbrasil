@@ -232,6 +232,7 @@ public class HomeSteps extends BaseStep {
                     //System.out.println("LENDO DIR " + path.getFileName().toString());
                     Dirs = path.getFileName().toString() +";"+ Dirs;
                     prmRunner =path.getFileName().toString();
+                    System.out.println(Dirs);
                     findAllCFilesInFolder(new File(path.toString()),prmRunner);
                 }
             }
