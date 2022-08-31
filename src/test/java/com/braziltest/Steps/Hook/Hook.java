@@ -14,17 +14,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 
-public abstract class Hook extends BaseStep{
+public abstract class Hook extends BaseStep {
 
 
-
-   @BeforeClass
+    @BeforeClass
     public static void inicializaAutomacao() throws Exception {
         System.out.println("#####################################################################################}");
         System.out.println("                  {STARTING AUTOMATION WAIT PLS}");
         System.out.println("#####################################################################################}");
         ExtentProperties extentProperties = ExtentProperties.INSTANCE;
-        extentProperties.setReportPath(PATHEVIDENCE+"/report.html");
+        extentProperties.setReportPath(PATHEVIDENCE + "/report.html");
     }
 
     @AfterClass
@@ -34,7 +33,7 @@ public abstract class Hook extends BaseStep{
             Reporter.setSystemInfo("user", System.getProperty("user.name"));
             Reporter.setSystemInfo("os", "Win/Mac OSX");
             Reporter.setTestRunnerOutput("Sample test runner output message");
-            Reporter.assignAuthor("JoyJet");
+            Reporter.assignAuthor("BRAZILTEST");
 
             System.out.println("Finalizando Testes");
             System.out.println("#####################################################################################}");
@@ -48,28 +47,23 @@ public abstract class Hook extends BaseStep{
         }
     }
 
-        private String getFeatureFileNameFromScenarioId(Scenario scenario) {
-            String featureName = "Feature ";
-            String rawFeatureName = scenario.getId().split(";")[0].replace("-"," ");
-            featureName = featureName + rawFeatureName.substring(0, 1).toUpperCase() + rawFeatureName.substring(1);
+    private String getFeatureFileNameFromScenarioId(Scenario scenario) {
+        String featureName = "Feature ";
+        String rawFeatureName = scenario.getId().split(";")[0].replace("-", " ");
+        featureName = featureName + rawFeatureName.substring(0, 1).toUpperCase() + rawFeatureName.substring(1);
 
-            return featureName;
-        }
-
-
-        @Before
-        public void before(Scenario scenario) {
-            ScenarioName = scenario.getName();
-            ScenarioId = scenario.getId();
-            FeatureName = getFeatureFileNameFromScenarioId(scenario);
-        }
-
-        @After
-        public void after() {
+        return featureName;
+    }
 
 
-        }
-
-
+    @Before
+    public void before(Scenario scenario) {
+        ScenarioName = scenario.getName();
+        ScenarioId = scenario.getId();
+        FeatureName = getFeatureFileNameFromScenarioId(scenario);
+    }
 
 }
+
+
+

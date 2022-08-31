@@ -3,6 +3,7 @@ package com.braziltest.Steps;
 import com.braziltest.Pages.HomePage;
 import com.braziltest.Steps.Hook.BaseStep;
 import com.braziltest.Utils.Config;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -331,5 +332,11 @@ public class HomeSteps extends BaseStep {
             e.printStackTrace();
         }
 
+    }
+
+    @After
+    public void teardownSteps() throws Exception {
+        Webdriver.quit();
+        Webdriver.close();
     }
 }
