@@ -1,11 +1,16 @@
 package com.braziltest;
 
 import com.braziltest.utils.ManipularJson;
+import org.junit.Assert;
+import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.winium.DesktopOptions;
+import org.openqa.selenium.winium.WiniumDriver;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -69,4 +74,31 @@ RemoteWebDriver driver;
         //System.out.println(formatted);
         return  formatted;
     }
+
+    @Test
+    public void winniunDesktopTest(){
+        DesktopOptions options= new DesktopOptions();
+        options.setApplicationPath("C:\\Windows\\System32\\calc.exe");
+        try{
+            WiniumDriver Driver=new WiniumDriver(new URL("http://localhost:9999"),options);
+            //driver.findElementByClassName("Edit").sendKeys("This is sample test");
+            Thread.sleep(2000);
+            Driver.findElement(By.name("Um")).click();
+            Driver.findElement(By.name("Dois")).click();
+            Driver.findElement(By.name("Mais")).click();
+            Driver.findElement(By.name("Três")).click();
+            Driver.findElement(By.name("Igual a")).click();
+
+            Assert.assertEquals(true, Driver.findElement(By.name("A exibição é 15")).isDisplayed());
+            Driver.findElement(By.name("Limpar")).click();
+            Thread.sleep(2000);
+
+
+            Driver.close();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

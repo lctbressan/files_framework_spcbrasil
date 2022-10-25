@@ -1,6 +1,9 @@
 package com.braziltest.Utils;
 
 import com.braziltest.utils.ManipularJson;
+import org.openqa.selenium.winium.WiniumDriver;
+
+import java.net.URL;
 
 public class Config {
 
@@ -34,8 +37,13 @@ public class Config {
     public static final String className = "className";
     public static final String id = "id";
     public static final String tagname = "tagname";
+    public static final String name = "name";
 
 
     public static String PathOrigin = "";
     public static String pSit = "";
+
+
+    public static String Application = "C:\\WINDOWS\\system32\\notepad.exe";
+    public static String WiniHost = "http://localhost:9999";
 }

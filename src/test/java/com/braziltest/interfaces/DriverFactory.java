@@ -2,6 +2,7 @@ package com.braziltest.interfaces;
 
 import com.braziltest.Steps.Hook.Hook;
 import com.vimalselvam.cucumber.listener.Reporter;
+import org.apache.catalina.mapper.MapperListener;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +11,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.winium.DesktopOptions;
+import org.openqa.selenium.winium.WiniumDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,6 +58,7 @@ public class DriverFactory extends Hook {
             }
             return Webdriver;
         }
+
 
 
     /*************************************************************
@@ -114,6 +118,20 @@ public class DriverFactory extends Hook {
 
     }
 
+    public static WiniumDriver winniumDriverOpen(String Application,String WiniHost){
+        DesktopOptions options= new DesktopOptions();
+        options.setApplicationPath(Application);
+        try{
+            WiniumDriver driver=new WiniumDriver(new URL(WiniHost),options);
+
+            winiumDriver = driver;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Driver:"+ winiumDriver);
+        return winiumDriver;
+    }
 
     public static WebDriver OpenBrowserChromeSG(String p0) throws Exception {
         /*DesiredCapabilities capabilities = new DesiredCapabilities();
