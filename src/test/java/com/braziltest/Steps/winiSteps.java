@@ -26,9 +26,5 @@ public class winiSteps extends BaseStep {
         InstrumentationDesktop.clickElement(winiumDriver, Config.name,"Igual a","Click");
         Assert.assertEquals(true, winiumDriver.findElement(By.name("A exibição é 15")).isDisplayed());
         InstrumentationDesktop.clickElement(winiumDriver, Config.name,"Limpar","Limpar");
-
-
-
-
     }
 }

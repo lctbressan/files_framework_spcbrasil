@@ -63,6 +63,11 @@ public abstract class Hook extends BaseStep {
         FeatureName = getFeatureFileNameFromScenarioId(scenario);
     }
 
+     @After
+    public void after() {
+        Webdriver.quit();
+    }
+
 }
 
 

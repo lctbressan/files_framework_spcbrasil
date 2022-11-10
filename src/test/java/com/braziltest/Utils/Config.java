@@ -12,7 +12,7 @@ public class Config {
     public static final String BROWSERTESTING = "CHROME"; // FIREFOX / CHROME //GRID
 
     public static final String DRIVERPATHCHROMELIN = "/home/bressan/drivers/chromedriver_linux64/chromedriver";
-    public static final String DRIVERPATHCHROMEWIN = "C:\\Drivers\\browsers\\chrome\\103.0.5060.66\\chromedriver_win32\\chromedriver.exe";
+    public static final String DRIVERPATHCHROMEWIN = "C:\\Drivers\\browsers\\chrome\\107\\chromedriver.exe";
     public static final String DRIVERPATHFFOX = "/home/bressan/drivers/chromedriver_linux64/chromedriver";
     //For Windows Users
     public static final String PATHEVIDENCE = "C:\\Evidencias\\Braziltest\\Run_"+ ManipularJson.getSaltStringCelular() + "\\";

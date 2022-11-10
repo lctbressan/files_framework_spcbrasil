@@ -1,7 +1,10 @@
 package com.braziltest.Steps.Hook;
 
+import com.braziltest.Pages.HomePage;
 import com.braziltest.Utils.Instrumentation;
 import com.vimalselvam.cucumber.listener.Reporter;
+import cucumber.api.java.After;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -10,7 +13,7 @@ import java.io.*;
 
 import static org.junit.Assert.assertTrue;
 
-public class testQaSteps {
+public class testQaSteps extends BaseStep {
 
     int RetCode=0;
     String process;
@@ -136,5 +139,33 @@ public class testQaSteps {
             }
         }
         return resultStringBuilder.toString();
+    }
+
+    @And("wait show up \"([^\"]*)\"$")
+    public void waitShowUp(String arg0) {
+    }
+
+    @And("click in buscar cep")
+    public void clickInBuscarCep() throws Exception {
+        HomePage.buscarCep();
+    }
+
+    @And("fill Buscar no site \"([^\"]*)\"$")
+    public void fillBuscarNoSite(String arg0) throws IOException {
+        HomePage.fillBuscarNoSite(arg0);
+    }
+
+    @And("check for information \"([^\"]*)\"$")
+    public void checkForInformation(String arg0) throws IOException {
+        HomePage.checkForInformation(arg0);
+    }
+
+    @And("cick Buscar")
+    public void cickBuscar() throws IOException {
+        HomePage.cickBuscar();
+    }
+     @After
+    public void after() {
+         Webdriver.quit();
     }
 }

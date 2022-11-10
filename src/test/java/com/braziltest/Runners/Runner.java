@@ -17,11 +17,12 @@ import org.junit.runner.RunWith;
         //tags={"@GetEvidencesDellGray"},
         //tags={"@GetEvidencesLenovo"},
         //tags={"@GetEvidencesOthers"},
+       // tags={"@Links"},
+         tags={"@CheckCorreios"},
 
-        //tags={"@Roteador"},
 
         //tags={"@ConvertAllfiles"},
-        tags={"@Desktop"},
+        //tags={"@Desktop"},
         strict = true,
         snippets = SnippetType.CAMELCASE)
 public  class Runner extends Hook {

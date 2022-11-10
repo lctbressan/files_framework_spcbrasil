@@ -14,7 +14,7 @@
     And Select Project Trendalitycs
     And Click StopStart
     Examples:
-      | TS  | Scenario | Description                   |Email                     | Password         |HomePage            |
-      | 001 |    0001  |Test Link Product              |luis.bressan@joyjet.com   | brt125243        |https://clockify.me/|
+      | TS  | Scenario | Description                   |Email                   | Password         |HomePage            |
+      | 001 |    0001  |Test Link Product              |lctbressan@gmail.com    | brt125243        |https://clockify.me/|
 
 

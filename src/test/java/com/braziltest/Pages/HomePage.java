@@ -216,4 +216,20 @@ public class HomePage extends BaseStep {
         }
     }
 
+
+    public static void buscarCep() throws IOException {
+            Instrumentation.clickWeb(Webdriver,Config.xpath,"//input[@id='endereco']","Click in Busca");
+     }
+
+    public static void fillBuscarNoSite(String arg0) throws IOException {
+        Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@name='endereco']",arg0,"Type Pass");
+    }
+
+    public static void checkForInformation(String arg0) throws IOException {
+        Instrumentation.collectByClassNameIndex(Webdriver,"th-fixo",arg0,"Check for : " + arg0);
+    }
+
+    public static void cickBuscar() throws IOException {
+        Instrumentation.clickWeb(Webdriver,Config.id,"btn_pesquisar","Click in Busca");
+    }
 }
