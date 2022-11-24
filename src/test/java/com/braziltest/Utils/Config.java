@@ -9,13 +9,16 @@ public class Config {
 
     public static final String PLATFORMNAME = "WEB";
 
-    public static final String BROWSERTESTING = "CHROME"; // FIREFOX / CHROME //GRID
+    public static final String BROWSERTESTING = "FIREFOX"; // FIREFOX / CHROME //GRID
 
     public static final String DRIVERPATHCHROMELIN = "/home/bressan/drivers/chromedriver_linux64/chromedriver";
+
+    public static final String DRIVERPATHFFOXLIN = "/home/bressan/drivers/firefox/geckodriver-v0.30.0-linux64/geckodriver";
     public static final String DRIVERPATHCHROMEWIN = "C:\\Drivers\\browsers\\chrome\\107\\chromedriver.exe";
-    public static final String DRIVERPATHFFOX = "/home/bressan/drivers/chromedriver_linux64/chromedriver";
+    public static final String DRIVERPATHFFOXLWIN = "/home/bressan/drivers/chromedriver_linux64/chromedriver";
     //For Windows Users
-    public static final String PATHEVIDENCE = "C:\\Evidencias\\Braziltest\\Run_"+ ManipularJson.getSaltStringCelular() + "\\";
+    public static final String PATHEVIDENCEWIN = "C:\\Evidencias\\Braziltest\\Run_"+ ManipularJson.getSaltStringCelular() + "\\";
+    public static final String PATHEVIDENCELIN = "/home/bressan/evidencias/almadin/Run_"+ ManipularJson.getSaltStringCelular() + "/";
     public static final String PathEvidenceCentral = "\\\\10.10.0.10\\f\\evidencias\\CentralEnvidence";
 
 

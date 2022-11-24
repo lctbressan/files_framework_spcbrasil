@@ -41,18 +41,35 @@ public class DriverFactory extends Hook {
         public static WebDriver getDriver(String arg0) throws Exception {
 
             if (PLATFORMTYPE.toUpperCase().equals("WEB")) {
+
                 if (BROWSERTESTING.equals("CHROME")) {
+
                     if (System.getProperty("os.name").contains("Windows")) {
-                        System.out.println(System.getProperty("os.name"));
-                        OpenBrowserChrome(arg0, DRIVERPATHCHROMEWIN);
-                        //openGridServerChrome(arg0, DRIVERPATHCHROMEWIN);
+                        if(BROWSERTESTING.equals("CHROME")) {
+                            OpenBrowserChrome(arg0, DRIVERPATHCHROMEWIN);
+                        }
                     }
 
                     if (System.getProperty("os.name").contains("Linux")) {
-                        System.out.println(System.getProperty("os.name"));
-                        // openGridServerFFox(arg0, DRIVERPATHCHROMELIN);
-                        OpenBrowserChrome(arg0, DRIVERPATHCHROMELIN);
+                        if(BROWSERTESTING.equals("CHROME")) {
+                            OpenBrowserChrome(arg0, DRIVERPATHCHROMELIN);
+                        }
 
+                    }
+                }
+
+
+                if (BROWSERTESTING.equals("FIREFOX")) {
+                    if (System.getProperty("os.name").contains("Windows")) {
+                        if(BROWSERTESTING.equals("FIREFOX")) {
+                            OpenBrowserFirefox(arg0, DRIVERPATHFFOXLWIN);
+                        }
+                    }
+
+                    if (System.getProperty("os.name").contains("Linux")) {
+                        if(BROWSERTESTING.equals("FIREFOX")) {
+                            OpenBrowserFirefox(arg0, DRIVERPATHFFOXLIN);
+                        }
                     }
                 }
             }
@@ -84,8 +101,8 @@ public class DriverFactory extends Hook {
     }
 
 
-    public static WebDriver OpenBrowserFirefox(String p0) throws InterruptedException {
-       System.setProperty("webdriver.gecko.driver",DRIVERPATHFFOX);
+    public static WebDriver OpenBrowserFirefox(String p0,String path) throws InterruptedException {
+       System.setProperty("webdriver.gecko.driver",path);
         WebDriver driver = new FirefoxDriver();
         driver.navigate().to(p0);
         driver.manage().timeouts().implicitlyWait(TIMEOUTAUTOMATION, TimeUnit.SECONDS);
@@ -98,8 +115,18 @@ public class DriverFactory extends Hook {
      ****************************************************************/
     public static void Evidencia(WebDriver driver, String ct) throws IOException {
 
+        String pathCucumber = "" ;
+        if (System.getProperty("os.name").contains("Windows")) {
+             pathCucumber = PATHEVIDENCEWIN ;
+        }
+
+        if (System.getProperty("os.name").contains("Linux")) {
+             pathCucumber = PATHEVIDENCELIN ;
+
+        }
+
         id = id + 1;
-        String pathCucumber = PATHEVIDENCE ;
+
         File folder = new File(pathCucumber +  ct);
         if (!folder.exists()) {
             if (folder.mkdirs()) {
