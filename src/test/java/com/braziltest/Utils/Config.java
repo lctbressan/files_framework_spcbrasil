@@ -9,9 +9,12 @@ public class Config {
 
     public static final String PLATFORMNAME = "WEB";
 
-    public static final String BROWSERTESTING = "FIREFOX"; // FIREFOX / CHROME //GRID
+    public static final String BROWSERTESTING = "CHROME"; // FIREFOX / CHROME   z //GRID
 
-    public static final String DRIVERPATHCHROMELIN = "/home/bressan/drivers/chromedriver_linux64/chromedriver";
+    public static final String DRIVERPATHCHROMELIN = "/home/breassan/drivers/chromedriver_linux64/chromedriver";
+
+    public static final String DRIVERPATHCHROMEMAC = "/Users/bressan/drivers/chromedriver_linux64/chromedriver";
+
 
     public static final String DRIVERPATHFFOXLIN = "/home/bressan/drivers/firefox/geckodriver-v0.30.0-linux64/geckodriver";
     public static final String DRIVERPATHCHROMEWIN = "C:\\Drivers\\browsers\\chrome\\107\\chromedriver.exe";

@@ -39,7 +39,7 @@ public class DriverFactory extends Hook {
             "");
 
         public static WebDriver getDriver(String arg0) throws Exception {
-
+            System.out.println(System.getProperty("os.name"));
             if (PLATFORMTYPE.toUpperCase().equals("WEB")) {
 
                 if (BROWSERTESTING.equals("CHROME")) {
@@ -50,23 +50,31 @@ public class DriverFactory extends Hook {
                         }
                     }
 
-                    if (System.getProperty("os.name").contains("Linux")) {
+                    if (System.getProperty("os.name").contains("Linux") ) {
                         if(BROWSERTESTING.equals("CHROME")) {
                             OpenBrowserChrome(arg0, DRIVERPATHCHROMELIN);
                         }
 
                     }
+
+                    if ( System.getProperty("os.name").contains("Mac OS X")) {
+                        if(BROWSERTESTING.equals("CHROME")) {
+                            OpenBrowserChrome(arg0, DRIVERPATHCHROMEMAC);
+                        }
+
+                    }
+
                 }
 
 
-                if (BROWSERTESTING.equals("FIREFOX")) {
+                if (BROWSERTESTING.equals("FIREFOX") ) {
                     if (System.getProperty("os.name").contains("Windows")) {
                         if(BROWSERTESTING.equals("FIREFOX")) {
                             OpenBrowserFirefox(arg0, DRIVERPATHFFOXLWIN);
                         }
                     }
 
-                    if (System.getProperty("os.name").contains("Linux")) {
+                    if (System.getProperty("os.name").contains("Linux")|| System.getProperty("os.name").contains("Mac OS X")) {
                         if(BROWSERTESTING.equals("FIREFOX")) {
                             OpenBrowserFirefox(arg0, DRIVERPATHFFOXLIN);
                         }
