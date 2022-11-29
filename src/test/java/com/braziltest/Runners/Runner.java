@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         monochrome = true,
         dryRun = false,
         glue = {"com.braziltest.Steps"},
-        features = {"src/test/resources/features/"},
+        features = {"src/test/resources/features/core/"},
         plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:", "json:target/cucumber.json", "html:target/cucumber-report", "junit:target/junit.xml"},
 
         //tags={"@GetEvidences"},
