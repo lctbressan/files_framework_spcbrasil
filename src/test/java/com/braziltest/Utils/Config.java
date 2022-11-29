@@ -11,7 +11,7 @@ public class Config {
 
     public static final String BROWSERTESTING = "CHROME"; // FIREFOX / CHROME   z //GRID
 
-    public static final String DRIVERPATHCHROMELIN = "/home/breassan/drivers/chromedriver_linux64/chromedriver";
+    public static final String DRIVERPATHCHROMELIN = "/home/bressan/drivers/chromedriver_linux64/chromedriver";
 
     public static final String DRIVERPATHCHROMEMAC = "/Users/bressan/drivers/chromedriver_linux64/chromedriver";
 
