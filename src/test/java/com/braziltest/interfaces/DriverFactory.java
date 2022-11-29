@@ -104,7 +104,7 @@ public class DriverFactory extends Hook {
 
         Webdriver = new ChromeDriver(options);
         Webdriver.get(p0);
-        Webdriver.manage().window().maximize();
+        //Webdriver.manage().window().maximize();
         return Webdriver;
     }
 
@@ -130,6 +130,11 @@ public class DriverFactory extends Hook {
 
         if (System.getProperty("os.name").contains("Linux")) {
              pathCucumber = PATHEVIDENCELIN ;
+
+        }
+
+        if ( System.getProperty("os.name").contains("Mac OS X")) {
+            pathCucumber = PATHEVIDENCEMAC;
 
         }
 

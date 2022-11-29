@@ -225,8 +225,15 @@ public class HomePage extends BaseStep {
         Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@name='endereco']",arg0,"Type Pass");
     }
 
-    public static void checkForInformation(String arg0) throws IOException {
-        Instrumentation.collectByClassNameIndex(Webdriver,"th-fixo",arg0,"Check for : " + arg0);
+    public static void checkForInformationOnLogonPage(String Env, String arg0) throws IOException {
+        if(Env.equals("ciq")){
+            Instrumentation.collectByClassNameIndex(Webdriver,"text-md",arg0,"Check for : " + arg0);
+        }
+        if(Env.equals("smc")){
+            Instrumentation.collectByClassNameIndex(Webdriver,"dropdown__user-options--greetings",arg0,"Check for : " + arg0);
+
+        }
+
     }
 
     public static void cickBuscar() throws IOException {

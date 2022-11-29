@@ -88,6 +88,20 @@ public class Instrumentation {
         }
     }
 
+    public static String waitngFor(WebDriver driver, String prmText) throws IOException {
+        String Ret = "";
+        try {
+            List<WebElement> listElement = driver.findElements(By.xpath("//*[contains(text(),'" + prmText + "')]"));
+            for (int i = 0; i < listElement.size(); i++) {
+                String elementText = listElement.get(i).getText();
+                if (elementText != null) {
+                    Ret = "YES";
+                }            }
+        }catch(Exception e){
+            waitngFor(driver,prmText);
+        }
+        return Ret;
+    }
 
     public static void clickByfindElements (WebDriver driver, String prmCSS ,int index, String StepLog) throws IOException {
         try {

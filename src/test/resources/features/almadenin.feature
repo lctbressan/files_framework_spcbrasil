@@ -11,9 +11,9 @@ Feature:  Check Information on Correio´s site
     And check for information "<info3>"
     And check for information "<CEP>"
   Examples:
-      | Env    |Description                       |HomePage                                                     |CEP          | info1                                   |info2              |info3         |
-      | BK     |Find for information on Correios |https://buscacepinter.correios.com.br/app/endereco/index.php  |01418-000     |Alameda Santos - até 484 - lado par    |Cerqueira César	    |São Paulo/SP	|
-      | BK     |Find for information on Correios |https://buscacepinter.correios.com.br/app/endereco/index.php  |11441-400     |Rua Doutor Júlio Prestes de Albuquerque|Enseada      	    |Guarujá/SP		|
+      | Env      |Description                       |HomePage                                                     |CEP          | info1                                   |info2              |info3         |
+      | STAGING  |Find for information on Correios |https://buscacepinter.correios.com.br/app/endereco/index.php  |01418-000     |Alameda Santos - até 484 - lado par    |Cerqueira César	    |São Paulo/SP	|
+      | STAGING  |Find for information on Correios |https://buscacepinter.correios.com.br/app/endereco/index.php  |11441-400     |Rua Doutor Júlio Prestes de Albuquerque|Enseada      	    |Guarujá/SP		|
 
 
 

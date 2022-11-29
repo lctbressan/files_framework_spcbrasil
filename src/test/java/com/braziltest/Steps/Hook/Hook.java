@@ -33,6 +33,10 @@ public abstract class Hook extends BaseStep {
             extentProperties.setReportPath(PATHEVIDENCELIN + "/report.html");
         }
 
+        if ( System.getProperty("os.name").contains("Mac OS X")) {
+                extentProperties.setReportPath(PATHEVIDENCEMAC + "/report.html");
+
+        }
 
     }
 

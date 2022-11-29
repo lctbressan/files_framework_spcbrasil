@@ -3,6 +3,7 @@ package com.braziltest.Steps;
 import com.braziltest.Pages.HomePage;
 import com.braziltest.Steps.Hook.BaseStep;
 import com.braziltest.Utils.Config;
+import com.braziltest.Utils.Instrumentation;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -52,7 +53,16 @@ public class HomeSteps extends BaseStep {
     }
 
     @Given("^that the user is on the home screen \"([^\"]*)\"$")
-    public void thatTheUserIsOnTheHomeScreen(String arg0) throws Exception {
+    public void thatTheUserIsOnTheHomeScreen(String Env) throws Exception {
+    String arg0 = "";
+        if(Env.equals("ciq")){
+            arg0= "https://staging-ciq.almaden.dev/";
+        }
+        if(Env.equals("smc")){
+            arg0= "https://homologsmart.automatos.com/auth/signin/";
+
+        }
+
         HomePage.thatTheUserIsOnTheHomeScreen(arg0);
     }
 

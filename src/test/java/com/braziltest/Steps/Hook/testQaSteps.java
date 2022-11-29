@@ -155,10 +155,7 @@ public class testQaSteps extends BaseStep {
         HomePage.fillBuscarNoSite(arg0);
     }
 
-    @And("check for information \"([^\"]*)\"$")
-    public void checkForInformation(String arg0) throws IOException {
-        HomePage.checkForInformation(arg0);
-    }
+
 
     @And("cick Buscar")
     public void cickBuscar() throws IOException {
