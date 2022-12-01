@@ -83,18 +83,19 @@ public class ciqPages extends BaseStep {
             }
 
         }
-  for(int i=1;i<Config.prmPagination;i++){
+  for(int i=0;i<Config.prmPagination;i++){
       Thread.sleep(2000);
       String Ret1 = Instrumentation.listWebElementClass(Webdriver,"undefined");
-      for (String line : Ret1.split(";")) {
+      for (String line : Ret1.split("MB")) {
           System.out.println(line);
-          if(!line.equals(String.valueOf(i)) ){
+          if(!line.equals(";") ){
               Config.prmListCount = Config.prmListCount + 1;
           }
       }
-      Thread.sleep(2000);
-      Instrumentation.clickWeb(Webdriver, Config.xpath,"/html/body/div[1]/div/div[2]/div[3]/div[2]/div[1]/div[2]/div/div[2]/div/div/div/ul/li[6]/a","");
-    }}
+      Thread.sleep(1000);
+      if(i+1 < Config.prmPagination ) {
+          Instrumentation.clickWeb(Webdriver, Config.xpath, "/html/body/div[1]/div/div[2]/div[3]/div[2]/div[1]/div[2]/div/div[2]/div/div/div/ul/li[5]/a", "");
+      }}}
 
     public static void checkTotalMatch() {
         Assert.assertEquals("Total match",Config.prmCardCoout,Config.prmListCount);
