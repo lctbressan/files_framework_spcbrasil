@@ -23,10 +23,14 @@ Feature:  Smart Center
     When Send credentials "<Env>"
     And cick Login
     And click in total de ativos
-    And Click in Notebooks and get total
+    And Click in "<item>" and get total
     And get total from the list "<item>"
     Then check both totals match
 
     Examples:
-      | Env       |Descriptiion                 |item           |
-      | smc       |Lardware Check - NoteBook    |Notebook              |
+      | Env       |Descriptiion                   |item                  |
+      | smc       |Inventory  - NoteBook          |Notebook              |
+      | smc       |Inventory  - Desktop Virtual   |Desktop Virtual       |
+      | smc       |Inventory  - Servidor Virtual  |Servidor Virtual      |
+      #| smc       |Inventory  - Servidor          |Servidor              |
+      | smc       |Inventory  - Mobile            |Mobile                |

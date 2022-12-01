@@ -3,7 +3,10 @@ package com.braziltest.Pages;
 import com.braziltest.Steps.Hook.BaseStep;
 import com.braziltest.Utils.Config;
 import com.braziltest.Utils.Instrumentation;
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,6 +15,7 @@ import java.io.IOException;
 
 
 public class ciqPages extends BaseStep {
+
 
 
     public static void fillEmail(String arg0) throws IOException {
@@ -59,8 +63,8 @@ public class ciqPages extends BaseStep {
 
     }
 
-    public static void clickInNotebooks() throws IOException, InterruptedException {
-        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Notebook')]","");
+    public static void clickInNotebooks(String arg0) throws IOException, InterruptedException {
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'"+arg0+"')]","");
         Thread.sleep(2000);
         String Ret = Instrumentation.listWebElementClass(Webdriver,"smp-tooltiptext");
         for (String line : Ret.split(";")) {
@@ -94,8 +98,9 @@ public class ciqPages extends BaseStep {
       }
       Thread.sleep(1000);
       if(i+1 < Config.prmPagination ) {
+          if(Instrumentation.checkElementIsPresent(Webdriver,"/html/body/div[1]/div/div[2]/div[3]/div[2]/div[1]/div[2]/div/div[2]/div/div/div/ul/li[5]/a")){
           Instrumentation.clickWeb(Webdriver, Config.xpath, "/html/body/div[1]/div/div[2]/div[3]/div[2]/div[1]/div[2]/div/div[2]/div/div/div/ul/li[5]/a", "");
-      }}}
+      }}}}
 
     public static void checkTotalMatch() {
         Assert.assertEquals("Total match",Config.prmCardCoout,Config.prmListCount);

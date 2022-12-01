@@ -277,7 +277,24 @@ public class Instrumentation {
     }
 
 
+    public static Boolean checkElementIsPresent(WebDriver driver, String xpath) throws IOException, InterruptedException {
+        Thread.sleep(TIMEOUTAUTOMATION);
+        Boolean Res = false;
+        try {
 
+            Boolean Display = driver.findElement(By.xpath(xpath)).isDisplayed();
+            System.out.println("Element displayed is :" + Display);
+            Boolean Enable = driver.findElement(By.xpath(xpath)).isEnabled();
+            System.out.println("Element displayed is :" + Enable);
+            if (Display) {
+                Res = true;
+            }
+        } catch (NoSuchElementException exception) {
+            System.out.println("Não Achou elemento em tela");
+        }
+
+        return Res;
+    }
 
     public static String findAllFilesInFolder(File folder) {
         String fineName ="";

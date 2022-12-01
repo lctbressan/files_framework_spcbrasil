@@ -54,6 +54,11 @@ public class HomeSteps extends BaseStep {
 
     @Given("^that the user is on the home screen \"([^\"]*)\"$")
     public void thatTheUserIsOnTheHomeScreen(String Env) throws Exception {
+        Config.prmCardCoout=0;
+        Config.prmListCount=0;
+        Config.prmPagination=0;
+
+
     String arg0 = "";
         if(Env.equals("ciq")){
             arg0= "https://staging-ciq.almaden.dev/";

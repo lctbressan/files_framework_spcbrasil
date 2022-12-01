@@ -7,6 +7,7 @@ import com.braziltest.Utils.Config;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
+import org.junit.Before;
 
 import java.io.IOException;
 
@@ -15,7 +16,10 @@ public class ciqSteps extends BaseStep {
 
     Config cons = new Config();
 
+@Before
+public static void before(){
 
+}
     @And("fill email \"([^\"]*)\"$")
     public void fillEmail(String arg0) throws IOException {
         ciqPages.fillEmail(arg0);
@@ -52,9 +56,9 @@ public class ciqSteps extends BaseStep {
         ciqPages.clickInTotalDeAtivos();
     }
 
-    @And("Click in Notebooks and get total")
-    public void clickInNotebooks() throws IOException, InterruptedException {
-        ciqPages.clickInNotebooks();
+    @And("Click in \"([^\"]*)\" and get total")
+    public void clickInNotebooks(String arg0) throws IOException, InterruptedException {
+        ciqPages.clickInNotebooks(arg0);
     }
 
 
