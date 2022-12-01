@@ -252,22 +252,22 @@ public class Instrumentation {
         }
     }
 
-    public static void listWebElement (WebDriver driver) throws IOException {
-
+    public static String listWebElementClass (WebDriver driver,String classname) throws IOException {
+    String Ret = "";
         try {
-            //List<WebElement> listElement = driver.findElements(By.xpath("//label[@for='mp__0__0']"));
-            //List<WebElement> listElement = driver.findElements(By.tagName("label"));
-            List<WebElement> listElement = driver.findElements(By.className("tl-card"));
+            List<WebElement> listElement = driver.findElements(By.className(classname));
             for(int i =0;i<listElement.size();i++) {
                 String elementText = listElement.get(i).getText();
-                System.out.println("INDEX :" + i + " - " + elementText);
+                //System.out.println("INDEX :" + i + " - " + elementText);
+                Ret = elementText +";"+Ret;
             }
-            DriverFactory.Evidencia(driver,"");
+
         } catch (
                 NoSuchElementException exception) {
             assertFalse("This will fail!", true);
             System.out.println("FAILURE" + exception);
         }
+        return Ret;
     }
 
     public static void ClickOut(WebDriver driver) {

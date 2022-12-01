@@ -23,17 +23,11 @@ public class Config {
     public static final String PATHEVIDENCEWIN = "C:\\Evidencias\\Braziltest\\Run_"+ ManipularJson.getSaltStringCelular() + "\\";
     public static final String PATHEVIDENCELIN = "/home/bressan/evidencias/almadin/Run_"+ ManipularJson.getSaltStringCelular() + "/";
     public static final String PathEvidenceCentral = "\\\\10.10.0.10\\f\\evidencias\\CentralEnvidence";
-
     public static final String PATHEVIDENCEMAC = "/users/bressan/evidencias/almadin/Run_"+ ManipularJson.getSaltStringCelular() + "/";
-
-
     public static final int TIMEOUTAUTOMATION = 100;
     public static final String PLATFORMTYPE = PLATFORMNAME;
-
     public static final String email = "admin";
     public static final String passw = "Agt125243";
-
-
     public static final String dataAtual = ManipularJson.dataAtual();
     public static String ScenarioName = "";
     public static String ScenarioId = "";
@@ -54,4 +48,8 @@ public class Config {
 
     public static String Application = "C:\\WINDOWS\\system32\\notepad.exe";
     public static String WiniHost = "http://localhost:9999";
+    public static int prmCardCoout = 0;
+    public static int prmListCount = 0;
+
+    public static int prmPagination = 0;
 }

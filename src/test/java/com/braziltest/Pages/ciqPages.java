@@ -3,7 +3,10 @@ package com.braziltest.Pages;
 import com.braziltest.Steps.Hook.BaseStep;
 import com.braziltest.Utils.Config;
 import com.braziltest.Utils.Instrumentation;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
 
 import java.io.IOException;
 
@@ -51,4 +54,49 @@ public class ciqPages extends BaseStep {
                 }
             }}
 
+    public static void clickInTotalDeAtivos() throws IOException {
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Total de Ativos')]","");
+
+    }
+
+    public static void clickInNotebooks() throws IOException, InterruptedException {
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'Notebook')]","");
+        Thread.sleep(2000);
+        String Ret = Instrumentation.listWebElementClass(Webdriver,"smp-tooltiptext");
+        for (String line : Ret.split(";")) {
+            System.out.println(line);
+            if(!line.equals("")){
+                System.out.println(line);
+                Config.prmCardCoout = Integer.valueOf(line.replace(";",""));
+                break;
+            };
+        }
+    }
+
+    public static void checkFromTheListTotalMatch(String arg0) throws IOException, InterruptedException {
+
+        String Ret = Instrumentation.listWebElementClass(Webdriver,"pagination");
+        for (String line : Ret.split("\n")) {
+
+            if(!line.equals("⟩") &&  !line.contains(";")) {
+                Config.prmPagination = Config.prmPagination +1;
+            }
+
+        }
+  for(int i=1;i<Config.prmPagination;i++){
+      Thread.sleep(2000);
+      String Ret1 = Instrumentation.listWebElementClass(Webdriver,"undefined");
+      for (String line : Ret1.split(";")) {
+          System.out.println(line);
+          if(!line.equals(String.valueOf(i)) ){
+              Config.prmListCount = Config.prmListCount + 1;
+          }
+      }
+      Thread.sleep(2000);
+      Instrumentation.clickWeb(Webdriver, Config.xpath,"/html/body/div[1]/div/div[2]/div[3]/div[2]/div[1]/div[2]/div/div[2]/div/div/div/ul/li[6]/a","");
+    }}
+
+    public static void checkTotalMatch() {
+        Assert.assertEquals("Total match",Config.prmCardCoout,Config.prmListCount);
+    }
 }

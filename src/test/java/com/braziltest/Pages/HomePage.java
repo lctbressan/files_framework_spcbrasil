@@ -239,4 +239,6 @@ public class HomePage extends BaseStep {
     public static void cickBuscar() throws IOException {
         Instrumentation.clickWeb(Webdriver,Config.id,"btn_pesquisar","Click in Busca");
     }
+
+
 }

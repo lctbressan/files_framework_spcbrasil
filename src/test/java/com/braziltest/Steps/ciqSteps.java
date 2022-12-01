@@ -5,6 +5,8 @@ import com.braziltest.Pages.ciqPages;
 import com.braziltest.Steps.Hook.BaseStep;
 import com.braziltest.Utils.Config;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
+import org.junit.Assert;
 
 import java.io.IOException;
 
@@ -43,6 +45,28 @@ public class ciqSteps extends BaseStep {
     @And("check for information on logon \"([^\"]*)\" \"([^\"]*)\"$")
     public void checkForInformation(String Env, String arg0) throws IOException {
         HomePage.checkForInformationOnLogonPage(Env, arg0);
+    }
+
+    @And("click in total de ativos")
+    public void clickInTotalDeAtivos() throws IOException {
+        ciqPages.clickInTotalDeAtivos();
+    }
+
+    @And("Click in Notebooks and get total")
+    public void clickInNotebooks() throws IOException, InterruptedException {
+        ciqPages.clickInNotebooks();
+    }
+
+
+
+    @And("get total from the list \"([^\"]*)\"$")
+    public void checkFromTheListTotalMatch(String arg0) throws IOException, InterruptedException {
+        ciqPages.checkFromTheListTotalMatch(arg0);
+    }
+
+    @Then("check both totals match")
+    public void checkBothTotalsMatch() {
+        ciqPages.checkTotalMatch();
     }
 }
 
