@@ -18,7 +18,7 @@ Feature:  Smart Center
 
 
   @SmartCenterNotebook  @smoketest
-  Scenario Outline: Hardware Check Smart Center Login
+  Scenario Outline: Hardware Check Smart Center Inventoty
     Given that the user is on the home screen "<Env>"
     When Send credentials "<Env>"
     And cick Login
@@ -26,7 +26,6 @@ Feature:  Smart Center
     And Click in "<item>" and get total
     And get total from the list "<item>"
     Then check both totals match
-
     Examples:
       | Env       |Descriptiion                   |item                  |
       | smc       |Inventory  - NoteBook          |Notebook              |
