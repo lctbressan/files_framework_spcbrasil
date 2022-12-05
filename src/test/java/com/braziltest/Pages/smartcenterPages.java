@@ -3,18 +3,14 @@ package com.braziltest.Pages;
 import com.braziltest.Steps.Hook.BaseStep;
 import com.braziltest.Utils.Config;
 import com.braziltest.Utils.Instrumentation;
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 
 import java.io.IOException;
 
 
-public class ciqPages extends BaseStep {
+public class smartcenterPages extends BaseStep {
 
 
 
@@ -104,5 +100,30 @@ public class ciqPages extends BaseStep {
 
     public static void checkTotalMatch() {
         Assert.assertEquals("Total match",Config.prmCardCoout,Config.prmListCount);
+    }
+
+    public static void clickInMenu() throws IOException {
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"/html/body/div[1]/div/div[2]/header/div/div[1]/div[1]","");
+    }
+
+    public static void clickInSubmenu(String arg0) throws IOException {
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'"+arg0+"')]","");
+    }
+
+    public static void clickInItem(String arg0) throws IOException {
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'"+arg0+"')]","");
+    }
+
+    public static void checkForInformation(String arg0) throws Exception {
+        Instrumentation.assertPhaseEqualsText(Webdriver,arg0, "match text " + arg0);
+
+    }
+
+    public static void clickInSair() throws IOException {
+        Instrumentation.clickWeb(Webdriver,Config.xpath,"/html/body/div[1]/div/div[2]/header/div/div[2]/a[2]","");
+    }
+
+    public static void clickItemPage(String arg0) throws IOException {
+        Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'"+arg0+"')]","");
     }
 }

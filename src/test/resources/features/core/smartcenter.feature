@@ -18,7 +18,7 @@ Feature:  Smart Center
 
 
   @SmartCenterNotebook  @smoketest
-  Scenario Outline: Hardware Check Smart Center Inventoty
+  Scenario Outline: Smart Center Inventoty check total
     Given that the user is on the home screen "<Env>"
     When Send credentials "<Env>"
     And cick Login
@@ -27,9 +27,30 @@ Feature:  Smart Center
     And get total from the list "<item>"
     Then check both totals match
     Examples:
-      | Env       |Descriptiion                   |item                  |
-      | smc       |Inventory  - NoteBook          |Notebook              |
-      | smc       |Inventory  - Desktop Virtual   |Desktop Virtual       |
-      | smc       |Inventory  - Servidor Virtual  |Servidor Virtual      |
-      #| smc       |Inventory  - Servidor          |Servidor              |
-      | smc       |Inventory  - Mobile            |Mobile                |
+      | Env       |Descriptiion                               |item                  |
+      | smc       |Inventory  - check total NoteBook          |Notebook              |
+      | smc       |Inventory  - check total Desktop Virtual   |Desktop Virtual       |
+      | smc       |Inventory  - check total Servidor Virtual  |Servidor Virtual      |
+      #| smc       |Inventory  - Servidor                     |Servidor              |
+      | smc       |Inventory  - check total Mobile            |Mobile                |
+
+
+  @SmartCenterNotebook  @smoketest @healthcheck
+  Scenario Outline: Smart Center health check functions
+    Given that the user is on the home screen "<Env>"
+    When Send credentials "<Env>"
+    And cick Login
+    And click in menu
+    And Click in submenu "<submenu>"
+    And Click in item "<itemSubmenu>"
+    And click item page "<itemPage>"
+    And Check for information "<check1>"
+    Then Click in Sair
+    And Check for information "<check2>"
+    Examples:
+      | Env       |Descriptiion                                |submenu                 |itemSubmenu        |itemPage                       |check1                             |check2     |
+      | smc       |Smart Center health check functions         |Inventário              |Hardware           |                               |Hardware                           |Almaden com você!|
+      | smc       |Smart Center health check functions         |Inventário              |Dados customizados |                               |Inventário Customizado             |Almaden com você!|
+      | smc       |Smart Center health check functions         |Inventário              |Software           |Lista de Softwares             |Produtos                           |Almaden com você!|
+      | smc       |Smart Center health check functions         |Inventário              |Software           |Aprovação de Software          |Aprovação de Software              |Almaden com você!|
+      | smc       |Smart Center health check functions         |Inventário              |Software           |Alertas Vermelhos de Softwares |Alertas Vermelhos de Softwares     |Almaden com você!|

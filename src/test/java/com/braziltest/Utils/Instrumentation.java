@@ -119,7 +119,7 @@ public class Instrumentation {
         }
     }
 
-    public static void clickOnElementNotInteractWithContainsText (WebDriver driver, String prmText , String StepLog) throws Exception {
+    public static void assertPhaseEqualsText (WebDriver driver, String prmText , String StepLog) throws Exception {
         Thread.sleep(TIMEOUTAUTOMATION);
         int prmIndex = 0;
         try {
@@ -127,8 +127,6 @@ public class Instrumentation {
             List<WebElement> listElement = null;
 
                 listElement = driver.findElements(By.xpath("//*[contains(text(),'" + prmText + "')]"));
-
-
 
             for(int i =0;i<listElement.size();i++) {
                 String elementText = listElement.get(i).getText();
