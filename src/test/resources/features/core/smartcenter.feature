@@ -57,8 +57,8 @@ Feature:  Smart Center
 
 
 
-  @GerenciaAteracoes  @smoketest @healthcheck
-  Scenario Outline: Smart Center health check functions
+  @GerenciaAteracoes  @smoketest
+  Scenario Outline: Smart Center Ficha de hardware Gerencia Alteracoes
     Given that the user is on the home screen "<Env>"
     When Send credentials "<Env>"
     And cick Login
@@ -68,5 +68,5 @@ Feature:  Smart Center
 
   And verifique se o recurso de hardware apresenta a mensagem "<info1>" se sim falhe o teste
     Examples:
-      | Env       |Descriptiion                                |item1                 |info1|
+      | Env       |Descriptiion                                |item1                 |info1                                                            |
       | smc       |Smart Center GerenciaAteracoes              |WINDOWS7-64           |Infelizmente, você não tem permissão para visualizar esta página.|

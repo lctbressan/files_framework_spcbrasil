@@ -20,7 +20,8 @@ public abstract class Hook extends BaseStep {
     @BeforeClass
     public static void inicializaAutomacao() throws Exception {
         System.out.println("#####################################################################################}");
-        System.out.println("                  {STARTING AUTOMATION WAIT PLS}");
+        System.out.println("                  {STARTING AUTOMATION WAIT PLS - }");
+        System.out.println("                        RUNNER "+ RunnerNbr +" ");
         System.out.println("#####################################################################################}");
         ExtentProperties extentProperties = ExtentProperties.INSTANCE;
 

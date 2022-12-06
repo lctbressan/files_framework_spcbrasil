@@ -2,6 +2,7 @@ package com.braziltest.Utils;
 
 import com.braziltest.interfaces.DriverFactory;
 import com.vimalselvam.cucumber.listener.Reporter;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -76,7 +77,7 @@ public class Instrumentation {
             if (prmType.equals("id")) {
                 waitCad.until(ExpectedConditions.visibilityOfElementLocated(By.id(prmTag))).click();
             }
-
+            Thread.sleep(1000);
             DriverFactory.Evidencia(driver, "");
         } catch (
                 NoSuchElementException exception) {
@@ -85,6 +86,8 @@ public class Instrumentation {
 
             assertFalse("This will fail!", true);
             System.out.println("FAILURE" + exception);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
