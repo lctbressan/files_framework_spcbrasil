@@ -32,6 +32,7 @@ public static void before(){
     @And("cick Login")
     public void cickLogin() throws IOException, InterruptedException {
         smartcenterPages.cickLogin();
+        smartcenterPages.checkPupup();
     }
 
     @And("click captcha")
@@ -102,6 +103,28 @@ public static void before(){
         if(!arg0.equals("")) {
             smartcenterPages.clickItemPage(arg0);
         }
+    }
+
+    @And("pesquisar um item \"([^\"]*)\"$")
+    public void pesquisarUmItem(String arg0) throws IOException {
+    smartcenterPages.pesquisarItem(arg0);
+    }
+
+    @And("selecionar o item \"([^\"]*)\"$")
+    public void selecionarOItem(String arg0) throws IOException, InterruptedException {
+    smartcenterPages.selecionarOItem(arg0);
+
+    }
+
+    @And("colete todas as informacoes da ficha de hardware")
+    public void coleteTodasAsInformacoesDaFichaDeHardware() throws IOException {
+    smartcenterPages.coleteInformcaoesFichahard();
+    }
+
+    @And("verifique se o recurso de hardware apresenta a mensagem \"([^\"]*)\" se sim falhe o teste")
+    public void verifiqueSeORecursoDeHardwareApresentaAMensagem(String arg0) throws IOException, InterruptedException {
+
+    smartcenterPages.verifiqueSeORecursoDeHardwareApresentaAMensagem(arg0);
     }
 }
 

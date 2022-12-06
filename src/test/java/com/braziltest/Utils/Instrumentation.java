@@ -197,6 +197,7 @@ public class Instrumentation {
                 String elementText = listElement.get(i).getText();
                 if(elementText.contains(prmText)) {
                     prmIndex = i;
+                    break;
                 }
                 System.out.println(elementText);
             }

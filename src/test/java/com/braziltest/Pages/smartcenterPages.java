@@ -5,6 +5,7 @@ import com.braziltest.Utils.Config;
 import com.braziltest.Utils.Instrumentation;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 
 import java.io.IOException;
@@ -125,5 +126,41 @@ public class smartcenterPages extends BaseStep {
 
     public static void clickItemPage(String arg0) throws IOException {
         Instrumentation.clickWeb(Webdriver, Config.xpath,"//*[contains(text(),'"+arg0+"')]","");
+    }
+
+    public static void checkPupup() throws IOException, InterruptedException {
+        Boolean Ret = Instrumentation.checkElementIsPresent(Webdriver,"//*[contains(text(),'Fechar e não mostrar novamente')]");
+        if(Ret) {
+            Instrumentation.clickWeb(Webdriver,Config.xpath,"//*[contains(text(),'Fechar e não mostrar novamente')]","");
+        }
+    }
+
+    public static void pesquisarItem(String arg0) throws IOException {
+        Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@name='input-search']",arg0,"Pesquisar item");
+        Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@name='input-search']", String.valueOf(Keys.ENTER),"Enter");
+
+    }
+
+    public static void selecionarOItem(String arg0) throws IOException, InterruptedException {
+        Thread.sleep(1000);
+        //Instrumentation.collectByClassNameIndex(Webdriver,"show-desktop show-mobile machine",arg0,"Check for : " + arg0);
+        Instrumentation.clickWeb(Webdriver,Config.xpath,"//*[contains(text(),'"+arg0+"')]","");
+    }
+
+    public static void coleteInformcaoesFichahard() throws IOException {
+        String Ret1 = Instrumentation.listWebElementClass(Webdriver,"cardlist-block");
+        for (String line : Ret1.split("\n")) {
+            System.out.println(line);
+
+        }
+
+    }
+
+    public static void verifiqueSeORecursoDeHardwareApresentaAMensagem(String arg0) throws IOException, InterruptedException {
+        Instrumentation.clickWeb(Webdriver,Config.xpath,"/html/body/div[1]/div/div[2]/div[3]/div[2]/div[1]/div/div[6]/div/div[3]/div/div[2]/div/div/a[1]/div/span[1]","");
+        Thread.sleep(2000);
+        if (Instrumentation.checkElementIsPresent(Webdriver, "//*[contains(text(),'" + arg0 + "')]")) {
+                Assert.assertTrue(false);
+        }
     }
 }

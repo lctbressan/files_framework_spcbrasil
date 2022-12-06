@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
         //tags={"@GetEvidencesLenovo"},
         //tags={"@GetEvidencesOthers"},
        // tags={"@Links"},
-         tags={"@healthcheck"},
+         tags={"@GerenciaAteracoes"},
 
 
         //tags={"@ConvertAllfiles"},

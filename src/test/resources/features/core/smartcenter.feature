@@ -1,6 +1,6 @@
 Feature:  Smart Center
 
-  @SmartCenter @smoketest
+  @Login @smoketest
   Scenario Outline: Smart Center Login
     Given that the user is on the home screen "<Env>"
     And Send credentials "<Env>"
@@ -17,7 +17,7 @@ Feature:  Smart Center
       | smc       |Login sucess    |Olá Automatos   |
 
 
-  @SmartCenterNotebook  @smoketest
+  @Inventoty  @smoketest
   Scenario Outline: Smart Center Inventoty check total
     Given that the user is on the home screen "<Env>"
     When Send credentials "<Env>"
@@ -54,3 +54,19 @@ Feature:  Smart Center
       | smc       |Smart Center health check functions         |Inventário              |Software           |Lista de Softwares             |Produtos                           |Almaden com você!|
       | smc       |Smart Center health check functions         |Inventário              |Software           |Aprovação de Software          |Aprovação de Software              |Almaden com você!|
       | smc       |Smart Center health check functions         |Inventário              |Software           |Alertas Vermelhos de Softwares |Alertas Vermelhos de Softwares     |Almaden com você!|
+
+
+
+  @GerenciaAteracoes  @smoketest @healthcheck
+  Scenario Outline: Smart Center health check functions
+    Given that the user is on the home screen "<Env>"
+    When Send credentials "<Env>"
+    And cick Login
+    And pesquisar um item "<item1>"
+    And selecionar o item "<item1>"
+    #And colete todas as informacoes da ficha de hardware
+
+  And verifique se o recurso de hardware apresenta a mensagem "<info1>" se sim falhe o teste
+    Examples:
+      | Env       |Descriptiion                                |item1                 |info1|
+      | smc       |Smart Center GerenciaAteracoes              |WINDOWS7-64           |Infelizmente, você não tem permissão para visualizar esta página.|
