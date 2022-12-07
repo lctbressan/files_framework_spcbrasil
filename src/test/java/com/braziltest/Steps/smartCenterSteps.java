@@ -9,16 +9,18 @@ import cucumber.api.java.en.Then;
 import org.junit.Before;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class smartCenterSteps extends BaseStep {
 
 
     Config cons = new Config();
 
-@Before
-public static void before(){
+    @Before
+    public static void before() {
 
-}
+    }
+
     @And("fill email \"([^\"]*)\"$")
     public void fillEmail(String arg0) throws IOException {
         smartcenterPages.fillEmail(arg0);
@@ -62,7 +64,6 @@ public static void before(){
     }
 
 
-
     @And("get total from the list \"([^\"]*)\"$")
     public void checkFromTheListTotalMatch(String arg0) throws IOException, InterruptedException {
         smartcenterPages.checkFromTheListTotalMatch(arg0);
@@ -100,31 +101,49 @@ public static void before(){
 
     @And("click item page \"([^\"]*)\"$")
     public void clickItemPage(String arg0) throws IOException {
-        if(!arg0.equals("")) {
+        if (!arg0.equals("")) {
             smartcenterPages.clickItemPage(arg0);
         }
     }
 
     @And("pesquisar um item \"([^\"]*)\"$")
     public void pesquisarUmItem(String arg0) throws IOException {
-    smartcenterPages.pesquisarItem(arg0);
+        smartcenterPages.pesquisarItem(arg0);
     }
 
     @And("selecionar o item \"([^\"]*)\"$")
     public void selecionarOItem(String arg0) throws IOException, InterruptedException {
-    smartcenterPages.selecionarOItem(arg0);
+        smartcenterPages.selecionarOItem(arg0);
 
     }
 
     @And("colete todas as informacoes da ficha de hardware")
     public void coleteTodasAsInformacoesDaFichaDeHardware() throws IOException {
-    smartcenterPages.coleteInformcaoesFichahard();
+        smartcenterPages.coleteInformcaoesFichahard();
     }
 
     @And("verifique se o recurso de hardware apresenta a mensagem \"([^\"]*)\" se sim falhe o teste")
     public void verifiqueSeORecursoDeHardwareApresentaAMensagem(String arg0) throws IOException, InterruptedException {
 
-    smartcenterPages.verifiqueSeORecursoDeHardwareApresentaAMensagem(arg0);
+        smartcenterPages.verifiqueSeORecursoDeHardwareApresentaAMensagem(arg0);
+    }
+
+    @And("verifique os dados em tela")
+    public void verifiqueOsDadosEmTela(Map<String, String> responseFields) throws InterruptedException, IOException {
+        String prmData="",prmValue;
+        try {
+            for (Map.Entry<String, String> field : responseFields.entrySet()) {
+                Thread.sleep(1000);
+                prmData = field.getKey();
+                prmValue = field.getValue();
+
+                System.out.println(prmData +" "+ prmValue);
+                smartcenterPages.verifiqueOsDadosEmTela(prmData,prmValue);
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR " + e.getMessage());}
+
     }
 }
+
 

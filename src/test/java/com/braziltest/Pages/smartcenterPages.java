@@ -163,4 +163,30 @@ public class smartcenterPages extends BaseStep {
                 Assert.assertTrue(false);
         }
     }
+
+    public static void verifiqueOsDadosEmTela(String prmData, String prmValue) throws IOException, InterruptedException {
+
+        Instrumentation.collectByClassNameIndex(Webdriver,"-inside-title",prmData,"Check for : " + prmData);
+        Instrumentation.collectByClassNameIndex(Webdriver,"-inside-text",prmValue,"Check for : " + prmValue);
+
+       /* String RetX = Instrumentation.listWebElementClass(Webdriver,"cardlist");
+        for (String line : RetX.split("\n")) {
+            System.out.println(line);
+
+        }
+
+
+        Boolean Ret = Instrumentation.checkElementIsPresent(Webdriver,"//*[contains(text(),'"+prmData+"')]");
+        if(Ret) {
+            Assert.assertTrue(true);
+        }else{
+            Assert.assertTrue(false);
+        }
+        Boolean Ret1 = Instrumentation.checkElementIsPresent(Webdriver,"//*[contains(text(),'"+prmValue+"')]");
+        if(Ret1) {
+            Assert.assertTrue(true);
+        }else{
+            Assert.assertTrue(false);
+        }*/
+    }
 }
