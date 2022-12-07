@@ -71,8 +71,8 @@ Feature:  Smart Center
       | smc       |Smart Center GerenciaAteracoes              |WINDOWS7-64           |Infelizmente, você não tem permissão para visualizar esta página.|
 
 
-  @FichaMaquina  @smoketest
-  Scenario Outline: Smart Center Ficha da maquina Gerencia Alteracoes
+  @FichaMaquinaWin  @smoketest
+  Scenario Outline: Smart Center Ficha da maquina
     Given that the user is on the home screen "<Env>"
     When Send credentials "<Env>"
     And cick Login
@@ -105,5 +105,46 @@ Feature:  Smart Center
           |Data de coleta                     |06/10/2022 17:23                                       |
 
     Examples:
-      | Env       |Descriptiion                                |item1                 |
-      | smc       |Smart Center Ficha dsa Maquina              |WINDOWS7-64           |
+      | Env       |Descriptiion                                |item1                                 |
+      | smc       |Smart Center Ficha dsa Maquina Windows      |WINDOWS7-64                           |
+
+
+
+  @FichaMaquinaLinux  @smoketest
+  Scenario Outline: Smart Center Ficha da maquina
+    Given that the user is on the home screen "<Env>"
+    When Send credentials "<Env>"
+    And cick Login
+    And pesquisar um item "<item1>"
+    And selecionar o item "<item1>"
+    And verifique os dados em tela
+      |Nome do computador                 |LAB-CENTOS81                                           |
+      |Departamento                       |DESENVOLVIMENTO                                        |
+      |Sistema Operacional                |LINUX CENTOS 8.5                                       |
+      |Versão do Sistema Operacional      |4.18.0.0                                               |
+      |Fabricante                         |VMWare                                                 |
+      |Tipo                               |DESKTOP                                                |
+      |IP                                 |10.253.0.196 - 192.168.122.1                           |
+      |Data de release da BIOS            |2014                                                   |
+      |Domínio                            |(NONE)                                                 |
+      |Ativo virtual                      |YES                                                    |
+      |Nome do produto do sistema         |VMWARE VIRTUAL PLATFORM                                |
+      |Número do serial do sistema        |VMWARE-42 0E 2F D5 90 F2 95 69-C4 DF FA 39 D2 28 ED F5 |
+      |ID do Ativo                        |0050568E6B6E000004515113                               |
+      |Arquitetura                        |64 BITS                                                |
+      |Usuário atual                      |AUTOMATOS                                              |
+      |Processador                        |INTEL XEON CPU E5649 2.53GHZ                           |
+      |Geração do processador             |INTEL XEON E5649                                       |
+      |Tipo do processador                |INTEL XEON                                             |
+      |Frequência do processador (Clock)  |2.53 GHz                                               |
+      |Núcleos físicos                    |0                                                      |
+      |Núcleos lógicos                    |1                                                      |
+      |Memória                            |4 GB                                                   |
+      |Memória instalada (MB)             |1830 MB                                                |
+      |Disco total (GB)                   |16 GB                                                  |
+      |Disco utilizado (GB)               |15 GB                                                  |
+      |Data de coleta                     |07/12/2022 12:04                                       |
+
+    Examples:
+      | Env       |Descriptiion                                |item1                                 |
+      | smc       |Smart Center Ficha dsa Maquina Linux      |WINDOWS7-64                           |
