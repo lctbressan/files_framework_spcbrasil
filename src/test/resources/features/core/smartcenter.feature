@@ -147,4 +147,4 @@ Feature:  Smart Center
 
     Examples:
       | Env       |Descriptiion                                |item1                                 |
-      | smc       |Smart Center Ficha dsa Maquina Linux      |WINDOWS7-64                           |
+      | smc       |Smart Center Ficha dsa Maquina Linux      |LAB-CENTOS81                           |
