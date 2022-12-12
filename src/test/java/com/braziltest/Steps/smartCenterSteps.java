@@ -4,6 +4,7 @@ import com.braziltest.Pages.HomePage;
 import com.braziltest.Pages.smartcenterPages;
 import com.braziltest.Steps.Hook.BaseStep;
 import com.braziltest.Utils.Config;
+import com.braziltest.Utils.Instrumentation;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.junit.Before;
@@ -143,6 +144,13 @@ public class smartCenterSteps extends BaseStep {
         } catch (Exception e) {
             System.out.println("ERROR " + e.getMessage());}
 
+    }
+
+    @And("Click in item by a list \"([^\"]*)\"$")
+    public void clickInItemByAList(String arg0) throws IOException {
+        if(!arg0.equals("")) {
+            smartcenterPages.clickInItemByAList(arg0);
+        }
     }
 }
 

@@ -166,8 +166,8 @@ public class smartcenterPages extends BaseStep {
 
     public static void verifiqueOsDadosEmTela(String prmData, String prmValue) throws IOException, InterruptedException {
 
-        Instrumentation.collectByClassNameIndex(Webdriver,"-inside-title",prmData,"Check for : " + prmData);
-        Instrumentation.collectByClassNameIndex(Webdriver,"-inside-text",prmValue,"Check for : " + prmValue);
+        Instrumentation.listEqualsByClassNameTest(Webdriver,"-inside-title",prmData,"Check for : " + prmData);
+        Instrumentation.listEqualsByClassNameTest(Webdriver,"-inside-text",prmValue,"Check for : " + prmValue);
 
        /* String RetX = Instrumentation.listWebElementClass(Webdriver,"cardlist");
         for (String line : RetX.split("\n")) {
@@ -188,5 +188,9 @@ public class smartcenterPages extends BaseStep {
         }else{
             Assert.assertTrue(false);
         }*/
+    }
+
+    public static void clickInItemByAList(String arg0) throws IOException {
+        Instrumentation.listEqualsByClassNameTest(Webdriver,"report-item-container",arg0,"Check for : " + arg0);
     }
 }

@@ -124,6 +124,8 @@ public class Instrumentation {
 
     public static void assertPhaseEqualsText (WebDriver driver, String prmText , String StepLog) throws Exception {
         Thread.sleep(TIMEOUTAUTOMATION);
+        Thread.sleep(TIMEOUTAUTOMATION);
+        Thread.sleep(TIMEOUTAUTOMATION);
         int prmIndex = 0;
         try {
             Reporter.addStepLog(StepLog);
@@ -199,6 +201,30 @@ public class Instrumentation {
             for(int i =0;i<listElement.size();i++) {
                 String elementText = listElement.get(i).getText();
                 if(elementText.contains(prmText)) {
+                    prmIndex = i;
+                    break;
+                }
+                System.out.println(elementText);
+            }
+
+            WebElement element = listElement.get(prmIndex);
+            element.click();
+            DriverFactory.Evidencia(driver,"");
+
+        } catch (
+                NoSuchElementException exception) {
+            assertFalse("This will fail!", true);
+            System.out.println("FAILURE" + exception);
+        }
+    }
+    public static void listEqualsByClassNameTest (WebDriver driver, String prmClassName,String prmText, String StepLog) throws IOException {
+        Integer prmIndex = 0;
+        try {
+            Reporter.addStepLog(StepLog);
+            List<WebElement> listElement = driver.findElements(By.className(prmClassName));
+            for(int i =0;i<listElement.size();i++) {
+                String elementText = listElement.get(i).getText();
+                if(elementText.equals(prmText)) {
                     prmIndex = i;
                     break;
                 }

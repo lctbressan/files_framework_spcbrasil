@@ -57,6 +57,33 @@ Feature:  Smart Center
 
 
 
+  @healthcheckrelatoriosHard  @smoketest
+  Scenario Outline: Smart Center health check Realtorios
+    Given that the user is on the home screen "<Env>"
+    When Send credentials "<Env>"
+    And cick Login
+    And click in menu
+    And Click in submenu "<submenu>"
+    And Click in submenu "<submenu1>"
+    And Click in item by a list "<itemSubmenu>"
+    And Click in item by a list "<itemPage>"
+    And Check for information "<check1>"
+    Then Click in Sair
+    And Check for information "<check2>"
+    Examples:
+      | Env       |Descriptiion                                |submenu   |submenu1   |itemSubmenu                      |itemPage |check1                             |check2     |
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Hardware                         |         |Relatório de Hardware              |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Monitor                          |         |Relatório de Monitores             |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Software                         |         |Relatório de Software              |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Software Metering                |         |Software Metering                  |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Pastas Compartilhadas            |         |Selecionar Departamento             |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Consolidado de Inventário        |         |Selecione os Departamentos         |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Alterações                       |Desktop  |Relatório de Alterações Desktop    |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Alterações                       |Servidor |Relatório de Alterações Servidor   |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Indisponibilidade de Máquinas    |         |Indisponibilidade de Máquinas      |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Equipamentos sem Agente (Backlog)|         |Equipamentos sem Agente (Backlog)  |Almaden com você!|
+
+
   @GerenciaAteracoes  @smoketest
   Scenario Outline: Smart Center Ficha da maquina Gerencia Alteracoes
     Given that the user is on the home screen "<Env>"
@@ -71,7 +98,7 @@ Feature:  Smart Center
       | smc       |Smart Center GerenciaAteracoes              |WINDOWS7-64           |Infelizmente, você não tem permissão para visualizar esta página.|
 
 
-  @FichaMaquinaWin  @smoketest
+  @FichaMaquinaWin  @smoketest @FichaMaquina
   Scenario Outline: Smart Center Ficha da maquina
     Given that the user is on the home screen "<Env>"
     When Send credentials "<Env>"
@@ -110,7 +137,7 @@ Feature:  Smart Center
 
 
 
-  @FichaMaquinaLinux  @smoketest
+  @FichaMaquinaLinux  @smoketest @FichaMaquina
   Scenario Outline: Smart Center Ficha da maquina
     Given that the user is on the home screen "<Env>"
     When Send credentials "<Env>"
@@ -148,3 +175,43 @@ Feature:  Smart Center
     Examples:
       | Env       |Descriptiion                                |item1                                 |
       | smc       |Smart Center Ficha dsa Maquina Linux      |LAB-CENTOS81                           |
+
+
+  @FichaMaquinaMac  @smoketest  @FichaMaquina
+  Scenario Outline: Smart Center Ficha da maquina
+    Given that the user is on the home screen "<Env>"
+    When Send credentials "<Env>"
+    And cick Login
+    And pesquisar um item "<item1>"
+    And selecionar o item "<item1>"
+    And verifique os dados em tela
+      |Nome do computador                 |MARCOSS-MACBOOK-PRO.LOCAL                              |
+      |Departamento                       |MACOS                                                  |
+      |Sistema Operacional                |MAC OS X UNKNOWN                                       |
+      |Versão do Sistema Operacional      |10.0.0.0                                               |
+      |Fabricante                         |Apple                                                  |
+      |Tipo                               |NOTEBOOK                                               |
+      |IP                                 |10.0.2.15                                              |
+      #|Data de release da BIOS            |2014                                                   |
+      #|Domínio                            |(NONE)                                                 |
+      |Ativo virtual                      |NO                                                     |
+      |Nome do produto do sistema         |MACBOOK PRO|
+      #|Número do serial do sistema        |VMWARE-42 0E 2F D5 90 F2 95 69-C4 DF FA 39 D2 28 ED F5 |
+      |ID do Ativo                        |0800270AF4C209230                                      |
+      |Arquitetura                        |64 BITS                                                |
+      |Usuário atual                      |MARCOS                                                 |
+      |Processador                        |INTEL CORE I3-4130 CPU 3.40GHZ                         |
+      |Geração do processador             |INTEL CORE I3 4130                                     |
+      |Tipo do processador                |INTEL CORE I3                                          |
+      |Frequência do processador (Clock)  |3.39 GHz                                               |
+      #|Núcleos físicos                    |0                                                      |
+      |Núcleos lógicos                    |2                                                       |
+      |Memória                            |11 GB                                                   |
+      |Memória instalada (MB)             |11142 MB|
+      #|Disco total (GB)                   |16 GB                                                  |
+      #|Disco utilizado (GB)               |15 GB                                                  |
+      |Data de coleta                     |01/08/2022 17:40                                       |
+
+    Examples:
+      | Env       |Descriptiion                                |item1                                 |
+      | smc       |Smart Center Ficha dsa Maquina Linux      |MARCOSS-MACBOOK-PRO.LOCAL               |
