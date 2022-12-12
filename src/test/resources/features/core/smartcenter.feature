@@ -72,16 +72,16 @@ Feature:  Smart Center
     And Check for information "<check2>"
     Examples:
       | Env       |Descriptiion                                |submenu   |submenu1   |itemSubmenu                      |itemPage |check1                             |check2     |
-      #| smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Hardware                         |         |Relatório de Hardware              |Almaden com você!|
-      #| smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Monitor                          |         |Relatório de Monitores             |Almaden com você!|
-      #| smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Software                         |         |Relatório de Software              |Almaden com você!|
-      #| smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Software Metering                |         |Software Metering                  |Almaden com você!|
-      #| smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Pastas Compartilhadas            |         |Selecionar Departamento             |Almaden com você!|
-      #| smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Consolidado de Inventário        |         |Selecione os Departamentos         |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Hardware                         |         |Relatório de Hardware              |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Monitor                          |         |Relatório de Monitores             |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Software                         |         |Relatório de Software              |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Software Metering                |         |Software Metering                  |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Pastas Compartilhadas            |         |Selecionar Departamento             |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Consolidado de Inventário        |         |Selecione os Departamentos         |Almaden com você!|
       | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Alterações                       |Desktop  |Relatório de Alterações Desktop    |Almaden com você!|
       | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Alterações                       |Servidor |Relatório de Alterações Servidor   |Almaden com você!|
-      #| smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Indisponibilidade de Máquinas    |         |Indisponibilidade de Máquinas      |Almaden com você!|
-      #| smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Equipamentos sem Agente (Backlog)|         |Equipamentos sem Agente (Backlog)  |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Indisponibilidade de Máquinas    |         |Indisponibilidade de Máquinas      |Almaden com você!|
+      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Equipamentos sem Agente (Backlog)|         |Equipamentos sem Agente (Backlog)  |Almaden com você!|
 
 
   @GerenciaAteracoes  @smoketest
