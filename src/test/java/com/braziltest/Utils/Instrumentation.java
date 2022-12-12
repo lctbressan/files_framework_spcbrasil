@@ -217,7 +217,10 @@ public class Instrumentation {
             System.out.println("FAILURE" + exception);
         }
     }
-    public static void listEqualsByClassNameTest (WebDriver driver, String prmClassName,String prmText, String StepLog) throws IOException {
+    public static void listEqualsByClassNameTest (WebDriver driver, String prmClassName,String prmText, String StepLog) throws IOException, InterruptedException {
+       Thread.sleep(TIMEOUTAUTOMATION);
+        Thread.sleep(TIMEOUTAUTOMATION);
+
         Integer prmIndex = 0;
         try {
             Reporter.addStepLog(StepLog);

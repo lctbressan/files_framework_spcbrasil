@@ -147,7 +147,7 @@ public class smartCenterSteps extends BaseStep {
     }
 
     @And("Click in item by a list \"([^\"]*)\"$")
-    public void clickInItemByAList(String arg0) throws IOException {
+    public void clickInItemByAList(String arg0) throws IOException, InterruptedException {
         if(!arg0.equals("")) {
             smartcenterPages.clickInItemByAList(arg0);
         }

@@ -190,7 +190,7 @@ public class smartcenterPages extends BaseStep {
         }*/
     }
 
-    public static void clickInItemByAList(String arg0) throws IOException {
+    public static void clickInItemByAList(String arg0) throws IOException, InterruptedException {
         Instrumentation.listEqualsByClassNameTest(Webdriver,"report-item-container",arg0,"Check for : " + arg0);
     }
 }
