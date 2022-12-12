@@ -92,6 +92,7 @@ public class smartCenterSteps extends BaseStep {
 
     @And("Check for information \"([^\"]*)\"$")
     public void checkForInformation(String arg0) throws Exception {
+        Thread.sleep(2000);
         smartcenterPages.checkForInformation(arg0);
     }
 
