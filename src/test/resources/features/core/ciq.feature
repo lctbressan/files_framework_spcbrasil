@@ -1,6 +1,6 @@
 Feature:  CIQ Test Suite
 
-  @CIQ @smoketest
+  @LoginCIQ @smoketest
   Scenario Outline: CIQ Center Login
     Given that the user is on the home screen "<Env>"
     And Send credentials "<Env>"
