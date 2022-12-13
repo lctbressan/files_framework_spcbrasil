@@ -11,7 +11,6 @@ Feature:  Smart Center
     And check for information on logon "<Env>" "<info1>"
     #And check for information "<info2>"
     #And check for information "<info3>"
-
     Examples:
       | Env       |Descriptiion    |info1           |
       | smc       |Login sucess    |Olá Automatos   |
@@ -214,4 +213,4 @@ Feature:  Smart Center
 
     Examples:
       | Env       |Descriptiion                                |item1                                 |
-      | smc       |Smart Center Ficha dsa Maquina Linux      |MARCOSS-MACBOOK-PRO.LOCAL               |
+      | smc       |Smart Center Ficha dsa Maquina MAC      |MARCOSS-MACBOOK-PRO.LOCAL               |

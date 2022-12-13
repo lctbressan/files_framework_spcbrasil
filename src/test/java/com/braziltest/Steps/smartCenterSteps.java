@@ -154,6 +154,8 @@ public class smartCenterSteps extends BaseStep {
             smartcenterPages.clickInItemByAList(arg0);
         }
     }
+
+
 }
 
 
