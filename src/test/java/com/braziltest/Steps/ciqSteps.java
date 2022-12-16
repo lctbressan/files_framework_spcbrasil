@@ -13,4 +13,20 @@ public class ciqSteps  extends BaseStep {
     public void clickInMenu(String arg0) throws IOException {
         ciqPages.clickInMenu(arg0);
     }
+
+    @And("click on ciq filter \"([^\"]*)\"$")
+    public void cicloOnCiqFilter(String arg0) throws IOException {
+        ciqPages.clickOnCiqFilter(arg0);
+    }
+
+    @And("Click on Region \"([^\"]*)\"$")
+    public void clickOnRegion(String arg0) throws IOException {
+         ciqPages.clickOnRegion(arg0);
+
+    }
+
+    @And("Click Confirmar")
+    public void clickConfirmar() throws IOException {
+        ciqPages.cickConfirmar();
+    }
 }

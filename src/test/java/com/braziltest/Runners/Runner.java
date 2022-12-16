@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
         //tags={"@GetEvidencesOthers"},
        // tags={"@Links"},
          //tags={"@healthcheckrelatoriosHard"},
-        tags={"@DrillMenus"},
+        tags={"@Filtro"},
 
         //tags={"@ConvertAllfiles"},
         //tags={"@Desktop"},

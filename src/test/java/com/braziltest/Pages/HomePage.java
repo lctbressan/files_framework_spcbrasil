@@ -233,6 +233,14 @@ public class HomePage extends BaseStep {
             Instrumentation.collectByClassNameIndex(Webdriver,"dropdown__user-options--greetings",arg0,"Check for : " + arg0);
 
         }
+        if(Env.equals("filter")){
+            Instrumentation.collectByClassNameIndex(Webdriver,"text-neutral-500",arg0,"Check for : " + arg0);
+        }
+
+        if(Env.equals("menus")){
+            Instrumentation.collectByClassNameIndex(Webdriver,"items-start",arg0,"Check for : " + arg0);
+        }
+
 
     }
 
