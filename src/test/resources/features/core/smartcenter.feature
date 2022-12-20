@@ -16,7 +16,7 @@ Feature:  Smart Center
       | smc       |Login sucess    |Olá Automatos   |
 
 
-  @Inventoty  @smoketest
+  @Invent_CheckTotals  @smoketest
   Scenario Outline: Smart Center Inventoty check total
     Given that the user is on the home screen "<Env>"
     When Send credentials "<Env>"
@@ -34,7 +34,7 @@ Feature:  Smart Center
       | smc       |Inventory  - check total Mobile            |Mobile                |
 
 
-  @healthcheck  @smoketest
+  @InventarioHardware   @smoketest
   Scenario Outline: Smart Center health check functions
     Given that the user is on the home screen "<Env>"
     When Send credentials "<Env>"
@@ -47,17 +47,48 @@ Feature:  Smart Center
     Then Click in Sair
     And Check for information "<check2>"
     Examples:
-      | Env       |Descriptiion                                |submenu                 |itemSubmenu        |itemPage                       |check1                             |check2     |
-      | smc       |Smart Center health check functions         |Inventário              |Hardware           |                               |Hardware                           |Almaden com você!|
-      | smc       |Smart Center health check functions         |Inventário              |Dados customizados |                               |Inventário Customizado             |Almaden com você!|
-      | smc       |Smart Center health check functions         |Inventário              |Software           |Lista de Softwares             |Produtos                           |Almaden com você!|
-      | smc       |Smart Center health check functions         |Inventário              |Software           |Aprovação de Software          |Aprovação de Software              |Almaden com você!|
-      | smc       |Smart Center health check functions         |Inventário              |Software           |Alertas Vermelhos de Softwares |Alertas Vermelhos de Softwares     |Almaden com você!|
+      | Env       |Descriptiion                              |submenu                 |itemSubmenu        |itemPage                       |check1                             |check2     |
+      | smc       |Smart Center Inventário Hardware          |Inventário              |Hardware           |                               |Hardware                           |Almaden com você!|
+
+
+  @Inventariodadoscustomizados  @smoketest
+  Scenario Outline: Smart Center health check Inventário dados customizados
+    Given that the user is on the home screen "<Env>"
+    When Send credentials "<Env>"
+    And cick Login
+    And click in menu
+    And Click in submenu "<submenu>"
+    And Click in item "<itemSubmenu>"
+    And click item page "<itemPage>"
+    And Check for information "<check1>"
+    Then Click in Sair
+    And Check for information "<check2>"
+    Examples:
+      | Env       |Descriptiion                                                     |submenu                 |itemSubmenu        |itemPage                       |check1                             |check2     |
+      | smc       |Smart Center health check Inventário dados customizados         |Inventário              |Dados customizados |                               |Inventário Customizado             |Almaden com você!|
+
+  @healthcheckhealthInventarioSoftware  @smoketest
+  Scenario Outline: Smart Center health check Inventário Software
+    Given that the user is on the home screen "<Env>"
+    When Send credentials "<Env>"
+    And cick Login
+    And click in menu
+    And Click in submenu "<submenu>"
+    And Click in item "<itemSubmenu>"
+    And click item page "<itemPage>"
+    And Check for information "<check1>"
+    Then Click in Sair
+    And Check for information "<check2>"
+    Examples:
+      | Env       |Descriptiion                                     |submenu                 |itemSubmenu        |itemPage                       |check1                             |check2     |
+      | smc       |Smart Center health check Inventário Software    |Inventário              |Software           |Lista de Softwares             |Produtos                           |Almaden com você!|
+      | smc       |Smart Center health check Inventário Software    |Inventário              |Software           |Aprovação de Software          |Aprovação de Software              |Almaden com você!|
+      | smc       |Smart Center health check Inventário Software    |Inventário              |Software           |Alertas Vermelhos de Softwares |Alertas Vermelhos de Softwares     |Almaden com você!|
 
 
 
-  @healthcheckrelatoriosHard  @smoketest
-  Scenario Outline: Smart Center health check Realtorios
+  @healthcheckrelatorios   @smoketest
+  Scenario Outline: Smart Center health check Inventário Realtorios
     Given that the user is on the home screen "<Env>"
     When Send credentials "<Env>"
     And cick Login
@@ -70,17 +101,17 @@ Feature:  Smart Center
     Then Click in Sair
     And Check for information "<check2>"
     Examples:
-      | Env       |Descriptiion                                |submenu   |submenu1   |itemSubmenu                      |itemPage |check1                             |check2     |
-      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Hardware                         |         |Relatório de Hardware              |Almaden com você!|
-      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Monitor                          |         |Relatório de Monitores             |Almaden com você!|
-      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Software                         |         |Relatório de Software              |Almaden com você!|
-      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Software Metering                |         |Software Metering                  |Almaden com você!|
-      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Pastas Compartilhadas            |         |Selecionar Departamento             |Almaden com você!|
-      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Consolidado de Inventário        |         |Selecione os Departamentos         |Almaden com você!|
-      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Alterações                       |Desktop  |Relatório de Alterações Desktop    |Almaden com você!|
-      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Alterações                       |Servidor |Relatório de Alterações Servidor   |Almaden com você!|
-      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Indisponibilidade de Máquinas    |         |Indisponibilidade de Máquinas      |Almaden com você!|
-      | smc       |Smart Center health check Relatorio         |Inventário|Relatórios |Equipamentos sem Agente (Backlog)|         |Equipamentos sem Agente (Backlog)  |Almaden com você!|
+      | Env       |Descriptiion                                                                  |submenu   |submenu1   |itemSubmenu                      |itemPage |check1                             |check2     |
+      | smc       |Smart Center health check Inventário Relatorio Hardware                       |Inventário|Relatórios |Hardware                         |         |Relatório de Hardware              |Almaden com você!|
+      | smc       |Smart Center health check Inventário Relatorio Monitor                        |Inventário|Relatórios |Monitor                          |         |Relatório de Monitores             |Almaden com você!|
+      | smc       |Smart Center health check Inventário Relatorio Software                       |Inventário|Relatórios |Software                         |         |Relatório de Software              |Almaden com você!|
+      | smc       |Smart Center health check Inventário Relatorio Software Metering              |Inventário|Relatórios |Software Metering                |         |Software Metering                  |Almaden com você!|
+      | smc       |Smart Center health check Inventário Relatorio Pastas Compartilhadas          |Inventário|Relatórios |Pastas Compartilhadas            |         |Selecionar Departamento             |Almaden com você!|
+      | smc       |Smart Center health check Inventário Relatorio Consolidado de Inventário      |Inventário|Relatórios |Consolidado de Inventário        |         |Selecione os Departamentos         |Almaden com você!|
+      | smc       |Smart Center health check Inventário Relatorio Alterações Desktop             |Inventário|Relatórios |Alterações                       |Desktop  |Relatório de Alterações Desktop    |Almaden com você!|
+      | smc       |Smart Center health check Inventário Relatorio Alterações Servidor            |Inventário|Relatórios |Alterações                       |Servidor |Relatório de Alterações Servidor   |Almaden com você!|
+      | smc       |Smart Center health check Inventário Relatorio Indisponibilidade de Máquinas  |Inventário|Relatórios |Indisponibilidade de Máquinas    |         |Indisponibilidade de Máquinas      |Almaden com você!|
+      | smc       |Smart Center health check Inventário Relatorio Equipamentos sem Agente        |Inventário|Relatórios |Equipamentos sem Agente (Backlog)|         |Equipamentos sem Agente (Backlog)  |Almaden com você!|
 
 
   @GerenciaAteracoes  @smoketest

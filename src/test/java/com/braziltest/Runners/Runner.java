@@ -19,9 +19,9 @@ import org.junit.runner.RunWith;
         //tags={"@GetEvidencesOthers"},
        // tags={"@Links"},
          //tags={"@healthcheckrelatoriosHard"},
-        tags={"@Filtro"},
+        //tags={"@FichaMaquinaMac"},
 
-        //tags={"@ConvertAllfiles"},
+        tags={"@healthcheckrelatoriosHard"},
         //tags={"@Desktop"},
         strict = true,
         snippets = SnippetType.CAMELCASE)
