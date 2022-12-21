@@ -21,7 +21,7 @@ import org.junit.runner.RunWith;
          //tags={"@healthcheckrelatoriosHard"},
         //tags={"@FichaMaquinaMac"},
 
-        tags={"@healthcheckrelatoriosHard"},
+        tags={"@Geolocalizacao"},
         //tags={"@Desktop"},
         strict = true,
         snippets = SnippetType.CAMELCASE)

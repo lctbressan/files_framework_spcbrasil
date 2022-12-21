@@ -156,6 +156,15 @@ public class smartCenterSteps extends BaseStep {
     }
 
 
+    @And("define parimetro inicial \"([^\"]*)\"$")
+    public void defineParimetroInicial(String arg0) throws IOException {
+        smartcenterPages.definePerimetro(arg0);
+    }
+
+    @And("verifica no mapa de iteracoes se retornou endereco \"([^\"]*)\"$")
+    public void verificaNoMapaDeIteracoesSeRetornouEndereco(String arg0) throws IOException, InterruptedException {
+        smartcenterPages.verificaRetornoEndereco(arg0);
+    }
 }
 
 

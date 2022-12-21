@@ -245,3 +245,26 @@ Feature:  Smart Center
     Examples:
       | Env       |Descriptiion                                |item1                                 |
       | smc       |Smart Center Ficha dsa Maquina MAC      |MARCOSS-MACBOOK-PRO.LOCAL               |
+
+
+
+  @Geolocalizacao  @smoketest
+  Scenario Outline: Smart Center health check Inventário Software
+    Given that the user is on the home screen "<Env>"
+    When Send credentials "<Env>"
+    And cick Login
+    And click in menu
+    And Click in submenu "<submenu>"
+    And Click in item "<itemSubmenu>"
+    And click item page "<itemPage>"
+    And define parimetro inicial "<perimetro>"
+    And verifica no mapa de iteracoes se retornou endereco "<retmapa>"
+    Then Click in Sair
+    And Check for information "<check2>"
+    Examples:
+      | Env       |Descriptiion                                     |submenu                 |itemSubmenu        |itemPage                       |perimetro                 |retmapa                         |check2           |
+      | smc       |Smart Center health check Inventário Software    |Inventário              |Geolocalização     |Definir Perímetro              |Avenida Paulista          |Dados cartográficos ©2022 Google|Almaden com você!|
+
+
+
+

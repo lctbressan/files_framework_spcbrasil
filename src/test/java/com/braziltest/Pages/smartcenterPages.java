@@ -193,4 +193,28 @@ public class smartcenterPages extends BaseStep {
     public static void clickInItemByAList(String arg0) throws IOException, InterruptedException {
         Instrumentation.listEqualsByClassNameTest(Webdriver,"report-item-container",arg0,"Check for : " + arg0);
     }
+
+    public static void definePerimetro(String arg0) throws IOException {
+        Instrumentation.sendKeysWeb(Webdriver,Config.xpath,"/html/body/div[1]/div/div[2]/div[3]/div[2]/div[1]/div/div/div[5]/div[2]/div[2]/div/input",arg0,"");
+        //Instrumentation.sendKeysWeb(Webdriver, Config.xpath,"//input[@name='input-search']", String.valueOf(Keys.ENTER),"Enter");
+    }
+
+    public static void verificaRetornoEndereco(String arg0) throws IOException, InterruptedException {
+        String Result = "";
+        Thread.sleep(5000);
+        String Ret = Instrumentation.listWebElementClass(Webdriver,"gm-style");
+        for (String line : Ret.split("\n")) {
+            System.out.println(line);
+            if(!line.contains(arg0)){
+                System.out.println(line);
+                 Result = "OK";
+                break;
+            };
+        }
+        if(Result.equals("OK")){
+            Assert.assertTrue(true);
+        }else{
+            Assert.assertFalse(true);
+        }
+    }
 }
