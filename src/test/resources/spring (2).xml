@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="lunchDinnerDao" class="com.br.spcbrasil.dao.luncdinnerDaoImpl">
+    </bean>
+
+    <bean id="bohDao" class="com.br.spcbrasil.dao.bohDaoImpl">
+    </bean>
+
+    <bean id="thusLocalDao" class="com.br.spcbrasil.dao.thusLocalDaoImpl">
+    </bean>
+
+    <bean id="pmixDao" class="com.br.spcbrasil.dao.pmixDaoImpl">
+    </bean>
+
+    <bean id="devicefarmDao" class="com.br.spcbrasil.dao.devicefarmDaoImpl">
+    </bean>
+</beans>
