@@ -19,23 +19,9 @@ public abstract class Hook extends BaseStep {
     public static void inicializaAutomacao() throws Exception {
         System.out.println("#####################################################################################}");
         System.out.println("                  {STARTING AUTOMATION WAIT PLS - }");
-        System.out.println("                        RUNNER "+ RunnerNbr +" ");
-        System.out.println("#####################################################################################}");
+          System.out.println("#####################################################################################}");
         ExtentProperties extentProperties = ExtentProperties.INSTANCE;
 
-        String pathCucumber = "" ;
-        if (System.getProperty("os.name").contains("Windows")) {
-            extentProperties.setReportPath(PATHEVIDENCEWIN + "/report.html");
-        }
-
-        if (System.getProperty("os.name").contains("Linux")) {
-            extentProperties.setReportPath(PATHEVIDENCELIN + "/report.html");
-        }
-
-        if ( System.getProperty("os.name").contains("Mac OS X")) {
-                extentProperties.setReportPath(PATHEVIDENCEMAC + "/report.html");
-
-        }
 
     }
 

@@ -1,8 +1,12 @@
 package com.br.spcbrasil.Pages;
+
 import com.br.spcbrasil.Steps.Hook.BaseStep;
 import com.br.spcbrasil.interfaces.DriverFactory;
 
 import javax.xml.XMLConstants;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.transform.stax.StAXSource;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -31,7 +35,7 @@ public class HomePage extends BaseStep {
             Validator validator = schema.newValidator();
             validator.validate(new StreamSource(new File(xmlPath)));
         } catch (IOException | org.xml.sax.SAXException  e) {
-            System.out.println("Erros encontrados : { "+e.getMessage() + " }");
+            System.out.println("Erros encontrados : { "+e.getMessage() + " "+ " }");
             return false;
         }
         return true;
@@ -45,4 +49,26 @@ public class HomePage extends BaseStep {
         Validator validator = schema.newValidator();
         validator.validate(xmlFile);
     }
+
+
+
+
+    public static void validateXsdDetails(String XSD1,String  XML1) throws Exception {
+
+        StreamSource XSD = new StreamSource(XSD1);
+        StreamSource XML = new StreamSource(XML1);
+
+        SchemaFactory factory=SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        Schema schema = factory.newSchema(XSD);
+
+        XMLStreamReader reader = XMLInputFactory.newFactory().createXMLStreamReader(XML);
+
+        Validator validator = schema.newValidator();
+        validator.setErrorHandler(new MyErrorHandler(reader));
+        validator.validate(new StAXSource(reader));
+
+    }
+
+
+
 }

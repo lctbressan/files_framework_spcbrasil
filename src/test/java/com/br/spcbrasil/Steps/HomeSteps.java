@@ -21,9 +21,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
+import static com.br.spcbrasil.Pages.MyErrorHandler.logwritter;
 import static com.br.spcbrasil.Utils.Config.PathOrigin;
 import static com.br.spcbrasil.Utils.Config.pSit;
-import static com.spcbrasil.utils.ProcessBuilderRun.processCommand;
+
 
 public class HomeSteps extends BaseStep {
 
@@ -79,10 +80,13 @@ public class HomeSteps extends BaseStep {
             for (Path path : stream) {
                 if (!Files.isDirectory(path)) {
                     System.out.println("VALIDANDO ARQUIVO  " + path.getFileName().toString());
+                    logwritter("VALIDANDO ARQUIVO  " + path.getFileName().toString());
+
                     ArqXml = path.getFileName().toString();
 
                     // findAllFilesInFolder(new File(path.toString()),prmRunner,Sit);
-                    validateFile(xsd,path.toString());
+                   // validateFile(xsd,path.toString());
+                    HomePage.validateXsdDetails(xsd,path.toString());
                 }
             }
         }
@@ -132,16 +136,7 @@ public class HomeSteps extends BaseStep {
         deleteDirectoryRecursionJava6(new File(path.toString()));
     }
 
-    @Given("that i convert all files from path \"([^\"]*)\"$")
-    public void thatIConvertPathsRespond(String path) throws Exception {
-        //Lista o diretorio
-        File folder = new File(path);
 
-        listCDirectoriesStream(path.toString());
-        /*for(String item : arq.split(";")){
-            findAllFilesInFolder(new File(path + item));
-        }*/
-    }
 
 
     public static void removeDirectoriesStream(String dir) throws Exception {
@@ -178,82 +173,10 @@ public class HomeSteps extends BaseStep {
             throw new IOException("Failed to delete " + file);
         }
     }
-    public static void listCDirectoriesStream(String dir) throws Exception {
-        PathOrigin =dir.toString();
-
-        String Dirs =  "";
-        String prmRunner = "";
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(dir))) {
-            for (Path path : stream) {
-                if (Files.isDirectory(path)) {
-                    //fileList.add(path.getFileName().toString());
-                    //System.out.println("LENDO DIR " + path.getFileName().toString());
-                    Dirs = path.getFileName().toString() +";"+ Dirs;
-                    prmRunner =path.getFileName().toString();
-                    System.out.println(Dirs);
-                    findAllCFilesInFolder(new File(path.toString()),prmRunner);
-                }
-            }
-        }
-        //return Dirs;
-    }
-    public static void findAllCFilesInFolder(File folder,String Runner) throws Exception {
-        try{
-            String path = folder.toString();
-            String fileName ="";
-
-                for (File file : Objects.requireNonNull(folder.listFiles())) {
-                    if (!file.isDirectory()) {
-                        fileName = file.getName();
-                        if (fileName.contains("avi")) {
-                            System.out.println(file.getName());
-                            //CHAMA A ROTINA DE TRATAMENTO DO ARQUIVO
-                            //saveEvidence(path+"\\",file.getName(),Runner);
-
-
-                            File destinationFile = null;
-                            File sourceFile = new File(folder + "\\" + file.getName());
-
-                            if (fileName.contains("avi")) {
-                                destinationFile = new File(Config.PathEvidenceCentral + "\\" + Runner + ".webm");
-                            }
-
-
-                            if (!destinationFile.exists()) {
-                                System.out.println("CONVERT  FROM  " + path +"  TO : "+ destinationFile);
-                                //processCommand("ffmpeg.exe -i "+ folder + "\\" + file.getName() +" -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus " + folder + "\\" + file.getName().replace("avi","webm"));
-                                processCommand(file.getName());
-                            }
-                        }
-                    }
-                }
 
 
 
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-    }
 
-    public static void saveEvidence(String path,String filename,String Runner) throws Exception {
-        String evidencia = "";
-        String data ="";
-        String data1 ="";
-        String line;
-        File file = new File(path+filename);
-        BufferedReader br  = new BufferedReader(new FileReader(file));
-        while ((line = br.readLine()) != null) {
-            //System.out.println(st);
-            data = data + line;
-           // System.out.println(data1);
-        }
-        br.close();
-
-        System.out.println(Runner);
-        WriteToFile(Config.PathEvidenceCentral,Runner,data);
-        FileUtils.deleteDirectory(new File(path));
-
-    }
 
 
     private static String readFromInputStream(InputStream inputstream) throws IOException {

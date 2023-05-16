@@ -1,6 +1,6 @@
 package com.br.spcbrasil.Utils;
 
-import com.spcbrasil.utils.ManipularJson;
+
 
 public class Config {
 
@@ -14,16 +14,12 @@ public class Config {
     public static final String DRIVERPATHCHROMEWIN = "C:\\Drivers\\browsers\\chrome\\107\\chromedriver.exe";
     public static final String DRIVERPATHFFOXLWIN = "/home/bressan/drivers/chromedriver_linux64/chromedriver";
     //For Windows Users
-    public static final String PATHEVIDENCEWIN = "C:\\Evidencias\\Braziltest\\Run_"+ ManipularJson.getSaltStringCelular() + "\\";
-    public static final String PATHEVIDENCELIN = "/home/bressan/evidencias/teste/Run_"+ ManipularJson.getSaltStringCelular() + "/";
-    public static final String PathEvidenceCentral = "\\\\10.10.0.10\\f\\evidencias\\CentralEnvidence";
-    public static final String RunnerNbr = ManipularJson.getSaltStringCelular();
-    public static final String PATHEVIDENCEMAC = "/users/bressan/evidencias/almadin/Run_"+ RunnerNbr + "/";
+
     public static final int TIMEOUTAUTOMATION = 100;
     public static final String PLATFORMTYPE = PLATFORMNAME;
     public static final String email = "admin";
     public static final String passw = "admin";
-    public static final String dataAtual = ManipularJson.dataAtual();
+
     public static String ScenarioName = "";
     public static String ScenarioId = "";
     public static String FeatureName = "";
