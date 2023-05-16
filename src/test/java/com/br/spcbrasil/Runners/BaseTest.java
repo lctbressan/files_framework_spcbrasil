@@ -21,12 +21,7 @@ public abstract class BaseTest extends BaseStep {
         ExtentProperties extentProperties = ExtentProperties.INSTANCE;
 
 
-       if(System.getProperty("os.name").contains("Windows")) {
-           extentProperties.setReportPath(Config.PATHEVIDENCEWIN+"/report.html");
-       }
-       if(System.getProperty("os.name").contains("Linux")){
-           extentProperties.setReportPath(Config.PATHEVIDENCELINUX+"/report.html");
-       }
+        
 
     }
 

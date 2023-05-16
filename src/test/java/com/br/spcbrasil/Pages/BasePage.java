@@ -1,4 +1,4 @@
-package com.br.spcbrasil.Pages;
+package com.spcbrasil.Pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -38,7 +38,5 @@ public abstract class BasePage {
     protected abstract void setIOS();
 
     protected abstract void setAndroid();
-
-
 
 }

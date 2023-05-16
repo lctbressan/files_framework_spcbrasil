@@ -1,37 +1,27 @@
 package com.br.spcbrasil.interfaces;
 
-import com.br.spcbrasil.Steps.Hook.BaseStep;
-import com.br.spcbrasil.Utils.Config;
-import com.br.spcbrasil.Utils.Instrumentation;
-import com.br.spcbrasil.utils.ManipularJson;
+import com.br.spcbrasil.Steps.Hook.Hook;
 import com.vimalselvam.cucumber.listener.Reporter;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
 import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.winium.DesktopOptions;
+import org.openqa.selenium.winium.WiniumDriver;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
+import static com.br.spcbrasil.Utils.Config.*;
 
 @SuppressWarnings("unchecked")
-public class DriverFactory extends BaseStep {
+public class DriverFactory extends Hook {
 
 
     private static String path = "";
@@ -41,35 +31,64 @@ public class DriverFactory extends BaseStep {
     public static String browser;
     public static String scenarioName;
     public static String executionFolder;
-    static ManipularJson mj = new ManipularJson();
+
     private int linha = 0;
-    private String ExecutionFolder = LocalDateTime.now().toString().replaceAll(":", "").replace("-", "").replace(".", "");
+    private String ExecutionFolder = LocalDateTime.now().toString().replaceAll(":", "").replace("-", "").replace(".",
+            "");
 
-    public static WebDriver getDriverWeb(String arg0) throws Exception {
+        public static WebDriver getDriver(String arg0) throws Exception {
+            System.out.println(System.getProperty("os.name"));
+            if (PLATFORMTYPE.toUpperCase().equals("WEB")) {
 
-        if (Config.PLATFORMTYPE.toUpperCase().equals("WEB")) {
+                if (BROWSERTESTING.equals("CHROME")) {
 
-            if (Config.BROWSERTESTING.equals("CHROME")) {
-                //OpenBrowserChrome(URLTESTING);
-                OpenBrowserChrome(arg0);
+                    if (System.getProperty("os.name").contains("Windows")) {
+                        if(BROWSERTESTING.equals("CHROME")) {
+                            OpenBrowserChrome(arg0, DRIVERPATHCHROMEWIN);
+                        }
+                    }
 
+                    if (System.getProperty("os.name").contains("Linux") ) {
+                        if(BROWSERTESTING.equals("CHROME")) {
+                            OpenBrowserChrome(arg0, DRIVERPATHCHROMELIN);
+                        }
+
+                    }
+
+                    if ( System.getProperty("os.name").contains("Mac OS X")) {
+                        if(BROWSERTESTING.equals("CHROME")) {
+                            OpenBrowserChrome(arg0, DRIVERPATHCHROMEMAC);
+                        }
+
+                    }
+
+                }
+
+
+                if (BROWSERTESTING.equals("FIREFOX") ) {
+                    if (System.getProperty("os.name").contains("Windows")) {
+                        if(BROWSERTESTING.equals("FIREFOX")) {
+                            OpenBrowserFirefox(arg0, DRIVERPATHFFOXLWIN);
+                        }
+                    }
+
+                    if (System.getProperty("os.name").contains("Linux")|| System.getProperty("os.name").contains("Mac OS X")) {
+                        if(BROWSERTESTING.equals("FIREFOX")) {
+                            OpenBrowserFirefox(arg0, DRIVERPATHFFOXLIN);
+                        }
+                    }
+                }
             }
-
-            if (Config.BROWSERTESTING.equals("FIREFOX")) {
-                OpenBrowserFirefox(arg0);
-            }
+            return Webdriver;
         }
 
-        //System.out.println("INSTANCIA DO DIVER >>" + Webdriver);
-        return Webdriver;
-    }
 
 
     /*************************************************************
      * INSTANTIATE A NEW DRIVER WEB
      ****************************************************************/
-    public static WebDriver OpenBrowserChrome(String p0) throws Exception {
-        System.setProperty("webdriver.chrome.driver", Config.DRIVERPATH);
+    public static WebDriver OpenBrowserChrome(String p0,String Path) throws Exception {
+        System.setProperty("webdriver.chrome.driver", Path);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("test-type");
         options.addArguments("start-maximized");
@@ -80,172 +99,110 @@ public class DriverFactory extends BaseStep {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-browser-side-navigation");
         options.addArguments("--disable-gpu");
+
         Webdriver = new ChromeDriver(options);
         Webdriver.get(p0);
-        Webdriver.manage().window().maximize();
-        Thread.sleep(3000);
+        //Webdriver.manage().window().maximize();
         return Webdriver;
     }
 
 
-    public static WebDriver OpenBrowserFirefox(String p0) throws InterruptedException {
-        System.setProperty("webdriver.gecko.driver", Config.DRIVERPATH);
+    public static WebDriver OpenBrowserFirefox(String p0,String path) throws InterruptedException {
+       System.setProperty("webdriver.gecko.driver",path);
         WebDriver driver = new FirefoxDriver();
         driver.navigate().to(p0);
-        driver.manage().timeouts().implicitlyWait(Config.TIMEOUTAUTOMATION, TimeUnit.SECONDS);
-        Webdriver = driver;
-        //return Webdriver;
-
-        //FirefoxBinary firefoxBinary = new FirefoxBinary();
-        //firefoxBinary.addCommandLineOptions("--headless");
-        //firefoxBinary.addCommandLineOptions("--no-sandbox");
-        //System.setProperty("webdriver.gecko.driver", DRIVERPATH);
-        //FirefoxOptions firefoxOptions = new FirefoxOptions();
-        //firefoxOptions.setBinary(firefoxBinary);
-        //FirefoxDriver Webdriver = new FirefoxDriver(firefoxOptions);
-        //Webdriver.get(p0);
+        driver.manage().timeouts().implicitlyWait(TIMEOUTAUTOMATION, TimeUnit.SECONDS);
+        Webdriver = (RemoteWebDriver) driver;
         return Webdriver;
-    }
-
-    public static AppiumDriver<MobileElement> getDriverMobile(String Type,String target) throws Exception {
-
-        if (driver == null) {
-            if (Type.equals("ANDROID")) {
-                createDriverAndroid(target);
-            } else {
-                creatDriverIOS();
-            }
-        }
-
-        return driver;
-    }
-
-    private static void createDriverAndroid(String target) throws Exception {
-        try {
-
-
-        DesiredCapabilities caps = new DesiredCapabilities();
-
-        //caps.setCapability("deviceId", PlatformDeviceIP);
-        caps.setCapability("automationName", Config.AutomationName);
-       caps.setCapability("platformName", Config.PlatformDeviceName);
-        caps.setCapability("noReset", true);
-        caps.setCapability("FullReset", true);
-
-       if(Instrumentation.getDevices(target).equals("YES")) {
-
-            caps.setCapability("udid", Config.UDID);
-
-            System.out.println(InetAddress.getLocalHost().getHostName());
-            System.out.println(InetAddress.getLocalHost().getHostAddress());
-
-
-            if (target.equals("EMPRESAS")) {
-                caps.setCapability("appPackage", "spcempresas.org.br");
-                caps.setCapability("appActivity", ".ui.activities.SplashActivity");
-                caps.setCapability("deviceName", "Android");
-            }
-
-            if (target.equals("CONSUMIDOR")) {
-                caps.setCapability("appPackage", "br.com.spc.consumidor");
-                caps.setCapability("appActivity", ".view.SplashActivity");
-                caps.setCapability("deviceName", "Android");
-            }
-
-        }
-        //caps.setCapability("skipDeviceInitialization", true);
-        //caps.setCapability("skipServerInstallation", true);
-        //caps.setCapability("ignoreUnimportantViews", true);
-        //caps.setCapability("unicodeKeyboard", "true");
-        //caps.setCapability("resetKeyboard", "true");
-
-
-            driver = new AndroidDriver<>(new URL("http://"+Config.PlatformServer+":"+ Config.PlatformPort+"/wd/hub"), caps);
-            //driver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
-            //driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-            Thread.sleep(5000);
-        } catch (MalformedURLException  e) {
-            e.printStackTrace();
-            Assert.fail(String.valueOf(e));
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    /*************************************************************
-     * DRIVER IOS
-     ****************************************************************/
-    private static void creatDriverIOS() throws Exception {
-        DesiredCapabilities dc = new DesiredCapabilities();
-        //dc.setCapability("noReset", true);
-        //dc.setCapability("FullReset", false);
-        dc.setCapability(MobileCapabilityType.PLATFORM_VERSION, Config.PlatformVersion);
-        dc.setCapability(MobileCapabilityType.PLATFORM_NAME, Config.PlatformName);
-        dc.setCapability(MobileCapabilityType.AUTOMATION_NAME, Config.AutomationName);
-        dc.setCapability(MobileCapabilityType.DEVICE_NAME, Config.DeviceName);
-        dc.setCapability(MobileCapabilityType.UDID, Config.UDID);
-        //dc.setCapability("appPackage", PlatformAppPackage);
-        //dc.setCapability("appActivity", PlatformAppActivity);
-        dc.setCapability(MobileCapabilityType.APP,System.getProperty("user.dir") + "/src/test/resources/app/SysdamApp.app");
-        //dc.setCapability(MobileCapabilityType.APP,"/Users/braziltest/Library/Developer/Xcode/DerivedData/SysdamApp-bsugcygoekqcfmcehwilhuowzjap/Build/Products/Debug-iphonesimulator/SysdamApp.app");
-         try {
-            driver = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), dc);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    /**
-     * Metodo mata o driver e retorna valor null nele
-     */
-    public static void killDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
-
     }
 
     /*************************************************************
      * EVIDENCIAS SCREENSHOTS
      ****************************************************************/
-    public static void Evidencia(WebDriver driver, String Env,String Feature,String Scenario,String StepName,String Details ,String Status) throws IOException {
-    if(Config.evidenceGen.equals("S")) {
-        //evidence picture report
-        id = id + 1;
-        String pathCucumber = "";
+    public static void Evidencia(WebDriver driver, String ct) throws IOException {
+
+        String pathCucumber = "" ;
         if (System.getProperty("os.name").contains("Windows")) {
-            pathCucumber = Config.PATHEVIDENCEWIN;
+             pathCucumber = PATHEVIDENCEWIN ;
         }
 
         if (System.getProperty("os.name").contains("Linux")) {
-            pathCucumber = Config.PATHEVIDENCELINUX;
-        }
-        if (System.getProperty("os.name").contains("Mac OS")) {
-            pathCucumber = Config.PATHEVIDENCEMAC;
+             pathCucumber = PATHEVIDENCELIN ;
+
         }
 
-        File folder = new File(pathCucumber);
+        if ( System.getProperty("os.name").contains("Mac OS X")) {
+            pathCucumber = PATHEVIDENCEMAC;
+
+        }
+
+        id = id + 1;
+
+        File folder = new File(pathCucumber +  ct);
         if (!folder.exists()) {
             if (folder.mkdirs()) {
-                path = pathCucumber;
+                path = pathCucumber +  ct;
                 id = 1;
             } else {
                 System.out.println("Falha ao criar diretório!");
             }
         }
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        File dest = new File(pathCucumber + id + ".jpg");
-        String imageDest = pathCucumber + id + ".jpg";
+        File dest = new File(pathCucumber +  id + ".jpg");
+        String imageDest = pathCucumber  + id + ".jpg";
         FileUtils.copyFile(scrFile, dest);
         Reporter.addScreenCaptureFromPath(imageDest);
         //System.out.println(scrFile + " - " + dest);
 
-
-        //evidence text report
-        //Instrumentation.evidenceText(Config.RunnerNbr,Env,Feature,Scenario,StepName,String.valueOf(id) ,mj.dataAtual(),"2",Status);
     }
+
+    public static WiniumDriver winniumDriverOpen(String Application,String WiniHost){
+        DesktopOptions options= new DesktopOptions();
+        options.setApplicationPath(Application);
+        try{
+            WiniumDriver driver=new WiniumDriver(new URL(WiniHost),options);
+
+            winiumDriver = driver;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Driver:"+ winiumDriver);
+        return winiumDriver;
+    }
+
+    public static WebDriver OpenBrowserChromeSG(String p0) throws Exception {
+        /*DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("version", "77.0");
+        capabilities.setCapability("platform", "win10"); // If this cap isn't specified, it will just get any available one
+        capabilities.setCapability("build", "LambdaTestSampleApp");
+        capabilities.setCapability("name", "LambdaTestJavaSample");
+        capabilities.setCapability("network", true); // To enable network logs
+        capabilities.setCapability("visual", true); // To enable step by step screenshot
+        capabilities.setCapability("video", true); // To enable video recording
+        capabilities.setCapability("console", true); // To capture console logs
+
+        capabilities.setCapability("selenium_version","4.0.0-alpha-2");
+        capabilities.setCapability("timezone","UTC+05:30");
+        capabilities.setCapability("geoLocation","IN");
+        capabilities.setCapability("chrome.driver","78.0");
+        RemoteWebDriver  driver;
+          driver = new RemoteWebDriver(new URL("http://10.10.0.13:4444/wd/hub"), capabilities);
+          driver.navigate().to(p0);
+            //Webdriver = (RemoteWebDriver) driver;
+            //Webdriver.get(p0);
+            //return Webdriver;*/
+
+       DesiredCapabilities cap = new DesiredCapabilities().firefox();
+       cap.setPlatform(Platform.WIN10);
+       cap.setBrowserName("firefox");
+        //WebDriver driver = new RemoteWebDriver(new URL("http://10.10.0.5:5557/wd/hub"), cap);
+        WebDriver driver = new RemoteWebDriver(new URL("http://10.10.0.5:5557/wd/hub"), cap);
+        driver.get(p0);
+
+        Webdriver = (RemoteWebDriver) driver;
+        return Webdriver;
+
     }
 }

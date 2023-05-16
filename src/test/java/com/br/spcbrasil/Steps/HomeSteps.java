@@ -1,13 +1,11 @@
-package com.spcbrasil.Steps;
+package com.br.spcbrasil.Steps;
 
-import com.spcbrasil.Pages.HomePage;
-import com.spcbrasil.Steps.Hook.BaseStep;
-import com.spcbrasil.Utils.Config;
+import com.br.spcbrasil.Pages.HomePage;
+import com.br.spcbrasil.Steps.Hook.BaseStep;
+import com.br.spcbrasil.Utils.Config;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 
 import org.apache.commons.io.FileUtils;
 
@@ -23,8 +21,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
-import static com.spcbrasil.Utils.Config.PathOrigin;
-import static com.spcbrasil.Utils.Config.pSit;
+import static com.br.spcbrasil.Utils.Config.PathOrigin;
+import static com.br.spcbrasil.Utils.Config.pSit;
 import static com.spcbrasil.utils.ProcessBuilderRun.processCommand;
 
 public class HomeSteps extends BaseStep {
@@ -62,18 +60,15 @@ public class HomeSteps extends BaseStep {
 
 
 
-    @Given("valida o xml conta o xsd \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
-    public void thatICheckPathsRespond( String patxsd, String xsdName, String folderXml,String Sit) throws Exception {
+
+    @Given("^valida o xml conta o xsd \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
+    public void validaOXmlContaOXsd( String patxsd, String xsdName, String folderXml, String Sit) throws Exception {
         String xsd = patxsd  + xsdName;
         //Lista o diretorio
         File folder = new File(folderXml);
-
-
         listFDirectoriesStream(folderXml.toString(),Sit,xsd);
 
     }
-
-
 
     public static void listFDirectoriesStream(String dir,String Sit,String xsd) throws Exception {
         PathOrigin =dir.toString();
@@ -309,6 +304,7 @@ public class HomeSteps extends BaseStep {
     public void teardownSteps() throws Exception {
 
     }
+
 
 
 }
